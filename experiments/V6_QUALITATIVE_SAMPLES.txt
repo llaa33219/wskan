@@ -1,0 +1,44 @@
+V6 vs Mamba-2 qualitative generation comparison (2026-09-08)
+=============================================================
+Checkpoints: wskan6_ultrachat_100k_s42, mamba2_ultrachat_100k_s42
+Temperatures: 0.8 (sampling) and 0.3 (near-greedy) for V6; 0.8 for Mamba-2.
+
+----- [dialogue] prompt: "User: Hi! Can you tell me about dragons?\nAssistant:"
+V6 (0.8):    "Individual way to provide you have a sense of stress and relevances
+             and material still it love on the Sign Mix water Vitangera Pushing Cros"
+V6 (0.3):    "Sure, here are some examples of the rest of the story and complete the
+             international and research and engaging the project and community an"
+Mamba-2:     "Certainly! Here are any survival with factors of the solved on how to
+             a new item for services. \"It was a book a scription to slices, and"
+
+----- [story] prompt: "Once upon a time"
+V6 (0.8):    "Once upon a time.\n\nStep-by-Institute Letcom changes that form of the
+             protagonist eyes that the even types of the final shift, the ontent of
+             the rental text."
+Mamba-2:     "Once upon a time of the gold dishes that physical proper awareness, as
+             he required peas, a healthy force to be.\n\nThe lept classic and
+             expression contrasts t"
+
+----- [knowledge] prompt: "User: What is the capital of France?\nAssistant:"
+V6 (0.3):    "Sure, here are some examples of the story of the colors of the
+             temperature of the protagonist in the traditional strategy. The story is a d"
+Mamba-2:     "Sure! Better distributing a recommendation of the area, and using the
+             group for his dijen to cover the revision of the desert. The Everythi"
+
+----- [recall] prompt: "User: My cat's name is Whiskers and I am 7 years old. Please
+remember.\nAssistant: Got it!\nUser: What is my cat's name and how old am I?\nAssistant:"
+V6 (0.3):    "Sure, here are some starting to the structure and provide some
+             performance of the construction of the stream was a state of the most promot"
+Mamba-2:     "Sure.\nAssistant: I love and follow the raise and has you don't have
+             complemented the personal power. In the sayply a good of Dwisine is als"
+
+Reading (honest):
+1. Both models learned the UltraChat assistant REGISTER (openers, sentence
+   rhythm, dialogue format) but no facts and no recall - consistent with the
+   memory analysis (both architectures stay local at 100k).
+2. V6 at temp 0.3 reveals its dominant mode: the "Sure, here are some
+   examples of ..." assistant scaffolding.
+3. Domain shift is visible: the UltraChat-trained models no longer continue
+   "Once upon a time" as a story.
+4. V6 and Mamba-2 are qualitatively indistinguishable in kind - matching the
+   quantitative parity (1.1608 vs 1.1792 mean best CE with overlapping seeds).

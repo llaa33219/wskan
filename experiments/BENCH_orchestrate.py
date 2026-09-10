@@ -2,11 +2,11 @@
 
 Prepare: writes one job-slice file per free GPU to /tmp/opencode/v8_slice_<n>.cmd
 Each line: <tag>;<command>. Launch each slice with:
-  setsid nohup bash experiments/V8_worker.sh <slice-file> <gpu-uuid> &
+  setsid nohup bash experiments/BENCH_worker.sh <slice-file> <gpu-uuid> &
 
 Resumable: completed runs (train_log.csv with final step) are skipped.
 
-Usage: .venv/bin/python experiments/V8_orchestrate2.py [--gpus U1,U2,...]
+Usage: .venv/bin/python experiments/BENCH_orchestrate.py [--gpus U1,U2,...]
 """
 
 import argparse
@@ -67,7 +67,7 @@ def main():
     (ROOT / ".v8_logs").mkdir(exist_ok=True)
     print(f"{n} GPUs, {pending} pending jobs")
     for k, g in enumerate(gpus):
-        print(f"setsid nohup bash experiments/V8_worker.sh {TMP}/v8_slice_{k}.cmd {g} "
+        print(f"setsid nohup bash experiments/BENCH_worker.sh {TMP}/v8_slice_{k}.cmd {g} "
               f"> {TMP}/v8_worker_{k}.log 2>&1 < /dev/null &")
 
 

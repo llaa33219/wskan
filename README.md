@@ -60,6 +60,9 @@ experiments/
   V7C_FINAL_INTERPRETABILITY_REPORT.md # last five debts: identity addressing, routing, exact attribution
   V7_causal_dictionaries.py        # causal battery: tables, clusters, hub, families + turn test + mode attribution
   V7D_CAUSAL_DICTIONARIES_REPORT.md # dictionaries now causal; turn hypothesis refuted; frien->d = mode (i12,k1)
+  baselines.py                     # tf / gated-conv / lstm baselines
+  BENCH_orchestrate.py + V8_worker.sh + BENCH_aggregate.py  # 225-run matrix tooling
+  W7BC_CROSS_FAMILY_REPORT.md        # 5 families x 5 sizes x 3 datasets x 3 seeds + interpretability axis
   V3_interpret.py                 # edge-function extraction + figures
 checkpoints/
   wskan_tinystories_lm_500k/  # V1 500k edge functions + samples

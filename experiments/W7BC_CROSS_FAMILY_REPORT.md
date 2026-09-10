@@ -119,6 +119,6 @@ not even close among these families at this budget.
 ## Reproduction
 
 ```bash
-.venv/bin/python experiments/V8_orchestrate2.py   # writes per-GPU slices
+.venv/bin/python experiments/BENCH_orchestrate.py   # writes per-GPU slices
 .venv/bin/python experiments/V8_aggregate.py      # rebuilds all tables
 ```

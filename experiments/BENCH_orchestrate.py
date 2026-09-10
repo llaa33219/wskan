@@ -1,4 +1,4 @@
-"""File-based orchestrator for the V8 matrix (robust replacement).
+"""File-based orchestrator for the cross-family matrix (robust replacement).
 
 Prepare: writes one job-slice file per free GPU to /tmp/opencode/v8_slice_<n>.cmd
 Each line: <tag>;<command>. Launch each slice with:

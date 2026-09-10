@@ -1,4 +1,4 @@
-# V8 Cross-Family Benchmark: 5 Models × 5 Sizes × 3 Datasets × 3 Seeds
+# wskan7bc Cross-Family Benchmark: 5 Models × 5 Sizes × 3 Datasets × 3 Seeds
 
 **Date:** 2026-09-10 · **Status:** the project's first fully rule-compliant
 comparison (AGENTS.md #2 competitors, #4 ≥3 seeds, #5 ≥3 datasets — all met).
@@ -120,5 +120,5 @@ not even close among these families at this budget.
 
 ```bash
 .venv/bin/python experiments/BENCH_orchestrate.py   # writes per-GPU slices
-.venv/bin/python experiments/V8_aggregate.py      # rebuilds all tables
+.venv/bin/python experiments/BENCH_aggregate.py      # rebuilds all tables
 ```

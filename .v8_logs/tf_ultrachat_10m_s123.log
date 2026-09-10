@@ -1,0 +1,20 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: tf  params: 9,880,192  device: cuda
+W0909 21:34:15.518000 1981880 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.6308  eval 4.3872  pmax 1.0  (19s)
+step  1000  train 1.5946  eval 1.6898  pmax 1.4  (67s)
+step  2000  train 1.3565  eval 1.4358  pmax 1.6  (116s)
+step  3000  train 1.2780  eval 1.2949  pmax 1.7  (165s)
+step  4000  train 1.3295  eval 1.2982  pmax 1.7  (213s)
+step  5000  train 1.2005  eval 1.2879  pmax 1.8  (262s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'TinyTransformerLM' object has no attribute 'layers'

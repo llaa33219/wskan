@@ -1,0 +1,16 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: mamba2  params: 1,042,852  device: cuda
+W0910 00:55:14.326000 2090521 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 7.9825  eval 5.4305  pmax 6.9  (37s)
+step  1000  train 1.5599  eval 1.5104  pmax 7.0  (89s)
+step  2000  train 1.5395  eval 1.4873  pmax 7.1  (142s)
+step  3000  train 1.5125  eval 1.4124  pmax 7.1  (195s)
+step  4000  train 1.4610  eval 1.4480  pmax 7.2  (248s)
+step  5000  train 1.3943  eval 1.4265  pmax 7.2  (301s)
+step  6000  train 1.3900  eval 1.4124  pmax 7.2  (354s)
+step  7000  train 1.4245  eval 1.3269  pmax 7.3  (407s)
+step  8000  train 1.3694  eval 1.5026  pmax 7.3  (460s)
+step  9000  train 1.4411  eval 1.4148  pmax 7.3  (513s)
+step 10000  train 1.4013  eval 1.4734  pmax 7.3  (566s)
+  [checkpoint + sample saved at step 10000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_ultrachat_1m_s2024

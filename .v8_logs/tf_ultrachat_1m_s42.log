@@ -1,0 +1,16 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: tf  params: 1,008,160  device: cuda
+W0910 01:12:13.182000 2095162 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.5557  eval 4.9931  pmax 1.0  (16s)
+step  1000  train 1.7441  eval 1.7312  pmax 1.4  (29s)
+step  2000  train 1.4512  eval 1.5332  pmax 1.6  (41s)
+step  3000  train 1.3442  eval 1.4279  pmax 1.6  (54s)
+step  4000  train 1.3701  eval 1.3877  pmax 1.7  (66s)
+step  5000  train 1.4461  eval 1.3475  pmax 1.7  (79s)
+step  6000  train 1.3473  eval 1.2465  pmax 1.7  (91s)
+step  7000  train 1.2925  eval 1.2860  pmax 1.7  (104s)
+step  8000  train 1.2628  eval 1.2947  pmax 1.8  (117s)
+step  9000  train 1.3193  eval 1.3138  pmax 1.8  (129s)
+step 10000  train 1.3147  eval 1.2476  pmax 1.8  (142s)
+  [checkpoint + sample saved at step 10000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_1m_s42

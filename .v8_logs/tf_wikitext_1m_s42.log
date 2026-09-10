@@ -1,0 +1,15 @@
+train bytes: 181,551,634  eval bytes: 130,357
+model: tf  params: 1,008,160  device: cuda
+step     1  train 5.5632  eval 4.9863  pmax 1.0  (4s)
+step  1000  train 1.8323  eval 1.7356  pmax 1.4  (17s)
+step  2000  train 1.5868  eval 1.5739  pmax 1.5  (30s)
+step  3000  train 1.5284  eval 1.5188  pmax 1.6  (43s)
+step  4000  train 1.4567  eval 1.4787  pmax 1.7  (56s)
+step  5000  train 1.3805  eval 1.4462  pmax 1.7  (68s)
+step  6000  train 1.4301  eval 1.3745  pmax 1.7  (81s)
+step  7000  train 1.4718  eval 1.3967  pmax 1.8  (94s)
+step  8000  train 1.3572  eval 1.3575  pmax 1.8  (107s)
+step  9000  train 1.3811  eval 1.3340  pmax 1.8  (120s)
+step 10000  train 1.3147  eval 1.3024  pmax 1.8  (133s)
+  [checkpoint + sample saved at step 10000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_wikitext_1m_s42

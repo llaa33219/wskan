@@ -196,12 +196,15 @@ class WaveletStateKANLMV7(WaveletStateKANLM):
     def __init__(self, vocab_size: int = 256, d_model: int = 32, n_layers: int = 3,
                  n_states: int = 6, chunk_size: int = 16,
                  use_feature_bc: bool = True, bc_rank: int = 32,
-                 wz_diag: bool = True, g_rank: int | None = 32):
+                 wz_diag: bool = True, g_rank: int | None = 32,
+                 grad_checkpoint: bool = False, compile_chunk: bool = False):
         super().__init__(vocab_size, d_model, n_layers, n_states)
         self.layers = nn.ModuleList(
             InterpretableWaveletStateKANLayer(d_model, d_model, n_states, chunk_size=chunk_size,
                                               use_feature_bc=use_feature_bc, bc_rank=bc_rank,
-                                              wz_diag=wz_diag, g_rank=g_rank)
+                                              wz_diag=wz_diag, g_rank=g_rank,
+                                              grad_checkpoint=grad_checkpoint,
+                                              compile_chunk=compile_chunk)
             for _ in range(n_layers)
         )
         self.prenorms = nn.ModuleList(nn.LayerNorm(d_model) for _ in range(n_layers))

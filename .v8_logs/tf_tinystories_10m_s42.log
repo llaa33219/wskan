@@ -1,0 +1,19 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: tf  params: 9,880,192  device: cuda
+step     1  train 5.7172  eval 4.3838  pmax 1.0  (4s)
+step  1000  train 1.1198  eval 1.0787  pmax 1.3  (62s)
+step  2000  train 0.9342  eval 0.8951  pmax 1.4  (120s)
+step  3000  train 0.8875  eval 0.8462  pmax 1.5  (178s)
+step  4000  train 0.8501  eval 0.8103  pmax 1.5  (236s)
+step  5000  train 0.8242  eval 0.7710  pmax 1.5  (294s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'TinyTransformerLM' object has no attribute 'layers'

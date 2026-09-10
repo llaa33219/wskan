@@ -1,0 +1,25 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: mamba2  params: 2,774  device: cuda
+step     1  train 5.5948  eval 5.5737  pmax 5.4  (1s)
+step  1000  train 2.3299  eval 2.3354  pmax 4.2  (21s)
+step  2000  train 2.3058  eval 2.2970  pmax 3.6  (41s)
+step  3000  train 2.2884  eval 2.3625  pmax 3.8  (60s)
+step  4000  train 2.2093  eval 2.2524  pmax 3.8  (80s)
+step  5000  train 2.2681  eval 2.3432  pmax 3.9  (100s)
+step  6000  train 2.3123  eval 2.2074  pmax 4.2  (119s)
+step  7000  train 2.2532  eval 2.3082  pmax 4.3  (139s)
+step  8000  train 2.1925  eval 2.2560  pmax 4.5  (159s)
+step  9000  train 2.2838  eval 2.2953  pmax 4.6  (179s)
+step 10000  train 2.2480  eval 2.3194  pmax 4.7  (199s)
+step 11000  train 2.2183  eval 2.1967  pmax 4.8  (219s)
+step 12000  train 2.2423  eval 2.2130  pmax 4.8  (239s)
+step 13000  train 2.2121  eval 2.2546  pmax 4.9  (259s)
+step 14000  train 2.2789  eval 2.1932  pmax 5.1  (279s)
+step 15000  train 2.2352  eval 2.3239  pmax 5.3  (299s)
+step 16000  train 2.2293  eval 2.2879  pmax 5.3  (319s)
+step 17000  train 2.2700  eval 2.3072  pmax 5.4  (339s)
+step 18000  train 2.2541  eval 2.2832  pmax 5.5  (359s)
+step 19000  train 2.2282  eval 2.2113  pmax 5.6  (378s)
+step 20000  train 2.2634  eval 2.2138  pmax 5.7  (398s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_ultrachat_1k_s2024

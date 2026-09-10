@@ -1,0 +1,15 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: mamba2  params: 1,042,852  device: cuda
+step     1  train 8.0854  eval 5.4135  pmax 5.7  (5s)
+step  1000  train 1.1169  eval 1.1327  pmax 5.8  (62s)
+step  2000  train 1.0786  eval 1.0144  pmax 5.8  (119s)
+step  3000  train 1.0299  eval 0.9936  pmax 5.8  (176s)
+step  4000  train 1.0488  eval 1.0091  pmax 5.8  (233s)
+step  5000  train 1.0101  eval 1.0149  pmax 5.8  (290s)
+step  6000  train 1.0017  eval 1.0047  pmax 5.8  (347s)
+step  7000  train 0.9968  eval 1.0437  pmax 5.8  (404s)
+step  8000  train 1.0213  eval 0.9730  pmax 5.8  (460s)
+step  9000  train 1.0134  eval 0.9761  pmax 5.8  (517s)
+step 10000  train 1.0189  eval 0.9893  pmax 5.8  (574s)
+  [checkpoint + sample saved at step 10000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_tinystories_1m_s123

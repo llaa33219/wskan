@@ -1,0 +1,24 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: lstm  params: 938,880  device: cuda
+step     1  train 5.5909  eval 5.1267  pmax 1.0  (1s)
+step  1000  train 1.1253  eval 1.0793  pmax 1.5  (37s)
+step  2000  train 0.9767  eval 0.9164  pmax 1.6  (73s)
+step  3000  train 0.8704  eval 0.8882  pmax 1.6  (108s)
+step  4000  train 0.8849  eval 0.8399  pmax 1.7  (145s)
+step  5000  train 0.8097  eval 0.7985  pmax 1.7  (180s)
+step  6000  train 0.8154  eval 0.7952  pmax 1.7  (216s)
+step  7000  train 0.8145  eval 0.7195  pmax 1.7  (253s)
+step  8000  train 0.8289  eval 0.7525  pmax 1.6  (288s)
+step  9000  train 0.8002  eval 0.7500  pmax 1.6  (325s)
+step 10000  train 0.7891  eval 0.8409  pmax 1.6  (361s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'LSTMLM' object has no attribute 'layers'

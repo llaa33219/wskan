@@ -1,0 +1,25 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: tf  params: 2,284  device: cuda
+step     1  train 5.5493  eval 5.5270  pmax 1.0  (1s)
+step  1000  train 2.8026  eval 2.9073  pmax 2.2  (9s)
+step  2000  train 2.7423  eval 2.7505  pmax 2.5  (18s)
+step  3000  train 2.7811  eval 2.7659  pmax 2.5  (27s)
+step  4000  train 2.7115  eval 2.7008  pmax 2.6  (36s)
+step  5000  train 2.8110  eval 2.7452  pmax 2.6  (45s)
+step  6000  train 2.7973  eval 2.7164  pmax 2.6  (54s)
+step  7000  train 2.7622  eval 2.7438  pmax 2.7  (64s)
+step  8000  train 2.7370  eval 2.7126  pmax 2.7  (74s)
+step  9000  train 2.6475  eval 2.6576  pmax 2.8  (83s)
+step 10000  train 2.7143  eval 2.6590  pmax 2.9  (92s)
+step 11000  train 2.7170  eval 2.7191  pmax 3.0  (101s)
+step 12000  train 2.7042  eval 2.7187  pmax 3.1  (110s)
+step 13000  train 2.7461  eval 2.6897  pmax 3.3  (119s)
+step 14000  train 2.7348  eval 2.7313  pmax 3.4  (128s)
+step 15000  train 2.6669  eval 2.7512  pmax 3.7  (137s)
+step 16000  train 2.7020  eval 2.6985  pmax 3.9  (146s)
+step 17000  train 2.7060  eval 2.6653  pmax 4.2  (154s)
+step 18000  train 2.6601  eval 2.6495  pmax 4.5  (163s)
+step 19000  train 2.7127  eval 2.7241  pmax 4.7  (172s)
+step 20000  train 2.7729  eval 2.7261  pmax 5.0  (180s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_1k_s123

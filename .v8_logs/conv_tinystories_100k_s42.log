@@ -1,0 +1,25 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: conv  params: 97,776  device: cuda
+step     1  train 5.5649  eval 4.9599  pmax 1.0  (4s)
+step  1000  train 1.4141  eval 1.3846  pmax 3.0  (15s)
+step  2000  train 1.2538  eval 1.1529  pmax 3.5  (26s)
+step  3000  train 1.1147  eval 1.0928  pmax 3.7  (38s)
+step  4000  train 1.0691  eval 1.1262  pmax 3.8  (49s)
+step  5000  train 1.0931  eval 1.0295  pmax 4.0  (60s)
+step  6000  train 1.0457  eval 1.0497  pmax 4.1  (71s)
+step  7000  train 1.0748  eval 1.0142  pmax 4.2  (82s)
+step  8000  train 1.0486  eval 0.9844  pmax 4.4  (94s)
+step  9000  train 1.0480  eval 1.0057  pmax 4.4  (105s)
+step 10000  train 1.0426  eval 0.9966  pmax 4.5  (117s)
+step 11000  train 1.0423  eval 0.9669  pmax 4.6  (128s)
+step 12000  train 1.0705  eval 0.9683  pmax 4.7  (140s)
+step 13000  train 1.0463  eval 0.9481  pmax 4.8  (151s)
+step 14000  train 1.0082  eval 0.9564  pmax 4.8  (163s)
+step 15000  train 1.0556  eval 0.9357  pmax 4.8  (174s)
+step 16000  train 0.9890  eval 0.9698  pmax 5.0  (185s)
+step 17000  train 1.0227  eval 0.9580  pmax 5.3  (197s)
+step 18000  train 0.9822  eval 0.9527  pmax 5.6  (208s)
+step 19000  train 1.0114  eval 0.9648  pmax 5.9  (220s)
+step 20000  train 1.0519  eval 0.9766  pmax 6.2  (232s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/conv_tinystories_100k_s42

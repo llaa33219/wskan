@@ -1,0 +1,25 @@
+train bytes: 181,551,634  eval bytes: 130,357
+model: mamba2  params: 2,774  device: cuda
+step     1  train 5.5660  eval 5.5452  pmax 6.8  (1s)
+step  1000  train 2.3011  eval 2.2921  pmax 5.7  (21s)
+step  2000  train 2.2822  eval 2.2353  pmax 5.3  (42s)
+step  3000  train 2.2199  eval 2.2928  pmax 5.1  (64s)
+step  4000  train 2.2145  eval 2.2686  pmax 5.1  (84s)
+step  5000  train 2.2143  eval 2.2627  pmax 5.0  (104s)
+step  6000  train 2.1956  eval 2.2225  pmax 5.0  (123s)
+step  7000  train 2.1898  eval 2.2074  pmax 4.9  (143s)
+step  8000  train 2.2061  eval 2.2006  pmax 4.9  (162s)
+step  9000  train 2.2103  eval 2.2127  pmax 4.8  (181s)
+step 10000  train 2.1948  eval 2.1945  pmax 4.8  (201s)
+step 11000  train 2.1846  eval 2.2647  pmax 4.8  (223s)
+step 12000  train 2.2075  eval 2.2037  pmax 4.8  (243s)
+step 13000  train 2.1980  eval 2.2379  pmax 4.7  (263s)
+step 14000  train 2.2044  eval 2.2196  pmax 4.7  (283s)
+step 15000  train 2.1890  eval 2.2306  pmax 4.7  (304s)
+step 16000  train 2.1848  eval 2.2109  pmax 4.7  (324s)
+step 17000  train 2.1799  eval 2.2210  pmax 4.7  (344s)
+step 18000  train 2.1641  eval 2.2310  pmax 4.8  (365s)
+step 19000  train 2.2005  eval 2.2035  pmax 4.9  (386s)
+step 20000  train 2.1972  eval 2.1885  pmax 5.0  (406s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_wikitext_1k_s42

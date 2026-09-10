@@ -34,20 +34,19 @@ class Mamba2ByteLM(torch.nn.Module):
         super().__init__()
         from transformers import Mamba2Config, Mamba2ForCausalLM
 
-        if scale == "10m":
-            cfg = Mamba2Config(
-                vocab_size=256, hidden_size=512, num_hidden_layers=6,
-                num_heads=16, head_dim=64, state_size=64, expand=2,
-                n_groups=1, conv_kernel=4, tie_word_embeddings=True, chunk_size=32,
-            )
-        else:
-            cfg = Mamba2Config(
-                vocab_size=256, hidden_size=64, num_hidden_layers=3,
-                num_heads=8, head_dim=16, state_size=8, expand=2,
-                n_groups=1, conv_kernel=4, tie_word_embeddings=True,
-            )
+        table = {
+            "1k": (8, 1, 8, 8), "10k": (16, 3, 16, 8), "100k": (56, 4, 16, 8),
+            "1m": (256, 2, 64, 64), "10m": (512, 6, 64, 64),
+        }
+        d, L, hd, st = table[scale]
+        cfg = Mamba2Config(
+            vocab_size=256, hidden_size=d, num_hidden_layers=L,
+            num_heads=max(1, (d * 2) // hd), head_dim=hd, state_size=st, expand=2,
+            n_groups=1, conv_kernel=4, tie_word_embeddings=True,
+            chunk_size=32 if st > 8 else 16,
+        )
         self.model = Mamba2ForCausalLM(cfg)
-        if scale == "10m":
+        if scale in ("1m", "10m"):
             self.model.gradient_checkpointing_enable()
         self.vocab_size = 256
 
@@ -77,7 +76,7 @@ def load_data(max_train_stories: int, n_eval_stories: int, seed: int, dataset: s
         eval_ds = load_dataset("roneneldan/TinyStories", split="validation")
         train_text = "\n".join(train_ds["text"][:max_train_stories])
         eval_text = "\n".join(eval_ds["text"][:n_eval_stories])
-    else:
+    elif dataset == "ultrachat":
         train_ds = load_dataset("HuggingFaceH4/ultrachat_200k", split="train_sft")
         eval_ds = load_dataset("HuggingFaceH4/ultrachat_200k", split="test_sft")
 
@@ -93,6 +92,17 @@ def load_data(max_train_stories: int, n_eval_stories: int, seed: int, dataset: s
                 break
         train_text = "\n\n".join(parts)
         eval_text = "\n\n".join(render(c) for c in eval_ds["messages"][:n_eval_stories])
+    else:  # wikitext
+        ds = load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="train")
+        eval_ds = load_dataset("Salesforce/wikitext", "wikitext-103-raw-v1", split="validation")
+        parts, total = [], 0
+        for t in ds["text"]:
+            parts.append(t)
+            total += len(t)
+            if total >= max_train_stories * 900:
+                break
+        train_text = "\n\n".join(parts)
+        eval_text = "\n\n".join(eval_ds["text"][:n_eval_stories])
     train_ids = torch.tensor(list(train_text.encode("utf-8", errors="ignore")), dtype=torch.uint8)
     eval_ids = torch.tensor(list(eval_text.encode("utf-8", errors="ignore")), dtype=torch.uint8)
     print(f"train bytes: {len(train_ids):,}  eval bytes: {len(eval_ids):,}")
@@ -124,15 +134,15 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--model", choices=["wskan", "wskan2", "wskan3", "wskan3real", "wskan4",
                                        "wskan5", "wskan5nc", "wskan5lin", "wskan6", "wskan7",
-                                       "wskan7bc", "wskan7bc16", "wskan7g", "wskan7z", "mamba2"],
-                   default="wskan")
-    p.add_argument("--dataset", choices=["tinystories", "ultrachat"], default="tinystories")
-    p.add_argument("--scale", choices=["100k", "10m"], default="100k")
+                                       "wskan7bc", "wskan7bc16", "wskan7g", "wskan7z",
+                                       "mamba2", "tf", "conv", "lstm"], default="wskan")
+    p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
+    p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m"], default="100k")
     p.add_argument("--compile", action="store_true", help="torch.compile the loss step")
-    p.add_argument("--steps", type=int, default=5000)
+    p.add_argument("--steps", type=int, default=None)
     p.add_argument("--batch", type=int, default=32)
     p.add_argument("--block", type=int, default=256)
-    p.add_argument("--lr", type=float, default=3e-3)
+    p.add_argument("--lr", type=float, default=None)
     p.add_argument("--lr-schedule", choices=["constant", "cosine"], default="constant",
                    help="cosine decays lr to 0 over --steps; recommended for long runs")
     p.add_argument("--seed", type=int, default=42)
@@ -142,6 +152,10 @@ def main() -> None:
     p.add_argument("--eval-every", type=int, default=250)
     args = p.parse_args()
 
+    if args.steps is None:
+        args.steps = {"1k": 20000, "10k": 20000, "100k": 20000, "1m": 10000, "10m": 5000}[args.scale]
+    if args.lr is None:
+        args.lr = 3e-3 if args.scale in ("1k", "10k", "100k") else 1e-3
     torch.manual_seed(args.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
     out_dir = (
@@ -159,7 +173,29 @@ def main() -> None:
         wskan_cfg = dict(vocab_size=256, d_model=32, n_layers=3, n_states=6)
     v3_extra = dict(chunk_size=16, grad_checkpoint=True, compile_chunk=True) if args.scale == "10m" else dict()
 
-    if args.model == "wskan":
+    SIZE_CFG = {
+        "wskan7bc": {"1k": (4, 1), "10k": (12, 1), "100k": (40, 2), "1m": (80, 6), "10m": (512, 2)},
+        "tf": {"1k": (4, 1), "10k": (12, 2), "100k": (40, 4), "1m": (160, 3), "10m": (448, 4)},
+        "conv": {"1k": (4, 1), "10k": (32, 1), "100k": (112, 5), "1m": (384, 6), "10m": (1280, 6)},
+        "lstm": {"1k": (4, 1), "10k": (12, 6), "100k": (96, 1), "1m": (192, 3), "10m": (448, 6)},
+    }
+
+    if args.model in ("tf", "conv", "lstm"):
+        from experiments.baselines import GatedConvLM, LSTMLM, TinyTransformerLM
+
+        d, L = SIZE_CFG[args.model][args.scale]
+        cls = {"tf": TinyTransformerLM, "conv": GatedConvLM, "lstm": LSTMLM}[args.model]
+        model = cls(d_model=d, n_layers=L).to(device)
+    elif args.model in ("wskan7bc", "wskan7bc16") and args.scale in SIZE_CFG["wskan7bc"]:
+        from models.V7_WSKAN import WaveletStateKANLMV7
+
+        d, L = SIZE_CFG["wskan7bc"][args.scale]
+        extra10m = dict(chunk_size=8, grad_checkpoint=True, compile_chunk=True) if args.scale in ("1m", "10m") else dict()
+        model = WaveletStateKANLMV7(
+            vocab_size=256, d_model=d, n_layers=L, use_feature_bc=True,
+            wz_diag=False, g_rank=None, bc_rank=min(32, d), **extra10m,
+        ).to(device)
+    elif args.model == "wskan":
         model = WaveletStateKANLM(**wskan_cfg).to(device)
     elif args.model == "wskan2":
         from models.V2_WSKAN import WaveletStateKANLMV2
@@ -203,7 +239,7 @@ def main() -> None:
         model = Mamba2ByteLM(scale=args.scale).to(device)
     n_params = count_parameters(model)
     print(f"model: {args.model}  params: {n_params:,}  device: {device}")
-    budget = 12_000_000 if args.scale == "10m" else 120_000
+    budget = {"1k": 5_000, "10k": 20_000, "100k": 130_000, "1m": 1_100_000, "10m": 11_000_000}[args.scale]
     assert n_params < budget, f"budget check: {n_params:,} >= {budget:,}"
 
     loss_fn = model.loss
@@ -227,7 +263,7 @@ def main() -> None:
         loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
         if not torch.isfinite(loss):
             print(f"NON-FINITE LOSS at step {step}: {loss.item()} - aborting, checkpoint preserved")
-            save_checkpoint(model, step, float("nan"), out_dir, args.model != "mamba2")
+            save_checkpoint(model, step, float("nan"), out_dir, args.model.startswith("wskan"))
             break
         opt.zero_grad()
         loss.backward()
@@ -246,7 +282,7 @@ def main() -> None:
             print(f"step {step:5d}  train {loss.item():.4f}  eval {ev:.4f}  pmax {pmax:.1f}  ({time.time()-t0:.0f}s)")
 
         if step % args.ckpt_every == 0 or step == args.steps:
-            save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+            save_checkpoint(model, step, loss.item(), out_dir, args.model.startswith("wskan"))
             model.eval()
             sample = model.generate(PROMPT, max_new=200, temperature=0.8)
             (out_dir / f"samples_step{step}.txt").write_bytes(sample)

@@ -1,0 +1,35 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: tf  params: 98,800  device: cuda
+W0909 23:54:12.545000 2069803 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.5262  eval 5.4855  pmax 1.0  (22s)
+step  1000  train 1.8931  eval 2.0247  pmax 2.2  (36s)
+step  2000  train 1.7161  eval 1.7252  pmax 2.3  (52s)
+step  3000  train 1.6400  eval 1.5778  pmax 2.4  (66s)
+step  4000  train 1.5885  eval 1.6228  pmax 2.4  (81s)
+step  5000  train 1.6146  eval 1.5878  pmax 2.4  (95s)
+step  6000  train 1.4898  eval 1.5885  pmax 2.5  (109s)
+step  7000  train 1.5589  eval 1.4728  pmax 2.5  (123s)
+step  8000  train 1.5038  eval 1.4916  pmax 2.5  (138s)
+step  9000  train 1.5149  eval 1.5437  pmax 2.5  (152s)
+step 10000  train 1.5981  eval 1.5146  pmax 2.4  (167s)
+step 11000  train 1.5082  eval 1.5180  pmax 2.4  (182s)
+step 12000  train 1.5270  eval 1.5627  pmax 2.4  (197s)
+step 13000  train 1.4457  eval 1.5386  pmax 2.4  (211s)
+step 14000  train 1.5354  eval 1.4895  pmax 2.5  (225s)
+step 15000  train 1.4998  eval 1.5593  pmax 2.6  (239s)
+step 16000  train 1.4765  eval 1.4877  pmax 2.7  (254s)
+step 17000  train 1.3853  eval 1.4606  pmax 2.9  (268s)
+step 18000  train 1.4810  eval 1.5263  pmax 3.0  (282s)
+step 19000  train 1.5360  eval 1.5042  pmax 3.1  (297s)
+step 20000  train 1.5128  eval 1.5162  pmax 3.2  (311s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'TinyTransformerLM' object has no attribute 'layers'

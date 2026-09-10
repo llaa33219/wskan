@@ -1,0 +1,25 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: tf  params: 9,840  device: cuda
+step     1  train 5.4946  eval 5.4272  pmax 1.0  (1s)
+step  1000  train 2.2529  eval 2.2363  pmax 2.3  (13s)
+step  2000  train 2.0424  eval 2.0221  pmax 2.5  (26s)
+step  3000  train 1.9632  eval 1.9639  pmax 2.5  (38s)
+step  4000  train 1.9218  eval 1.8999  pmax 2.6  (51s)
+step  5000  train 1.9726  eval 1.8645  pmax 2.7  (64s)
+step  6000  train 1.8973  eval 1.8755  pmax 2.8  (76s)
+step  7000  train 1.9475  eval 1.8480  pmax 2.9  (89s)
+step  8000  train 1.8712  eval 1.8357  pmax 2.9  (101s)
+step  9000  train 1.8371  eval 1.8073  pmax 2.9  (114s)
+step 10000  train 1.8587  eval 1.8229  pmax 3.0  (127s)
+step 11000  train 1.8742  eval 1.8798  pmax 3.0  (139s)
+step 12000  train 1.8506  eval 1.8316  pmax 3.1  (152s)
+step 13000  train 1.8667  eval 1.8320  pmax 3.1  (164s)
+step 14000  train 1.8657  eval 1.7991  pmax 3.2  (177s)
+step 15000  train 1.8203  eval 1.7744  pmax 3.2  (189s)
+step 16000  train 1.8310  eval 1.7648  pmax 3.2  (201s)
+step 17000  train 1.8016  eval 1.8284  pmax 3.3  (214s)
+step 18000  train 1.8185  eval 1.8096  pmax 3.2  (226s)
+step 19000  train 1.8461  eval 1.8258  pmax 3.2  (239s)
+step 20000  train 1.8165  eval 1.7450  pmax 3.2  (252s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_tinystories_10k_s123

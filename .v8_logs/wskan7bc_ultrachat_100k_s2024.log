@@ -1,0 +1,26 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: wskan7bc  params: 113,612  device: cuda
+W0909 23:33:38.007000 2050863 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.5622  eval 5.4865  pmax 18.9  (316s)
+step  1000  train 1.4698  eval 1.5711  pmax 19.1  (362s)
+step  2000  train 1.4284  eval 1.5002  pmax 19.2  (408s)
+step  3000  train 1.4533  eval 1.4577  pmax 19.3  (455s)
+step  4000  train 1.3325  eval 1.4049  pmax 19.4  (508s)
+step  5000  train 1.3655  eval 1.4852  pmax 19.4  (550s)
+step  6000  train 1.3563  eval 1.3235  pmax 19.5  (595s)
+step  7000  train 1.2982  eval 1.4191  pmax 19.5  (641s)
+step  8000  train 1.3695  eval 1.4409  pmax 19.8  (685s)
+step  9000  train 1.3149  eval 1.3988  pmax 19.9  (730s)
+step 10000  train 1.3822  eval 1.3908  pmax 20.0  (774s)
+step 11000  train 1.3427  eval 1.3699  pmax 20.1  (820s)
+step 12000  train 1.2989  eval 1.2950  pmax 20.2  (865s)
+step 13000  train 1.2936  eval 1.3388  pmax 20.4  (913s)
+step 14000  train 1.3816  eval 1.3655  pmax 20.5  (957s)
+step 15000  train 1.4185  eval 1.4214  pmax 20.6  (1002s)
+step 16000  train 1.3812  eval 1.2905  pmax 20.7  (1048s)
+step 17000  train 1.2627  eval 1.3006  pmax 20.8  (1093s)
+step 18000  train 1.3263  eval 1.3897  pmax 20.8  (1140s)
+step 19000  train 1.3082  eval 1.4367  pmax 20.9  (1185s)
+step 20000  train 1.2693  eval 1.2875  pmax 21.0  (1229s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan7bc_ultrachat_100k_s2024

@@ -1,0 +1,25 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: lstm  params: 10,584  device: cuda
+step     1  train 5.5677  eval 5.5045  pmax 1.0  (1s)
+step  1000  train 2.5154  eval 2.4785  pmax 2.1  (13s)
+step  2000  train 2.3129  eval 2.2898  pmax 2.6  (26s)
+step  3000  train 2.1977  eval 2.2485  pmax 3.2  (39s)
+step  4000  train 2.3263  eval 2.1905  pmax 3.9  (52s)
+step  5000  train 2.1477  eval 2.1551  pmax 4.3  (65s)
+step  6000  train 2.1656  eval 2.1420  pmax 4.7  (78s)
+step  7000  train 2.1026  eval 2.1373  pmax 5.1  (91s)
+step  8000  train 2.1022  eval 2.0857  pmax 5.4  (104s)
+step  9000  train 2.1380  eval 1.9879  pmax 5.5  (117s)
+step 10000  train 2.0274  eval 1.9567  pmax 5.4  (130s)
+step 11000  train 2.0666  eval 2.0670  pmax 5.1  (143s)
+step 12000  train 2.0562  eval 2.0871  pmax 5.2  (155s)
+step 13000  train 1.9436  eval 2.0212  pmax 5.2  (168s)
+step 14000  train 1.9432  eval 2.0219  pmax 5.4  (181s)
+step 15000  train 2.0352  eval 2.0365  pmax 5.5  (193s)
+step 16000  train 2.0177  eval 2.0387  pmax 5.7  (206s)
+step 17000  train 2.0269  eval 2.0658  pmax 5.7  (219s)
+step 18000  train 1.9768  eval 1.9666  pmax 5.9  (232s)
+step 19000  train 1.9802  eval 1.9511  pmax 6.0  (244s)
+step 20000  train 1.9779  eval 1.9454  pmax 6.2  (257s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/lstm_ultrachat_10k_s2024

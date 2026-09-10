@@ -1,0 +1,20 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: conv  params: 10,245,120  device: cuda
+W0909 22:15:47.105000 1994453 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.8400  eval 7.5290  pmax 1.0  (24s)
+step  1000  train 1.7654  eval 1.8117  pmax 1.6  (93s)
+step  2000  train 1.3263  eval 1.4526  pmax 2.0  (163s)
+step  3000  train 1.2030  eval 1.3161  pmax 2.2  (233s)
+step  4000  train 1.2127  eval 1.2216  pmax 2.3  (303s)
+step  5000  train 1.1458  eval 1.1782  pmax 2.4  (373s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'GatedConvLM' object has no attribute 'layers'

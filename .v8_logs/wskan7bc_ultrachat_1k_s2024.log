@@ -1,0 +1,25 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: wskan7bc  params: 2,042  device: cuda
+step     1  train 5.5457  eval 5.5378  pmax 18.8  (3s)
+step  1000  train 2.5900  eval 2.6262  pmax 19.2  (111s)
+step  2000  train 2.6063  eval 2.5597  pmax 19.5  (219s)
+step  3000  train 2.5599  eval 2.5353  pmax 19.6  (328s)
+step  4000  train 2.5134  eval 2.5608  pmax 19.7  (434s)
+step  5000  train 2.5090  eval 2.5376  pmax 19.8  (544s)
+step  6000  train 2.5601  eval 2.5695  pmax 19.9  (651s)
+step  7000  train 2.5084  eval 2.4991  pmax 20.0  (758s)
+step  8000  train 2.5443  eval 2.5566  pmax 20.1  (864s)
+step  9000  train 2.5084  eval 2.5342  pmax 20.2  (969s)
+step 10000  train 2.4711  eval 2.5732  pmax 20.2  (1077s)
+step 11000  train 2.4939  eval 2.5100  pmax 20.2  (1184s)
+step 12000  train 2.4558  eval 2.5671  pmax 20.2  (1290s)
+step 13000  train 2.5195  eval 2.4902  pmax 20.2  (1397s)
+step 14000  train 2.5251  eval 2.4602  pmax 20.2  (1506s)
+step 15000  train 2.4915  eval 2.4626  pmax 20.2  (1613s)
+step 16000  train 2.5143  eval 2.5027  pmax 20.2  (1722s)
+step 17000  train 2.4779  eval 2.4635  pmax 20.2  (1830s)
+step 18000  train 2.5797  eval 2.4680  pmax 20.3  (1938s)
+step 19000  train 2.4686  eval 2.5354  pmax 21.4  (2044s)
+step 20000  train 2.5258  eval 2.5161  pmax 22.3  (2151s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan7bc_ultrachat_1k_s2024

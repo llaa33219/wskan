@@ -1,0 +1,26 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: mamba2  params: 98,124  device: cuda
+W0910 00:29:34.458000 2084117 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.7866  eval 5.3697  pmax 6.9  (55s)
+step  1000  train 1.4479  eval 1.5065  pmax 7.0  (70s)
+step  2000  train 1.4204  eval 1.4258  pmax 7.2  (86s)
+step  3000  train 1.3303  eval 1.3779  pmax 7.4  (102s)
+step  4000  train 1.3359  eval 1.3131  pmax 7.5  (117s)
+step  5000  train 1.4059  eval 1.3185  pmax 7.5  (132s)
+step  6000  train 1.3519  eval 1.3143  pmax 7.5  (148s)
+step  7000  train 1.4203  eval 1.3036  pmax 7.6  (163s)
+step  8000  train 1.3133  eval 1.3308  pmax 7.6  (179s)
+step  9000  train 1.2504  eval 1.3077  pmax 7.7  (194s)
+step 10000  train 1.3394  eval 1.3361  pmax 7.7  (209s)
+step 11000  train 1.3450  eval 1.3317  pmax 7.8  (225s)
+step 12000  train 1.4379  eval 1.4872  pmax 7.9  (240s)
+step 13000  train 1.3411  eval 1.3726  pmax 8.0  (255s)
+step 14000  train 1.3788  eval 1.3116  pmax 8.0  (270s)
+step 15000  train 1.2588  eval 1.2617  pmax 8.1  (285s)
+step 16000  train 1.2937  eval 1.3380  pmax 8.1  (301s)
+step 17000  train 1.2886  eval 1.3234  pmax 8.1  (317s)
+step 18000  train 1.3450  eval 1.2511  pmax 8.2  (332s)
+step 19000  train 1.2502  eval 1.3592  pmax 8.2  (347s)
+step 20000  train 1.2630  eval 1.2839  pmax 8.2  (362s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_ultrachat_100k_s42

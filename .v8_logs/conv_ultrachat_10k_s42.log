@@ -1,0 +1,25 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: conv  params: 9,632  device: cuda
+step     1  train 5.5861  eval 5.4463  pmax 1.0  (1s)
+step  1000  train 2.2344  eval 2.2428  pmax 3.1  (8s)
+step  2000  train 2.1410  eval 2.2274  pmax 3.9  (15s)
+step  3000  train 2.2083  eval 2.1226  pmax 5.0  (23s)
+step  4000  train 2.1212  eval 2.0494  pmax 6.1  (31s)
+step  5000  train 2.0934  eval 2.0961  pmax 7.0  (39s)
+step  6000  train 2.0745  eval 2.1393  pmax 7.7  (47s)
+step  7000  train 2.0635  eval 2.1233  pmax 8.4  (55s)
+step  8000  train 2.1283  eval 2.1142  pmax 9.2  (62s)
+step  9000  train 2.0613  eval 2.0467  pmax 10.1  (70s)
+step 10000  train 2.0644  eval 2.0667  pmax 10.9  (77s)
+step 11000  train 2.0778  eval 2.0600  pmax 11.4  (85s)
+step 12000  train 2.0492  eval 2.1032  pmax 11.8  (93s)
+step 13000  train 2.0290  eval 2.0632  pmax 12.0  (101s)
+step 14000  train 2.0885  eval 2.0503  pmax 12.1  (108s)
+step 15000  train 2.0421  eval 2.0734  pmax 12.2  (116s)
+step 16000  train 2.0316  eval 2.0451  pmax 12.4  (124s)
+step 17000  train 2.0487  eval 2.0027  pmax 12.6  (132s)
+step 18000  train 2.1154  eval 2.1070  pmax 12.8  (139s)
+step 19000  train 2.0907  eval 2.0174  pmax 13.0  (147s)
+step 20000  train 2.1154  eval 2.0383  pmax 13.2  (154s)
+  [checkpoint + sample saved at step 20000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/conv_ultrachat_10k_s42

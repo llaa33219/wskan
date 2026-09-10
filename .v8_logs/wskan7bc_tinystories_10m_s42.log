@@ -1,0 +1,10 @@
+train bytes: 180,723,994  eval bytes: 405,730
+model: wskan7bc  params: 10,153,996  device: cuda
+step     1  train 5.6854  eval 4.4777  pmax 18.9  (5s)
+step  1000  train 0.9513  eval 0.8906  pmax 19.0  (427s)
+step  2000  train 0.8718  eval 0.7712  pmax 19.0  (839s)
+step  3000  train 0.8537  eval 0.7699  pmax 19.1  (1255s)
+step  4000  train 0.7905  eval 0.7779  pmax 19.1  (1671s)
+step  5000  train 0.7625  eval 0.7355  pmax 19.1  (2084s)
+  [checkpoint + sample saved at step 5000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan7bc_tinystories_10m_s42

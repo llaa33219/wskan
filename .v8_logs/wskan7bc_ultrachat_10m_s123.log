@@ -1,0 +1,11 @@
+train bytes: 180,263,596  eval bytes: 2,859,070
+model: wskan7bc  params: 10,153,996  device: cuda
+step     1  train 5.6292  eval 4.6047  pmax 18.9  (6s)
+step  1000  train 1.3555  eval 1.2280  pmax 19.0  (387s)
+step  2000  train 1.2184  eval 1.1928  pmax 19.0  (768s)
+step  3000  train 1.1862  eval 1.1499  pmax 19.1  (1149s)
+step  4000  train 1.1474  eval 1.1831  pmax 19.1  (1531s)
+step  5000  train 1.0621  eval 1.1536  pmax 19.1  (1913s)
+W0909 21:37:35.299000 1971315 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/4] Not enough SMs to use max_autotune_gemm mode
+  [checkpoint + sample saved at step 5000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan7bc_ultrachat_10m_s123

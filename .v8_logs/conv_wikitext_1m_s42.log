@@ -1,0 +1,24 @@
+train bytes: 181,551,634  eval bytes: 130,357
+model: conv  params: 1,009,152  device: cuda
+step     1  train 5.6005  eval 4.2450  pmax 1.0  (4s)
+step  1000  train 2.0797  eval 2.0795  pmax 1.8  (20s)
+step  2000  train 1.8643  eval 1.8184  pmax 2.0  (35s)
+step  3000  train 1.7121  eval 1.7240  pmax 2.9  (51s)
+step  4000  train 1.6212  eval 1.6053  pmax 3.3  (66s)
+step  5000  train 1.5773  eval 1.5103  pmax 3.4  (82s)
+step  6000  train 1.4715  eval 1.4434  pmax 3.4  (97s)
+step  7000  train 1.4072  eval 1.4237  pmax 3.5  (113s)
+step  8000  train 1.3663  eval 1.4458  pmax 3.5  (128s)
+step  9000  train 1.3452  eval 1.3855  pmax 3.5  (144s)
+step 10000  train 1.3971  eval 1.3867  pmax 3.5  (159s)
+Traceback (most recent call last):
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 295, in <module>
+    main()
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 285, in main
+    save_checkpoint(model, step, loss.item(), out_dir, args.model != "mamba2")
+  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 128, in save_checkpoint
+    for i, layer in enumerate(model.layers)
+                              ^^^^^^^^^^^^
+  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1972, in __getattr__
+    raise AttributeError(
+AttributeError: 'GatedConvLM' object has no attribute 'layers'

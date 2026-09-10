@@ -1,4 +1,4 @@
-"""Aggregate the V8 matrix into the performance table (best eval CE)."""
+"""Aggregate the cross-family matrix into the performance table (best eval CE)."""
 
 import csv
 import statistics as st

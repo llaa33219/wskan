@@ -1,4 +1,4 @@
-"""Baseline sequence models for the V8 cross-family comparison.
+"""Baseline sequence models for the cross-family comparison.
 
 Three families besides Mamba-2 and WSKAN:
   - TinyTransformerLM  (attention)

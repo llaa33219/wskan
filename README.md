@@ -72,6 +72,11 @@ checkpoints/
 The `interp` tier holds the checkpoints that interpretation reports are
 based on (protected from overwrites). The `*_100k_*` names may be reused by
 benchmark reruns; analysis should always read the `interp` tier.
+Note: interpretation reports written before this tier existed reference
+`*_100k_*` paths — the corresponding canonical artifacts are the same-named
+`*_interp_*` ones (numbers reproduced within seed/GPU nondeterminism noise;
+per-seed figures in those reports remain the historical record of their
+original runs).
 
 Architecture files are versioned as `V<version>_<name>.py` with a matching
 `V<version>_README.md`; see each version's README for its math and caveats.

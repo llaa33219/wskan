@@ -78,3 +78,9 @@ Architecture files are versioned as `V<version>_<name>.py` with a matching
 ```bash
 .venv/bin/python experiments/V1_sanity_check.py
 ```
+
+## Key reports (start here)
+- `experiments/V6_FINAL_LANGUAGE_ACCOUNT.md` — how the model learned language (capstone)
+- `experiments/W7BC_GENERATION_ACCOUNT.md` — how it speaks (production-side)
+- `experiments/W7BC_CROSS_FAMILY_REPORT.md` — 225-run cross-family benchmark
+- `experiments/V7*_REPORT.md`, `V1_*`, `V2_*`, `V3_*`, `V4_*`, `V5_*` — version history

@@ -137,7 +137,7 @@ def main() -> None:
                                        "wskan7bc", "wskan7bc16", "wskan7g", "wskan7z",
                                        "mamba2", "tf", "conv", "lstm"], default="wskan")
     p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
-    p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m"], default="100k")
+    p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m", "interp"], default="100k")
     p.add_argument("--compile", action="store_true", help="torch.compile the loss step")
     p.add_argument("--steps", type=int, default=None)
     p.add_argument("--batch", type=int, default=32)
@@ -153,7 +153,7 @@ def main() -> None:
     args = p.parse_args()
 
     if args.steps is None:
-        args.steps = {"1k": 20000, "10k": 20000, "100k": 20000, "1m": 10000, "10m": 5000}[args.scale]
+        args.steps = {"1k": 20000, "10k": 20000, "100k": 20000, "1m": 10000, "10m": 5000, "interp": 100000}[args.scale]
     if args.lr is None:
         args.lr = 3e-3 if args.scale in ("1k", "10k", "100k") else 1e-3
     torch.manual_seed(args.seed)
@@ -174,7 +174,8 @@ def main() -> None:
     v3_extra = dict(chunk_size=16, grad_checkpoint=True, compile_chunk=True) if args.scale == "10m" else dict()
 
     SIZE_CFG = {
-        "wskan7bc": {"1k": (4, 1), "10k": (12, 1), "100k": (40, 2), "1m": (80, 6), "10m": (512, 2)},
+        "wskan7bc": {"1k": (4, 1), "10k": (12, 1), "100k": (40, 2), "1m": (80, 6), "10m": (512, 2),
+                     "interp": (32, 3)},
         "tf": {"1k": (4, 1), "10k": (12, 2), "100k": (40, 4), "1m": (160, 3), "10m": (448, 4)},
         "conv": {"1k": (4, 1), "10k": (32, 1), "100k": (112, 5), "1m": (384, 6), "10m": (1280, 6)},
         "lstm": {"1k": (4, 1), "10k": (12, 6), "100k": (96, 1), "1m": (192, 3), "10m": (448, 6)},
@@ -239,7 +240,7 @@ def main() -> None:
         model = Mamba2ByteLM(scale=args.scale).to(device)
     n_params = count_parameters(model)
     print(f"model: {args.model}  params: {n_params:,}  device: {device}")
-    budget = {"1k": 5_000, "10k": 20_000, "100k": 130_000, "1m": 1_100_000, "10m": 11_000_000}[args.scale]
+    budget = {"1k": 5_000, "10k": 20_000, "100k": 130_000, "1m": 1_100_000, "10m": 11_000_000, "interp": 130_000}[args.scale]
     assert n_params < budget, f"budget check: {n_params:,} >= {budget:,}"
 
     loss_fn = model.loss

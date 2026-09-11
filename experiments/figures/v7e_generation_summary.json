@@ -1,0 +1,59 @@
+{
+  "generated": "User: Hello! Can you tell me a story?\nAssistant: I saucter a field of the story of the customer productivity and easy to constructed the stress of the program and resources. The constructions with the strateg",
+  "dt_by_class_per_layer": {
+    "letter": [
+      0.07349425554275513,
+      0.09776901453733444
+    ],
+    "space": [
+      0.1858653724193573,
+      0.15704232454299927
+    ],
+    "punct": [
+      0.19828298687934875,
+      0.25325027108192444
+    ],
+    "newline": [
+      null,
+      null
+    ]
+  },
+  "margin_by_class": {
+    "letter": 2.444072723388672,
+    "space": 0.3766811192035675,
+    "punct": 1.3268308639526367,
+    "newline": NaN
+  },
+  "path_margin_share_by_class": {
+    "letter": {
+      "token-emb": -0.22025316953659058,
+      "L0-base": 0.17249147593975067,
+      "L0-wave": 0.5005354285240173,
+      "L1-base": 0.2682868540287018,
+      "L1-wave": 1.5157251358032227
+    },
+    "space": {
+      "token-emb": -0.040350403636693954,
+      "L0-base": -0.11639080196619034,
+      "L0-wave": -0.21116752922534943,
+      "L1-base": 0.26837021112442017,
+      "L1-wave": 0.3605464696884155
+    }
+  },
+  "mode_at_boundary_emission": {
+    "k0": 0.7745862580262698,
+    "k1": 0.3495071432911433,
+    "k2": 0.8155327416383303,
+    "k3": 0.3498730349999208,
+    "k4": 0.9690111176325724,
+    "k5": 0.7256351382686541
+  },
+  "mode_at_letter_emission": {
+    "k0": 0.674060117985521,
+    "k1": 0.8826098059465114,
+    "k2": 0.9030896679575282,
+    "k3": 0.7999396412388274,
+    "k4": 0.7050428870589214,
+    "k5": 0.9296964531330237
+  }
+}

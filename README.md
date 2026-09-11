@@ -65,10 +65,13 @@ experiments/
   W7BC_CROSS_FAMILY_REPORT.md        # 5 families x 5 sizes x 3 datasets x 3 seeds + interpretability axis
   V3_interpret.py                 # edge-function extraction + figures
 checkpoints/
-  wskan_tinystories_lm_500k/  # V1 500k edge functions + samples
-  mamba2_tinystories_lm_500k/ # Mamba-2 500k checkpoints + samples
-  {wskan,wskan2,wskan3,mamba2}_tinystories_lm/ # 100k-step comparison artifacts
+  {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)
+  {model}_{dataset}_interp_s{seed}/   # canonical interpretation tier
+  {model}_..._interp_500k/            # early long runs (single seed)
 ```
+The `interp` tier holds the checkpoints that interpretation reports are
+based on (protected from overwrites). The `*_100k_*` names may be reused by
+benchmark reruns; analysis should always read the `interp` tier.
 
 Architecture files are versioned as `V<version>_<name>.py` with a matching
 `V<version>_README.md`; see each version's README for its math and caveats.

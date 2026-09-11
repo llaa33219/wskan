@@ -37,6 +37,7 @@ class Mamba2ByteLM(torch.nn.Module):
         table = {
             "1k": (8, 1, 8, 8), "10k": (16, 3, 16, 8), "100k": (56, 4, 16, 8),
             "1m": (256, 2, 64, 64), "10m": (512, 6, 64, 64),
+            "interp": (64, 3, 16, 8),
         }
         d, L, hd, st = table[scale]
         cfg = Mamba2Config(

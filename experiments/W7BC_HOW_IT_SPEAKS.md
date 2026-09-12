@@ -73,6 +73,30 @@ exponentially more of the current word's memory: **the effective unit of
 distance is the word.** The tokenizer was never given; segmentation was
 learned through time warping.
 
+**Distributions, not just means (E2):** the boundary/letter separation is
+real per class — e.g. space Δ at L2 has quantiles [0.12, 0.17, 0.22, 0.32,
+0.44] vs lowercase [0.06, 0.08, 0.10, 0.15, 0.18] (p10–p90): medians 2.2×
+apart, and even the p10 of spaces ≈ the p90 of letters.
+
+**The "invented segmentation" claim, sharpened by the whitespace-removal
+test (E1):** feed the same text with all spaces deleted (CE 1.31 → 3.78,
+so spaces carry enormous information). At **L0 the boundary pulse vanishes
+completely** (implicit-boundary Δ ratio 1.01) — the input-layer clock keys
+on the boundary *bytes themselves*. But **L1/L2 keep an elevated tick at
+implicit word boundaries** (ratios 1.16 / 1.17): deeper layers partially
+reconstruct boundary timing from word-internal statistics (suffix shapes,
+common word endings) even with no spaces present. Correct statement: the
+clock is an **input-driven word-boundary detector** — primarily byte-keyed
+at the input layer, partially space-independent deeper in the stack — not a
+fully space-free word model.
+
+**Where the cost of removing the clock lands (E3):** the +0.92 nats of
+boundary-clamp damage decomposes as **33% at the boundary positions
+themselves, 28% at word-initial positions, 46% everywhere else** (the clock
+propagates through state); per-position intensity 1.51 / 1.29 / 0.67 nats —
+strongest exactly at word transitions, but the mechanism is global, not
+local to the tick.
+
 **Causal proof (fresh, 32×512 held-out):**
 - Remove boundary Δ: overall CE 1.321 → **2.240 (+0.92)**; at word-initial
   predictions 2.82 → **4.32 (+1.50)**.
@@ -101,10 +125,19 @@ variance decomposition):
   self-organized to carry discrete formatting, with newline's read routing
   migrating across depth.
 - **Residual path: byte identity → context.** R² of write variance: byte
-  identity 0.98 (L0) → 0.66 (L1) → 0.41 (L2); position-in-word rises
-  0.12 → 0.23 → 0.16. The content memory addresses by *what byte* early,
-  *where/what context* late. The remaining context is not dialogue-turn
-  state (hypothesis **refuted**, R² ≤ 0.003).
+  identity 1.00 (L0, trivial — its input is the raw embedding) → 0.76 (L1)
+  → 0.50 (L2); position-in-word rises 0.12 → 0.23 → 0.16. The content
+  memory addresses by *what byte* early, *where/what context* late.
+- **The "context" resolved (E4 exclusion battery):** what is the
+  non-identity context made of? Candidates tested: word identity (top-500,
+  R² 0.12–0.14), previous-word identity (0.11–0.13), sentence position
+  (~0.007), document position (~0.001), dialogue-turn state (≤0.003,
+  previously refuted). **All near zero.** But common byte bigrams
+  (prev+current byte) explain **R² 0.91 (L1) / 0.84 (L2)** — *more than
+  byte identity alone* (0.76/0.50). Conclusion: the residual-B context is
+  **local byte-n-gram statistics** — the hidden state carries the last few
+  bytes strongly and almost nothing word-level or discourse-level. The
+  memory's content channel is as local as its time axis.
 
 **The kernels.** g is genuinely high-rank (effective rank 28–29/32 per mode
 — the reason the rank-32 filter compression costs +0.078 nats, V7 ablation).
@@ -141,9 +174,14 @@ clock pulses at boundaries exactly as in analysis (letters 0.085–0.128 vs
 spaces 0.194–0.257): word-internal letters are produced by the wavelet
 paths against a *negative* token-embedding prior (context beats prior);
 word endings resolve as **L1-over-L0 disagreements** (shallow resists,
-deep decides). The generated register is fluent; the content is empty —
-consistent with everything above: the machine computes *form*, and at this
-scale form is what there is.
+deep decides). The generated register is fluent; the content is empty.
+
+**Scope qualifier — this document is about *form*.** Every mechanism
+explained above (clock, gates, kernels, circuits, decision structure) is a
+mechanism of linguistic *form*: timing, segmentation, morphology, register.
+Nothing here is evidence of *content* understanding — semantics, facts,
+reference, intent — and at this scale the probes say the same thing: there
+is form, and only form, in the machine.
 
 ## 6. What it cannot do (the honest boundary)
 
@@ -152,8 +190,13 @@ scale form is what there is.
 2. **The long-memory tail is dormant** — slow modes exist (up to ~100
    tokens) but carry < 1% of readout weight at 100k params; the 10M probe
    showed the tail activates with capacity.
-3. **~30–40% of the write variance is unexplained context** (not byte
-   identity, not position, not turn structure — open).
+3. **The "context" in the write path is local byte statistics** (E4:
+   bigram R² 0.84–0.91; word/document/turn-level ≈ 0). Nothing word-level
+   was found — open whether it appears at larger scale.
+4. **The segmentation clock is byte-keyed at the input layer** (E1: its
+   boundary pulse vanishes without spaces); the deeper, partial
+   space-independence (~16%) leaves room for a stronger intrinsic word
+   model at scale.
 4. **No forward hand-simulation** — we can decompose any decision after the
    fact and predict intervention effects qualitatively, not derive outputs
    without executing the network (the scale-imposed ceiling, §full account).
@@ -165,9 +208,8 @@ scale form is what there is.
 - Deep batteries: `V7_deep_interpret.py`, `V7_final_interpret.py`,
   `V7_causal_dictionaries.py` (+ their reports) — mechanisms replicated on
   this checkpoint (word clock, causal battery, production pacing).
-- Performance (footnote): `W7BC_FINAL_CLEAN_REPORT.md` — wskan7bc is the
-  best of the WSKAN series and mean-edge over Mamba-2 at ~100k; the
-  interpretation above does not depend on winning any benchmark.
+- Performance: one line — `W7BC_FINAL_CLEAN_REPORT.md` (wskan7bc is the
+  best of the WSKAN series at this scale; this document stands without it).
 
 ## 8. The mechanism in one sentence
 

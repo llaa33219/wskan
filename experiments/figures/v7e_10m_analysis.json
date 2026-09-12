@@ -1,0 +1,314 @@
+{
+  "s42": {
+    "dt_by_class": {
+      "space": {
+        "L0": 0.4013,
+        "L1": 0.3129
+      },
+      "newline": {
+        "L0": 0.3694,
+        "L1": 0.3806
+      },
+      "punct": {
+        "L0": 0.2844,
+        "L1": 0.3847
+      },
+      "upper": {
+        "L0": 0.2049,
+        "L1": 0.2778
+      },
+      "lower": {
+        "L0": 0.1973,
+        "L1": 0.1502
+      },
+      "digit": {
+        "L0": 0.1724,
+        "L1": 0.2085
+      }
+    },
+    "dt_ratio_space_over_lower": {
+      "L0": 2.034,
+      "L1": 2.083
+    },
+    "memory_L0": {
+      "sigma_mean": 0.666,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 4.53,
+      "half_life_p99": 152.74,
+      "half_life_max": 410.93
+    },
+    "memory_L1": {
+      "sigma_mean": 0.848,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 5.0,
+      "half_life_p99": 409.86,
+      "half_life_max": 1489.43
+    },
+    "E1_nospace_ratio": {
+      "L0": 0.965,
+      "L1": 1.147
+    },
+    "causal": {
+      "baseline": [
+        1.1035,
+        2.625
+      ],
+      "clamp_boundary": [
+        1.837,
+        3.8899
+      ],
+      "clamp_letter": [
+        1.7647,
+        2.7796
+      ],
+      "inject_tick": [
+        2.0991,
+        2.8541
+      ]
+    },
+    "resid_B_R2": {
+      "L0": {
+        "byte_identity": 1.0,
+        "common_bigrams": 1.0,
+        "word_identity_top500": 0.124,
+        "prev_word_identity_top500": 0.114
+      },
+      "L1": {
+        "byte_identity": 0.581,
+        "common_bigrams": 0.791,
+        "word_identity_top500": 0.132,
+        "prev_word_identity_top500": 0.11
+      }
+    },
+    "frien_d": {
+      "prediction": {
+        "top1": "d",
+        "top2": "h",
+        "margin": 7.488
+      },
+      "mode_contrib": [
+        84.156,
+        11.51,
+        4.29,
+        13.368,
+        8.066,
+        2.043
+      ],
+      "top_ik": {
+        "i100,k3": -16.25,
+        "i134,k0": 14.2,
+        "i69,k3": 7.45,
+        "i100,k0": 7.1,
+        "i102,k3": 6.4
+      }
+    }
+  },
+  "s123": {
+    "dt_by_class": {
+      "space": {
+        "L0": 0.3471,
+        "L1": 0.3219
+      },
+      "newline": {
+        "L0": 0.3447,
+        "L1": 0.397
+      },
+      "punct": {
+        "L0": 0.2636,
+        "L1": 0.4068
+      },
+      "upper": {
+        "L0": 0.2274,
+        "L1": 0.2888
+      },
+      "lower": {
+        "L0": 0.2009,
+        "L1": 0.1743
+      },
+      "digit": {
+        "L0": 0.2106,
+        "L1": 0.2083
+      }
+    },
+    "dt_ratio_space_over_lower": {
+      "L0": 1.728,
+      "L1": 1.847
+    },
+    "memory_L0": {
+      "sigma_mean": 0.671,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 4.71,
+      "half_life_p99": 187.58,
+      "half_life_max": 432.29
+    },
+    "memory_L1": {
+      "sigma_mean": 0.833,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 4.07,
+      "half_life_p99": 749.47,
+      "half_life_max": 1401.59
+    },
+    "E1_nospace_ratio": {
+      "L0": 0.997,
+      "L1": 1.136
+    },
+    "causal": {
+      "baseline": [
+        1.1112,
+        2.6218
+      ],
+      "clamp_boundary": [
+        1.8044,
+        3.9136
+      ],
+      "clamp_letter": [
+        1.7951,
+        2.79
+      ],
+      "inject_tick": [
+        2.0917,
+        2.8303
+      ]
+    },
+    "resid_B_R2": {
+      "L0": {
+        "byte_identity": 1.0,
+        "common_bigrams": 1.0,
+        "word_identity_top500": 0.114,
+        "prev_word_identity_top500": 0.105
+      },
+      "L1": {
+        "byte_identity": 0.513,
+        "common_bigrams": 0.711,
+        "word_identity_top500": 0.138,
+        "prev_word_identity_top500": 0.115
+      }
+    },
+    "frien_d": {
+      "prediction": {
+        "top1": "d",
+        "top2": "t",
+        "margin": 7.736
+      },
+      "mode_contrib": [
+        120.436,
+        57.585,
+        23.705,
+        36.447,
+        12.357,
+        0.921
+      ],
+      "top_ik": {
+        "i40,k0": 69.98,
+        "i493,k1": 20.58,
+        "i493,k2": 20.28,
+        "i40,k1": 18.47,
+        "i40,k3": 14.37
+      }
+    }
+  },
+  "s2024": {
+    "dt_by_class": {
+      "space": {
+        "L0": 0.3953,
+        "L1": 0.3249
+      },
+      "newline": {
+        "L0": 0.4024,
+        "L1": 0.3847
+      },
+      "punct": {
+        "L0": 0.2978,
+        "L1": 0.3946
+      },
+      "upper": {
+        "L0": 0.2222,
+        "L1": 0.2957
+      },
+      "lower": {
+        "L0": 0.1977,
+        "L1": 0.1819
+      },
+      "digit": {
+        "L0": 0.1977,
+        "L1": 0.1801
+      }
+    },
+    "dt_ratio_space_over_lower": {
+      "L0": 1.999,
+      "L1": 1.786
+    },
+    "memory_L0": {
+      "sigma_mean": 0.662,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 4.55,
+      "half_life_p99": 113.31,
+      "half_life_max": 257.77
+    },
+    "memory_L1": {
+      "sigma_mean": 0.839,
+      "frac_at_ceiling": 0.0,
+      "half_life_med": 4.37,
+      "half_life_p99": 462.71,
+      "half_life_max": 1887.26
+    },
+    "E1_nospace_ratio": {
+      "L0": 1.018,
+      "L1": 1.093
+    },
+    "causal": {
+      "baseline": [
+        1.1013,
+        2.6157
+      ],
+      "clamp_boundary": [
+        1.7979,
+        4.1631
+      ],
+      "clamp_letter": [
+        1.7823,
+        2.7763
+      ],
+      "inject_tick": [
+        2.0284,
+        2.8215
+      ]
+    },
+    "resid_B_R2": {
+      "L0": {
+        "byte_identity": 1.0,
+        "common_bigrams": 1.0,
+        "word_identity_top500": 0.119,
+        "prev_word_identity_top500": 0.109
+      },
+      "L1": {
+        "byte_identity": 0.556,
+        "common_bigrams": 0.767,
+        "word_identity_top500": 0.126,
+        "prev_word_identity_top500": 0.111
+      }
+    },
+    "frien_d": {
+      "prediction": {
+        "top1": "d",
+        "top2": "k",
+        "margin": 9.396
+      },
+      "mode_contrib": [
+        133.061,
+        52.637,
+        11.524,
+        11.475,
+        -0.876,
+        4.538
+      ],
+      "top_ik": {
+        "i101,k0": 43.54,
+        "i300,k0": 13.33,
+        "i140,k0": 13.31,
+        "i197,k0": 11.79,
+        "i267,k0": 8.23
+      }
+    }
+  }
+}

@@ -183,7 +183,25 @@ Nothing here is evidence of *content* understanding — semantics, facts,
 reference, intent — and at this scale the probes say the same thing: there
 is form, and only form, in the machine.
 
-## 6. What it cannot do (the honest boundary)
+## 7. Scale: the story at 10M (3-seed replication)
+
+Everything above replicates at 10M with 3/3 seeds, and two scale-laws
+emerge (full details: `W7BC_10M_INTERPRETABILITY_REPORT.md`):
+
+- **The word clock is scale- and domain-robust**: Δ ratio space/lower
+  1.7–2.1 (3/3 seeds), also on TinyStories and WikiText (up to 3.3× at
+  punctuation). Causal necessity at word transitions persists decisively
+  (+1.1…+1.55 vs +0.16 control), while the overall Δ-dependence becomes
+  more uniformly load-bearing with scale.
+- **Memory length scales with capacity**: σ drops 8× (6.0 → 0.66–0.83),
+  clamp binding vanishes (43% → 0%), median half-life 1 → 4.5–5 tokens,
+  tail max ~1,900 tokens (from ~100). The near-delta 100k regime was
+  capacity-imposed.
+- **The content channel loosens**: byte identity falls 0.76 → ~0.55,
+  bigrams 0.91 → ~0.76; a ~25–40% non-local contextual component appears
+  that is neither byte- nor word-level — the next probe target.
+
+## 8. What it cannot do (the honest boundary)
 
 1. **No facts, no recall** — memory half-life ~1 token effective; recall
    probes fail identically to matched Mamba-2.
@@ -201,7 +219,7 @@ is form, and only form, in the machine.
    fact and predict intervention effects qualitatively, not derive outputs
    without executing the network (the scale-imposed ceiling, §full account).
 
-## 7. Provenance and reproduction
+## 9. Provenance and reproduction
 
 - Canonical numbers: `figures/v7e_canonical_probe.json` from
   `experiments/W7BC_canonical_probe.py` on `wskan7bc_ultrachat_interp_s42`.
@@ -211,7 +229,7 @@ is form, and only form, in the machine.
 - Performance: one line — `W7BC_FINAL_CLEAN_REPORT.md` (wskan7bc is the
   best of the WSKAN series at this scale; this document stands without it).
 
-## 8. The mechanism in one sentence
+## 10. The mechanism in one sentence
 
 **A learned word-segmented clock drives a geometric-ladder damped-oscillator
 memory, whose structural-vs-content write gates, high-rank wavelet kernel

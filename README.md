@@ -88,7 +88,8 @@ Architecture files are versioned as `V<version>_<name>.py` with a matching
 ```
 
 ## Key reports (start here)
-- **`experiments/W7BC_FINAL_CLEAN_REPORT.md` — canonical comparison numbers (fresh interp tier, single code/protocol)**
+- **`experiments/W7BC_HOW_IT_SPEAKS.md` — THE main document: the complete mathematical mechanism of how wskan7bc speaks language (canonical, fresh-checkpoint numbers)**
+- `experiments/W7BC_FINAL_CLEAN_REPORT.md` — canonical comparison numbers (fresh interp tier, single code/protocol)
 - `experiments/V6_FINAL_LANGUAGE_ACCOUNT.md` — how the model learned language (capstone)
 - `experiments/W7BC_GENERATION_ACCOUNT.md` — how it speaks (production-side)
 - `experiments/W7BC_CROSS_FAMILY_REPORT.md` — 225-run cross-family benchmark

@@ -195,7 +195,8 @@ def main() -> None:
         extra10m = dict(chunk_size=8, grad_checkpoint=True, compile_chunk=True) if args.scale in ("1m", "10m") else dict()
         model = WaveletStateKANLMV7(
             vocab_size=256, d_model=d, n_layers=L, use_feature_bc=True,
-            wz_diag=False, g_rank=None, bc_rank=min(32, d), **extra10m,
+            wz_diag=False, g_rank=None,
+            bc_rank=16 if args.model == "wskan7bc16" else min(32, d), **extra10m,
         ).to(device)
     elif args.model == "wskan":
         model = WaveletStateKANLM(**wskan_cfg).to(device)

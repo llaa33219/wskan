@@ -44,7 +44,7 @@ class Mamba2ByteLM(torch.nn.Module):
             vocab_size=256, hidden_size=d, num_hidden_layers=L,
             num_heads=max(1, (d * 2) // hd), head_dim=hd, state_size=st, expand=2,
             n_groups=1, conv_kernel=4, tie_word_embeddings=True,
-            chunk_size=32 if st > 8 else 16,
+            chunk_size=16 if scale == "10m" else (32 if st > 8 else 16),
         )
         self.model = Mamba2ForCausalLM(cfg)
         if scale in ("1m", "10m"):
@@ -104,8 +104,8 @@ def load_data(max_train_stories: int, n_eval_stories: int, seed: int, dataset: s
                 break
         train_text = "\n\n".join(parts)
         eval_text = "\n\n".join(eval_ds["text"][:n_eval_stories])
-    train_ids = torch.tensor(list(train_text.encode("utf-8", errors="ignore")), dtype=torch.uint8)
-    eval_ids = torch.tensor(list(eval_text.encode("utf-8", errors="ignore")), dtype=torch.uint8)
+    train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
+    eval_ids = torch.frombuffer(eval_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
     print(f"train bytes: {len(train_ids):,}  eval bytes: {len(eval_ids):,}")
     return train_ids, eval_ids
 
@@ -135,7 +135,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--model", choices=["wskan", "wskan2", "wskan3", "wskan3real", "wskan4",
                                        "wskan5", "wskan5nc", "wskan5lin", "wskan6", "wskan7",
-                                       "wskan7bc", "wskan7bc16", "wskan7g", "wskan7z",
+                                       "wskan7bc", "wskan7bc16", "wskan7bcreal", "wskan7g", "wskan7z",
                                        "mamba2", "tf", "conv", "lstm"], default="wskan")
     p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
     p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m", "interp"], default="100k")
@@ -150,6 +150,7 @@ def main() -> None:
     p.add_argument("--train-stories", type=int, default=20000)
     p.add_argument("--eval-stories", type=int, default=1000)
     p.add_argument("--ckpt-every", type=int, default=1000)
+    p.add_argument("--out-tag", type=str, default="", help="extra tag inserted into the checkpoint dir name")
     p.add_argument("--eval-every", type=int, default=250)
     args = p.parse_args()
 
@@ -159,10 +160,11 @@ def main() -> None:
         args.lr = 3e-3 if args.scale in ("1k", "10k", "100k") else 1e-3
     torch.manual_seed(args.seed)
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    tag = f"_{args.out_tag}" if args.out_tag else ""
     out_dir = (
         Path(__file__).resolve().parent.parent
         / "checkpoints"
-        / f"{args.model}_{args.dataset}_{args.scale}_s{args.seed}"
+        / f"{args.model}_{args.dataset}_{args.scale}{tag}_s{args.seed}"
     )
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -188,7 +190,7 @@ def main() -> None:
         d, L = SIZE_CFG[args.model][args.scale]
         cls = {"tf": TinyTransformerLM, "conv": GatedConvLM, "lstm": LSTMLM}[args.model]
         model = cls(d_model=d, n_layers=L).to(device)
-    elif args.model in ("wskan7bc", "wskan7bc16") and args.scale in SIZE_CFG["wskan7bc"]:
+    elif args.model in ("wskan7bc", "wskan7bc16", "wskan7bcreal") and args.scale in SIZE_CFG["wskan7bc"]:
         from models.V7_WSKAN import WaveletStateKANLMV7
 
         d, L = SIZE_CFG["wskan7bc"][args.scale]
@@ -196,7 +198,8 @@ def main() -> None:
         model = WaveletStateKANLMV7(
             vocab_size=256, d_model=d, n_layers=L, use_feature_bc=True,
             wz_diag=False, g_rank=None,
-            bc_rank=16 if args.model == "wskan7bc16" else min(32, d), **extra10m,
+            bc_rank=16 if args.model == "wskan7bc16" else min(32, d),
+            oscillatory=args.model != "wskan7bcreal", **extra10m,
         ).to(device)
     elif args.model == "wskan":
         model = WaveletStateKANLM(**wskan_cfg).to(device)

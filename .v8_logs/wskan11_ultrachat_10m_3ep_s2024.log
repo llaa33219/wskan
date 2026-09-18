@@ -1,7 +1,7 @@
 /home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
-model: mamba2  params: 10,055,200  device: cuda
-W0918 23:24:47.498000 1887625 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
-[W918 23:26:16.288929876 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2147483648 bytes (free: 940441600, total: 8220180480).
-step     1  train 8.1204  eval 10.0788  pmax 6.9  (106s)
+model: wskan11  params: 10,153,996  device: cuda
+W0918 23:23:05.103000 1884568 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.6981  eval 4.6411  pmax 18.9  (47s)
+step  1000  train 1.1936  eval 1.1713  pmax 19.0  (275s)

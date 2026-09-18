@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 TMP = Path("/tmp/opencode")
-MODELS = ["wskan7bc", "wskan7bcreal", "mamba2", "tf"]
+MODELS = ["wskan11", "wskan11real", "mamba2", "tf"]
 SIZES = ["10m", "1m", "100k", "10k", "1k"]
 DATASETS = ["ultrachat", "wikitext", "tinystories"]
 SEEDS = [42, 123, 2024, 7, 31337]
@@ -37,16 +37,17 @@ CKPT_EVERY = {"1k": 25_000, "10k": 25_000, "100k": 25_000, "1m": 10_000, "10m": 
 def job_cmd(model, size, dataset, seed):
     compile_ = " --compile" if (
         (model in ("mamba2", "tf") and size in ("100k", "1m", "10m"))
-        or (model in ("wskan7bc", "wskan7bcreal") and size == "100k")
+        or (model in ("wskan11", "wskan11real"))
     ) else ""
     lr = "3e-3" if size in ("1k", "10k", "100k") else "1e-3"
     steps = STEPS[(dataset, size)]
+    bf16 = " --bf16" if model.startswith("wskan11") else ""
     return (f".venv/bin/python -u experiments/V1_train_tinystories_lm.py "
             f"--model {model} --scale {size} --dataset {dataset} --seed {seed} "
             f"--batch {BATCH} --block {BLOCK[dataset]} "
             f"--train-stories {TRAIN_STORIES[dataset]} --eval-stories 500 "
             f"--steps {steps} --lr {lr} --lr-schedule cosine "
-            f"--ckpt-every {CKPT_EVERY[size]} --eval-every 1000 --out-tag 3ep{compile_}")
+            f"--ckpt-every {CKPT_EVERY[size]} --eval-every 1000 --out-tag 3ep{compile_}{bf16}")
 
 
 def done(tag, dataset, size):

@@ -85,6 +85,7 @@ class WaveletStateKANLMV11(WaveletStateKANLMV8):
                 self.d_model, self.d_model, layer.n_states,
                 use_feature_bc=True, bc_rank=32, wz_diag=False, g_rank=None,
                 bf16_scan=kwargs.get("bf16_scan", False),
+                oscillatory=kwargs.get("oscillatory", True),
             )
             for layer in self.layers
         )

@@ -139,7 +139,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--model", choices=["wskan", "wskan2", "wskan3", "wskan3real", "wskan4",
                                        "wskan5", "wskan5nc", "wskan5lin", "wskan6", "wskan7",
-                                       "wskan7bc", "wskan7bc16", "wskan7bcreal", "wskan7g", "wskan7z", "wskan8", "wskan9", "wskan11",
+                                       "wskan7bc", "wskan7bc16", "wskan7bcreal", "wskan7g", "wskan7z", "wskan8", "wskan9", "wskan11", "wskan11real",
                                        "mamba2", "tf", "conv", "lstm"], default="wskan")
     p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
     p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m", "interp"], default="100k")
@@ -184,6 +184,8 @@ def main() -> None:
     SIZE_CFG = {
         "wskan7bc": {"1k": (4, 1), "10k": (12, 1), "100k": (40, 2), "1m": (80, 6), "10m": (512, 2),
                      "interp": (32, 3)},
+        "wskan11": {"1k": (4, 1), "10k": (12, 1), "100k": (40, 2), "1m": (80, 6), "10m": (512, 2),
+                    "interp": (32, 3)},
         "tf": {"1k": (4, 1), "10k": (12, 2), "100k": (40, 4), "1m": (160, 3), "10m": (448, 4)},
         "conv": {"1k": (4, 1), "10k": (32, 1), "100k": (112, 5), "1m": (384, 6), "10m": (1280, 6)},
         "lstm": {"1k": (4, 1), "10k": (12, 6), "100k": (96, 1), "1m": (192, 3), "10m": (448, 6)},
@@ -254,10 +256,15 @@ def main() -> None:
         from models.V9_WSKAN import WaveletStateKANLMV9
 
         model = WaveletStateKANLMV9(**wskan_cfg).to(device)
-    elif args.model == "wskan11":
+    elif args.model in ("wskan11", "wskan11real"):
         from models.V11_WSKAN import WaveletStateKANLMV11
 
-        model = WaveletStateKANLMV11(**wskan_cfg, **v3_extra, bf16_scan=args.bf16).to(device)
+        d, L = SIZE_CFG["wskan11"][args.scale]
+        model = WaveletStateKANLMV11(
+            vocab_size=256, d_model=d, n_layers=L, use_feature_bc=True, wz_diag=False,
+            g_rank=None, bc_rank=min(32, d), bf16_scan=args.bf16,
+            oscillatory=args.model != "wskan11real",
+        ).to(device)
     else:
         model = Mamba2ByteLM(scale=args.scale).to(device)
     n_params = count_parameters(model)

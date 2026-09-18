@@ -111,8 +111,12 @@ def load_data(max_train_stories: int, n_eval_stories: int, seed: int, dataset: s
 
 
 def get_batch(ids: torch.Tensor, batch: int, block: int, device: str) -> torch.Tensor:
-    starts = torch.randint(0, len(ids) - block - 1, (batch,))
-    return torch.stack([ids[s : s + block + 1] for s in starts]).long().to(device)
+    if getattr(get_batch, "_src", None) is not ids:
+        get_batch._gpu = ids.to(device)
+        get_batch._src = ids
+    ids_gpu = get_batch._gpu
+    starts = torch.randint(0, len(ids_gpu) - block - 1, (batch,), device=ids_gpu.device)
+    return ids_gpu[starts[:, None] + torch.arange(block + 1, device=ids_gpu.device)].long()
 
 
 def save_checkpoint(model, step, loss, out_dir: Path, is_wskan: bool):

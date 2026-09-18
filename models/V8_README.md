@@ -17,17 +17,20 @@ captured by `torch.compile(mode="reduce-overhead")` (CUDA graphs).
   ~0.017 (fp32 reduction-order noise over 300 positions — documented, both
   orders are valid fp32 computations).
 
-## Measured speedups (batch 64, block 256, compiled; vs V7 chunked-SSD compiled)
+## Optional approximations (all measured at 3k steps, TinyStories)
 
-| tier | V7 chunked | V8 fp32 | V8 + bf16 scan | best speedup |
+| variant | quality cost (eval@3k) | speed at 100k | speed at 1m | speed at 10m |
 |---|---|---|---|---|
-| 100k (d32L3) | ~38 ms | 20 ms | **11.6 ms** | 3.3x |
-| 1m (d80L6) | ~700 ms | 101 ms | **66 ms** | 10.6x |
-| 10m (d512L2) | ~2000+ ms | 250 ms | **178 ms** | 11.2x |
+| V8 N6 fp32 (reference) | 0.9896 | 20 ms | 101 ms | 250 ms |
+| **N3 (halve the mode bank)** | +0.048 | ~14 ms | 33 ms (bf16) | 97 ms (bf16) |
+| **bf16 scan** | ~0 (measured rel. L2 3e-5-1.3e-4) | 11.6 ms | 66 ms | 178 ms |
+| N3 + bf16 | +0.10 | ~8 ms | **33 ms** | **97 ms** |
+| L128 (short context) | +0.052 | ~23 ms | - | - (not worth it) |
 
-bf16 scan precision: relative L2 error 3e-5 – 1.3e-4 vs fp32 (layer level) —
-safe for training; it is a **flag** (`--bf16`), not the default, because it
-breaks bit-level equivalence with fp32 runs.
+Final stack vs V7 chunked: **3.3x (100k), 21x (1m), 21x (10m)** with
+N3+bf16 at ~+0.05 nats measured quality cost. N and bf16 are flags
+(`n_states`, `--bf16`); the wavelet ladder, the clock, and every
+interpretation tool are unchanged.
 
 ## Honest engineering log: why not 40x
 

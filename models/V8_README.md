@@ -17,20 +17,25 @@ captured by `torch.compile(mode="reduce-overhead")` (CUDA graphs).
   ~0.017 (fp32 reduction-order noise over 300 positions — documented, both
   orders are valid fp32 computations).
 
-## Optional approximations (all measured at 3k steps, TinyStories)
+## Optional approximations (measured at 3k steps, TinyStories; clean timing)
 
-| variant | quality cost (eval@3k) | speed at 100k | speed at 1m | speed at 10m |
+| variant | quality cost (eval@3k) | 100k | 1m | 10m |
 |---|---|---|---|---|
-| V8 N6 fp32 (reference) | 0.9896 | 20 ms | 101 ms | 250 ms |
-| **N3 (halve the mode bank)** | +0.048 | ~14 ms | 33 ms (bf16) | 97 ms (bf16) |
-| **bf16 scan** | ~0 (measured rel. L2 3e-5-1.3e-4) | 11.6 ms | 66 ms | 178 ms |
-| N3 + bf16 | +0.10 | ~8 ms | **33 ms** | **97 ms** |
-| L128 (short context) | +0.052 | ~23 ms | - | - (not worth it) |
+| V8 N6 fp32 (reference) | 0.9980 | 20.7 ms | 101 ms | 250 ms |
+| **N3 fp32** (halve the mode bank) | +0.029 | **9.4 ms** | 33 ms (bf16) | 97 ms (bf16) |
+| **bf16 scan** | −0.008 (noise) | 19.5 ms | 66 ms | 178 ms |
+| N3 + bf16 | +0.004 (noise) | 13.4 ms | **33 ms** | **97 ms** |
+| L128 (short context) | +0.052 | 23 ms | - | rejected |
 
-Final stack vs V7 chunked: **3.3x (100k), 21x (1m), 21x (10m)** with
-N3+bf16 at ~+0.05 nats measured quality cost. N and bf16 are flags
-(`n_states`, `--bf16`); the wavelet ladder, the clock, and every
-interpretation tool are unchanged.
+Final stack vs V7 chunked: **4x (100k), 21x (1m), 21x (10m)** with N3 (+bf16
+at >=1m). N and bf16 are flags (`n_states`, `--bf16`); the wavelet ladder,
+the clock, and every interpretation tool are unchanged.
+
+Correction log: an earlier version of this table measured training-loop time
+including compile warmup and per-step CPU data slicing, inflating numbers by
+~1.5-3x; the table above re-measures cleanly (compile before timing,
+GPU-resident data). The get_batch GPU fix itself is worth ~2% (measured),
+not more - an earlier claim of a larger effect is retracted.
 
 ## Honest engineering log: why not 40x
 

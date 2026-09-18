@@ -135,7 +135,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--model", choices=["wskan", "wskan2", "wskan3", "wskan3real", "wskan4",
                                        "wskan5", "wskan5nc", "wskan5lin", "wskan6", "wskan7",
-                                       "wskan7bc", "wskan7bc16", "wskan7bcreal", "wskan7g", "wskan7z", "wskan8",
+                                       "wskan7bc", "wskan7bc16", "wskan7bcreal", "wskan7g", "wskan7z", "wskan8", "wskan9",
                                        "mamba2", "tf", "conv", "lstm"], default="wskan")
     p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
     p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m", "interp"], default="100k")
@@ -246,6 +246,10 @@ def main() -> None:
         from models.V8_WSKAN import WaveletStateKANLMV8
 
         model = WaveletStateKANLMV8(**wskan_cfg, **v3_extra, bf16_scan=args.bf16).to(device)
+    elif args.model == "wskan9":
+        from models.V9_WSKAN import WaveletStateKANLMV9
+
+        model = WaveletStateKANLMV9(**wskan_cfg).to(device)
     else:
         model = Mamba2ByteLM(scale=args.scale).to(device)
     n_params = count_parameters(model)

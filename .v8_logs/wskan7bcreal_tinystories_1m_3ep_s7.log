@@ -1,0 +1,18 @@
+/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
+  train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
+train bytes: 1,905,061,325  eval bytes: 405,730
+model: wskan7bcreal  params: 985,956  device: cuda
+step     1  train 5.5638  eval 5.4579  pmax 3.0  (5s)
+step  1000  train 1.0204  eval 0.9519  pmax 3.2  (718s)
+step  2000  train 0.9270  eval 0.8644  pmax 3.2  (1425s)
+step  3000  train 0.8677  eval 0.8266  pmax 3.3  (2136s)
+step  4000  train 0.8541  eval 0.8154  pmax 3.3  (2842s)
+step  5000  train 0.7863  eval 0.7510  pmax 3.4  (3551s)
+step  6000  train 0.7971  eval 0.7839  pmax 3.4  (4259s)
+step  7000  train 0.8228  eval 0.7880  pmax 3.4  (4962s)
+step  8000  train 0.8421  eval 0.7960  pmax 3.5  (5674s)
+step  9000  train 0.8129  eval 0.7593  pmax 3.5  (6372s)
+step 10000  train 0.7604  eval 0.7306  pmax 3.6  (7068s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 0.7944  eval 0.7136  pmax 3.6  (7800s)
+step 12000  train 0.7880  eval 0.7561  pmax 3.6  (8567s)

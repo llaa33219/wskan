@@ -4,3 +4,48 @@ train bytes: 1,195,926,439  eval bytes: 2,859,070
 model: mamba2  params: 10,055,200  device: cuda
 W0912 20:31:37.814000 4125285 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
 step     1  train 8.2338  eval 9.5837  pmax 6.9  (103s)
+step  1000  train 1.1294  eval 1.0706  pmax 6.9  (1642s)
+step  2000  train 1.0127  eval 1.0769  pmax 6.9  (3187s)
+step  3000  train 0.9866  eval 0.9887  pmax 6.9  (4730s)
+step  4000  train 0.9917  eval 0.9478  pmax 7.0  (6273s)
+step  5000  train 0.9450  eval 0.8913  pmax 7.0  (7816s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 0.8766  eval 0.8588  pmax 7.0  (9366s)
+step  7000  train 0.8487  eval 0.8764  pmax 7.1  (10906s)
+step  8000  train 0.8598  eval 0.8084  pmax 7.1  (12447s)
+step  9000  train 0.8874  eval 0.8899  pmax 7.1  (13986s)
+step 10000  train 0.8554  eval 0.9051  pmax 7.1  (15525s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 0.8169  eval 0.8148  pmax 7.2  (17068s)
+step 12000  train 0.7652  eval 0.8531  pmax 7.2  (18610s)
+step 13000  train 0.7996  eval 0.8111  pmax 7.2  (20151s)
+step 14000  train 0.8137  eval 0.8190  pmax 7.2  (21691s)
+step 15000  train 0.8240  eval 0.8163  pmax 7.2  (23229s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 0.7863  eval 0.7842  pmax 7.2  (24771s)
+step 17000  train 0.8101  eval 0.7713  pmax 7.2  (26308s)
+step 18000  train 0.8254  eval 0.7932  pmax 7.2  (27844s)
+step 19000  train 0.7604  eval 0.8030  pmax 7.2  (29381s)
+step 20000  train 0.7880  eval 0.7857  pmax 7.2  (30917s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 0.7568  eval 0.7911  pmax 7.2  (32458s)
+step 22000  train 0.8191  eval 0.7733  pmax 7.2  (33994s)
+step 23000  train 0.7697  eval 0.7854  pmax 7.2  (35531s)
+step 24000  train 0.7778  eval 0.8167  pmax 7.2  (37070s)
+step 25000  train 0.7705  eval 0.7376  pmax 7.2  (38606s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 0.7331  eval 0.7163  pmax 7.3  (40146s)
+step 27000  train 0.7714  eval 0.7879  pmax 7.3  (41683s)
+step 28000  train 0.6917  eval 0.7449  pmax 7.3  (43220s)
+step 29000  train 0.7223  eval 0.7106  pmax 7.3  (44756s)
+step 30000  train 0.7361  eval 0.7643  pmax 7.3  (46292s)
+  [checkpoint + sample saved at step 30000]
+step 31000  train 0.7269  eval 0.7241  pmax 7.3  (47834s)
+step 32000  train 0.6902  eval 0.7743  pmax 7.3  (49370s)
+step 33000  train 0.7768  eval 0.7278  pmax 7.3  (50910s)
+step 34000  train 0.7186  eval 0.7701  pmax 7.3  (52450s)
+step 35000  train 0.6954  eval 0.7225  pmax 7.3  (53992s)
+  [checkpoint + sample saved at step 35000]
+step 36000  train 0.7063  eval 0.7760  pmax 7.3  (55539s)
+  [checkpoint + sample saved at step 36000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/mamba2_ultrachat_10m_3ep_s123

@@ -1,0 +1,47 @@
+/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
+  train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
+train bytes: 542,898,247  eval bytes: 130,357
+model: tf  params: 9,880,192  device: cuda
+W0914 02:57:12.997000 612511 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
+step     1  train 5.5559  eval 4.3866  pmax 1.0  (19s)
+step  1000  train 1.4297  eval 1.4229  pmax 1.3  (111s)
+step  2000  train 1.2525  eval 1.2667  pmax 1.4  (205s)
+step  3000  train 1.2077  eval 1.2332  pmax 1.5  (298s)
+step  4000  train 1.1689  eval 1.1839  pmax 1.5  (391s)
+step  5000  train 1.1727  eval 1.1571  pmax 1.5  (485s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 1.1564  eval 1.1125  pmax 1.5  (579s)
+step  7000  train 1.0979  eval 1.1183  pmax 1.5  (673s)
+step  8000  train 1.0744  eval 1.0986  pmax 1.5  (766s)
+step  9000  train 1.1219  eval 1.1239  pmax 1.6  (859s)
+step 10000  train 1.0858  eval 1.0528  pmax 1.7  (953s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 1.0541  eval 1.0425  pmax 1.8  (1047s)
+step 12000  train 1.0777  eval 1.0659  pmax 1.9  (1140s)
+step 13000  train 1.0470  eval 1.0443  pmax 1.9  (1234s)
+step 14000  train 1.0516  eval 1.0505  pmax 2.0  (1327s)
+step 15000  train 1.0489  eval 1.0577  pmax 2.0  (1421s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 1.0615  eval 1.0212  pmax 2.1  (1515s)
+step 17000  train 1.0400  eval 1.0385  pmax 2.1  (1609s)
+step 18000  train 1.0425  eval 1.0035  pmax 2.2  (1702s)
+step 19000  train 1.0294  eval 1.0021  pmax 2.2  (1795s)
+step 20000  train 1.0084  eval 1.0347  pmax 2.2  (1888s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 0.9990  eval 1.0772  pmax 2.2  (1983s)
+step 22000  train 0.9919  eval 1.0017  pmax 2.2  (2076s)
+step 23000  train 1.0254  eval 0.9906  pmax 2.2  (2169s)
+step 24000  train 0.9741  eval 0.9830  pmax 2.2  (2263s)
+step 25000  train 0.9643  eval 1.0163  pmax 2.2  (2356s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 0.9874  eval 1.0199  pmax 2.2  (2451s)
+step 27000  train 0.9925  eval 0.9931  pmax 2.2  (2544s)
+step 28000  train 0.9526  eval 0.9578  pmax 2.2  (2638s)
+step 29000  train 0.9641  eval 0.9695  pmax 2.2  (2731s)
+step 30000  train 0.9718  eval 0.9600  pmax 2.2  (2824s)
+  [checkpoint + sample saved at step 30000]
+step 31000  train 0.9776  eval 0.9428  pmax 2.2  (2919s)
+step 32000  train 0.9887  eval 0.9159  pmax 2.2  (3012s)
+step 33000  train 1.0041  eval 0.9863  pmax 2.2  (3106s)
+  [checkpoint + sample saved at step 33000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_wikitext_10m_3ep_s2024

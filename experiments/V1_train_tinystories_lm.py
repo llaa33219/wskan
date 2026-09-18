@@ -140,6 +140,7 @@ def main() -> None:
     p.add_argument("--dataset", choices=["tinystories", "ultrachat", "wikitext"], default="tinystories")
     p.add_argument("--scale", choices=["1k", "10k", "100k", "1m", "10m", "interp"], default="100k")
     p.add_argument("--compile", action="store_true", help="torch.compile the loss step")
+    p.add_argument("--bf16", action="store_true", help="bf16 scan path (wskan8 only)")
     p.add_argument("--steps", type=int, default=None)
     p.add_argument("--batch", type=int, default=32)
     p.add_argument("--block", type=int, default=256)
@@ -244,7 +245,7 @@ def main() -> None:
     elif args.model == "wskan8":
         from models.V8_WSKAN import WaveletStateKANLMV8
 
-        model = WaveletStateKANLMV8(**wskan_cfg, **v3_extra).to(device)
+        model = WaveletStateKANLMV8(**wskan_cfg, **v3_extra, bf16_scan=args.bf16).to(device)
     else:
         model = Mamba2ByteLM(scale=args.scale).to(device)
     n_params = count_parameters(model)

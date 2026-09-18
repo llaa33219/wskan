@@ -117,7 +117,9 @@ class FastWaveletStateKANLayer(InterpretableWaveletStateKANLayer):
         u_re = u.permute(0, 2, 3, 1).contiguous()
         u_im = torch.zeros_like(u_re)
 
-        h_re, h_im = _assoc_scan(a_re, a_im, u_re, u_im)  # (B, I, N, L)
+        cast = (lambda t: t.to(torch.bfloat16)) if self._bf16_scan else (lambda t: t)
+        h_re, h_im = _assoc_scan(cast(a_re), cast(a_im), cast(u_re), cast(u_im))  # (B, I, N, L)
+        h_re, h_im = h_re.float(), h_im.float()
 
         # readout: y_no = sum_ik C_nik * Re[g_iok * h_nik]
         read_re = (Cn.permute(0, 2, 3, 1) * h_re)  # (B, I, N, L)
@@ -138,7 +140,7 @@ class WaveletStateKANLMV8(WaveletStateKANLM):
                  use_feature_bc: bool = True, bc_rank: int = 32,
                  wz_diag: bool = True, g_rank: int | None = 32,
                  grad_checkpoint: bool = False, compile_chunk: bool = False,
-                 oscillatory: bool = True):
+                 oscillatory: bool = True, bf16_scan: bool = False):
         super().__init__(vocab_size, d_model, n_layers, n_states)
         self.layers = nn.ModuleList(
             FastWaveletStateKANLayer(d_model, d_model, n_states, chunk_size=chunk_size,
@@ -147,6 +149,8 @@ class WaveletStateKANLMV8(WaveletStateKANLM):
                                      oscillatory=oscillatory)
             for _ in range(n_layers)
         )
+        for layer in self.layers:
+            layer._bf16_scan = bf16_scan
         self.prenorms = nn.ModuleList(nn.LayerNorm(d_model) for _ in range(n_layers))
 
     def forward(self, idx: torch.Tensor) -> torch.Tensor:

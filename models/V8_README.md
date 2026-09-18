@@ -19,13 +19,15 @@ captured by `torch.compile(mode="reduce-overhead")` (CUDA graphs).
 
 ## Measured speedups (batch 64, block 256, compiled; vs V7 chunked-SSD compiled)
 
-| tier | V7 chunked | V8 (assoc scan) | speedup |
-|---|---|---|---|
-| 100k (d32L3) | ~38 ms | **20 ms** | ~1.9x |
-| 1m (d80L6) | ~700 ms | **101 ms** | ~6.9x |
-| 10m (d512L2) | ~2000+ ms | **250 ms** | ~8x |
+| tier | V7 chunked | V8 fp32 | V8 + bf16 scan | best speedup |
+|---|---|---|---|---|
+| 100k (d32L3) | ~38 ms | 20 ms | **11.6 ms** | 3.3x |
+| 1m (d80L6) | ~700 ms | 101 ms | **66 ms** | 10.6x |
+| 10m (d512L2) | ~2000+ ms | 250 ms | **178 ms** | 11.2x |
 
-Plus: 10m fits in 5.3 GB (was OOM-tier), compile warmup 10-35 s.
+bf16 scan precision: relative L2 error 3e-5 – 1.3e-4 vs fp32 (layer level) —
+safe for training; it is a **flag** (`--bf16`), not the default, because it
+breaks bit-level equivalence with fp32 runs.
 
 ## Honest engineering log: why not 40x
 

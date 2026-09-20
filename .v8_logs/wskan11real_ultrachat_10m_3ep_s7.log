@@ -2,9 +2,9 @@
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
 model: wskan11real  params: 10,153,996  device: cuda
-[W918 23:23:56.729670833 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 212074496, total: 8214937600).
-[W918 23:23:56.783637542 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 346292224, total: 8214937600).
-[W918 23:23:56.783786828 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 346292224, total: 8214937600).
+[W920 01:41:05.165486676 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 147718144, total: 8220180480).
+[W920 01:41:05.212989473 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
+[W920 01:41:05.213156335 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
 Traceback (most recent call last):
   File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
     main()
@@ -36,7 +36,7 @@ Traceback (most recent call last):
   File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/output_code.py", line 828, in __call__
     return self.current_callable(inputs)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/tmp/opencode/inductor/4v/c4vudpuhna5nnnujurmebiyntejrafaj7qbblvkqdw4z53a7efxn.py", line 1992, in call
+  File "/tmp/opencode/inductor/yo/cyobu3zpz4gbxpr5gqlmfwpmjxecjood5fxepnlb62qvmlodzvnv.py", line 1992, in call
     buf64 = empty_strided_cuda((64, 512, 6, 512), (1572864, 3072, 512, 1), torch.float32)
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 384.00 MiB. GPU 0 has a total capacity of 7.65 GiB of which 330.25 MiB is free. Including non-PyTorch memory, this process has 7.29 GiB memory in use. Of the allocated memory 7.13 GiB is allocated by PyTorch, and 22.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 384.00 MiB. GPU 0 has a total capacity of 7.66 GiB of which 268.88 MiB is free. Including non-PyTorch memory, this process has 7.34 GiB memory in use. Of the allocated memory 7.13 GiB is allocated by PyTorch, and 22.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

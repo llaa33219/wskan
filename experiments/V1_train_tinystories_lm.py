@@ -196,7 +196,7 @@ def main() -> None:
 
         d, L = SIZE_CFG[args.model][args.scale]
         cls = {"tf": TinyTransformerLM, "conv": GatedConvLM, "lstm": LSTMLM}[args.model]
-        model = cls(d_model=d, n_layers=L).to(device)
+        model = cls(d_model=d, n_layers=L, block=args.block).to(device) if args.model == "tf" else cls(d_model=d, n_layers=L).to(device)
     elif args.model in ("wskan7bc", "wskan7bc16", "wskan7bcreal") and args.scale in SIZE_CFG["wskan7bc"]:
         from models.V7_WSKAN import WaveletStateKANLMV7
 

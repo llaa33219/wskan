@@ -2,6 +2,31 @@
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
 model: mamba2  params: 10,055,200  device: cuda
-W0918 23:24:47.498000 1887625 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
-[W918 23:26:16.288929876 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2147483648 bytes (free: 940441600, total: 8220180480).
-step     1  train 8.1204  eval 10.0788  pmax 6.9  (106s)
+[W920 01:42:23.568836179 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 2147483648 bytes (free: 940441600, total: 8220180480).
+step     1  train 8.1204  eval 10.0788  pmax 6.9  (13s)
+step  1000  train 1.0987  eval 1.0694  pmax 6.9  (2627s)
+step  2000  train 1.0089  eval 0.9963  pmax 6.9  (5242s)
+step  3000  train 0.9784  eval 0.9811  pmax 6.9  (7855s)
+step  4000  train 0.8701  eval 0.8896  pmax 6.9  (10463s)
+step  5000  train 0.9374  eval 0.9360  pmax 6.9  (13063s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 0.9175  eval 0.8838  pmax 6.9  (15666s)
+step  7000  train 0.8434  eval 0.9233  pmax 6.9  (18261s)
+step  8000  train 0.8358  eval 0.8332  pmax 6.9  (20853s)
+step  9000  train 0.8292  eval 0.8642  pmax 7.0  (23448s)
+step 10000  train 0.8156  eval 0.8496  pmax 7.0  (26048s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 0.7973  eval 0.7869  pmax 7.0  (28661s)
+step 12000  train 0.7976  eval 0.8476  pmax 7.0  (31279s)
+step 13000  train 0.8311  eval 0.8089  pmax 7.0  (33882s)
+step 14000  train 0.7684  eval 0.7869  pmax 7.0  (36480s)
+step 15000  train 0.7541  eval 0.8211  pmax 7.0  (39084s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 0.7837  eval 0.7785  pmax 7.0  (41691s)
+step 17000  train 0.7554  eval 0.7677  pmax 7.0  (44297s)
+step 18000  train 0.7677  eval 0.7699  pmax 7.0  (46905s)
+step 19000  train 0.7862  eval 0.8011  pmax 7.0  (49516s)
+step 20000  train 0.7844  eval 0.7851  pmax 7.0  (52135s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 0.7419  eval 0.7183  pmax 7.0  (54755s)
+step 22000  train 0.7223  eval 0.7543  pmax 7.0  (57371s)

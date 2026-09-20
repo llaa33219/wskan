@@ -5,3 +5,43 @@ model: wskan11  params: 10,153,996  device: cuda
 W0918 23:25:26.697000 1888334 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
 step     1  train 5.5842  eval 4.5295  pmax 18.9  (42s)
 step  1000  train 1.3515  eval 1.3426  pmax 19.0  (219s)
+step  2000  train 1.2950  eval 1.2491  pmax 19.0  (396s)
+step  3000  train 1.2482  eval 1.2554  pmax 19.0  (574s)
+step  4000  train 1.2069  eval 1.2486  pmax 19.1  (751s)
+step  5000  train 1.1509  eval 1.1816  pmax 19.2  (928s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 1.2086  eval 1.1851  pmax 19.2  (1111s)
+step  7000  train 1.1583  eval 1.1596  pmax 19.3  (1288s)
+step  8000  train 1.1538  eval 1.1500  pmax 19.3  (1465s)
+step  9000  train 1.1915  eval 1.1331  pmax 19.4  (1642s)
+step 10000  train 1.1550  eval 1.1951  pmax 19.4  (1819s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 1.1250  eval 1.1498  pmax 19.4  (1998s)
+step 12000  train 1.1409  eval 1.1258  pmax 19.5  (2176s)
+step 13000  train 1.1311  eval 1.0874  pmax 19.5  (2353s)
+step 14000  train 1.0855  eval 1.1015  pmax 19.5  (2530s)
+step 15000  train 1.1037  eval 1.1331  pmax 19.5  (2707s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 1.0802  eval 1.1174  pmax 19.5  (2886s)
+step 17000  train 1.0740  eval 1.0934  pmax 19.5  (3063s)
+step 18000  train 1.0672  eval 1.1032  pmax 19.5  (3240s)
+step 19000  train 1.0630  eval 1.0950  pmax 19.6  (3417s)
+step 20000  train 1.0836  eval 1.0566  pmax 19.6  (3594s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 1.0630  eval 1.0667  pmax 19.6  (3773s)
+step 22000  train 1.1030  eval 1.0824  pmax 19.6  (3950s)
+step 23000  train 1.0561  eval 1.0820  pmax 19.6  (4127s)
+step 24000  train 1.0823  eval 1.0677  pmax 19.6  (4305s)
+step 25000  train 1.0911  eval 1.0767  pmax 19.6  (4482s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 1.0592  eval 1.1315  pmax 19.6  (4661s)
+step 27000  train 1.0517  eval 1.0558  pmax 19.6  (4838s)
+step 28000  train 1.0372  eval 1.0402  pmax 19.6  (5015s)
+step 29000  train 1.0503  eval 1.0545  pmax 19.6  (5192s)
+step 30000  train 1.0485  eval 1.0493  pmax 19.6  (5369s)
+  [checkpoint + sample saved at step 30000]
+step 31000  train 1.0720  eval 1.1060  pmax 19.6  (5548s)
+step 32000  train 1.0390  eval 1.0614  pmax 19.6  (5725s)
+step 33000  train 1.0751  eval 1.0266  pmax 19.6  (5902s)
+  [checkpoint + sample saved at step 33000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan11_wikitext_10m_3ep_s42

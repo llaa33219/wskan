@@ -43,7 +43,7 @@ class _Block(nn.Module):
 
 
 class TinyTransformerLM(nn.Module):
-    def __init__(self, d_model: int = 64, n_layers: int = 2, block: int = 256):
+    def __init__(self, d_model: int = 64, n_layers: int = 2, block: int = 512):
         super().__init__()
         self.vocab_size = 256
         self.block = block

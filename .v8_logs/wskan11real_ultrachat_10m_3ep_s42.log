@@ -2,9 +2,9 @@
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
 model: wskan11real  params: 10,153,996  device: cuda
-[W918 23:23:58.875246862 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 147718144, total: 8220180480).
-[W918 23:23:58.922141554 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
-[W918 23:23:58.922318183 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
+[W920 01:40:29.378396070 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 147718144, total: 8220180480).
+[W920 01:40:29.424748464 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
+[W920 01:40:29.424859118 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
 Traceback (most recent call last):
   File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
     main()

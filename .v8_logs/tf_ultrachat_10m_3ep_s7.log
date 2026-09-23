@@ -1,108 +1,50 @@
 /home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
-model: tf  params: 9,880,192  device: cuda
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [96,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [97,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [98,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [99,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [100,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [101,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [102,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [103,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [104,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [105,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [106,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [107,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [108,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [109,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [110,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [111,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [112,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [113,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [114,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [115,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [116,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [117,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [118,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [119,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [120,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [121,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [122,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [123,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [124,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [125,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [126,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/3n/c3n2qwjvtogihsojozndu7louodzvphw3pe5ggqzi3evezm4lrl7.py:25: unknown: block: [139,0,0], thread: [127,0,0] Assertion `index out of bounds: x1 < 256` failed.
-Traceback (most recent call last):
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
-    main()
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 293, in main
-    loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1261, in compile_wrapper
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 70, in loss
-    def loss(self, idx):
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1289, in forward
-    return compiled_fn(full_args)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 1189, in runtime_wrapper
-    result = _codegen_runtime_wrapper(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(runtime_wrapper_orchestration)", line 11, in _runtime_wrapper
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 118, in g
-    return f(*args)
-           ^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 3521, in forward
-    return CompiledFunction._fwd_fn(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(compiled_function_forward)", line 2, in _compiled_forward
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/output_code.py", line 828, in __call__
-    return self.current_callable(inputs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/tmp/opencode/inductor/sl/cslwbdtnpslayy6oi7faliyjg6pcz2ipd26h7tx2eewc4oz3bdyu.py", line 1288, in call
-    triton_poi_fused_embedding_1.run(primals_3, buf2, 229376, stream=raw_stream0)
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 2516, in run
-    self.autotune_to_one_config(*args, **kwargs)
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1883, in autotune_to_one_config
-    timings = self.benchmark_all_configs(*args, **kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1836, in benchmark_all_configs
-    timing = self.bench(launcher, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1566, in bench
-    result = benchmarker.benchmark(
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 193, in wrapper
-    return fn(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 308, in benchmark
-    return benchmark_fn(self, _callable, warmup=warmup, rep=rep, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 408, in _default_cuda_bench
-    return self.benchmark_gpu(f, warmup=warmup, rep=rep, **kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 193, in wrapper
-    return fn(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 88, in wrapper
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 713, in benchmark_gpu
-    device_interface.synchronize()
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1281, in synchronize
-    return torch._C._cuda_synchronize()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.AcceleratorError: CUDA error: device-side assert triggered
-Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
-CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1
-The CUDA driver logged these messages, which may provide useful details:
-Returning 710 (CUDA_ERROR_ASSERT) from cuCtxSynchronize_v2
-
-
+model: tf  params: 9,994,880  device: cuda
+step     1  train 5.6882  eval 4.3663  pmax 1.0  (5s)
+step  1000  train 1.3072  eval 1.3132  pmax 1.3  (293s)
+step  2000  train 1.1114  eval 1.1198  pmax 1.5  (582s)
+step  3000  train 1.0094  eval 1.0438  pmax 1.5  (870s)
+step  4000  train 0.9684  eval 1.0185  pmax 1.6  (1159s)
+step  5000  train 0.9816  eval 0.9805  pmax 1.6  (1448s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 0.9245  eval 0.9261  pmax 1.7  (1737s)
+step  7000  train 0.9507  eval 0.9087  pmax 1.7  (2026s)
+step  8000  train 0.9324  eval 0.9518  pmax 1.7  (2315s)
+step  9000  train 0.8641  eval 0.9060  pmax 1.7  (2604s)
+step 10000  train 0.8577  eval 0.8492  pmax 1.7  (2893s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 0.9129  eval 0.8973  pmax 1.8  (3182s)
+step 12000  train 0.9137  eval 0.9018  pmax 1.9  (3471s)
+step 13000  train 0.8901  eval 0.8432  pmax 2.0  (3759s)
+step 14000  train 0.8514  eval 0.9320  pmax 2.0  (4048s)
+step 15000  train 0.8453  eval 0.8385  pmax 2.1  (4337s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 0.8455  eval 0.8457  pmax 2.2  (4626s)
+step 17000  train 0.8503  eval 0.8138  pmax 2.3  (4915s)
+step 18000  train 0.8451  eval 0.8448  pmax 2.3  (5204s)
+step 19000  train 0.8440  eval 0.8280  pmax 2.4  (5492s)
+step 20000  train 0.8105  eval 0.8093  pmax 2.4  (5781s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 0.8099  eval 0.8223  pmax 2.5  (6070s)
+step 22000  train 0.8139  eval 0.8058  pmax 2.5  (6359s)
+step 23000  train 0.8060  eval 0.8700  pmax 2.5  (6647s)
+step 24000  train 0.7969  eval 0.8015  pmax 2.5  (6936s)
+step 25000  train 0.7944  eval 0.8199  pmax 2.5  (7225s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 0.7982  eval 0.8172  pmax 2.5  (7515s)
+step 27000  train 0.7817  eval 0.8098  pmax 2.6  (7804s)
+step 28000  train 0.7617  eval 0.7641  pmax 2.6  (8092s)
+step 29000  train 0.8291  eval 0.7948  pmax 2.6  (8381s)
+step 30000  train 0.7668  eval 0.7805  pmax 2.6  (8670s)
+  [checkpoint + sample saved at step 30000]
+step 31000  train 0.7811  eval 0.8245  pmax 2.6  (8959s)
+step 32000  train 0.7928  eval 0.7544  pmax 2.6  (9248s)
+step 33000  train 0.7957  eval 0.8370  pmax 2.6  (9537s)
+step 34000  train 0.7618  eval 0.7779  pmax 2.6  (9825s)
+step 35000  train 0.8108  eval 0.7812  pmax 2.6  (10114s)
+  [checkpoint + sample saved at step 35000]
+step 36000  train 0.7875  eval 0.7856  pmax 2.6  (10403s)
+  [checkpoint + sample saved at step 36000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_10m_3ep_s7

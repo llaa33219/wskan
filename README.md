@@ -88,10 +88,11 @@ Architecture files are versioned as `V<version>_<name>.py` with a matching
 ```
 
 ## Key reports (start here)
-- **`experiments/W7BC_FINAL_REPORT.md` — THE definitive consolidated report (architecture, configs, benchmark, full mechanism, scale analysis, limits, reproduction index)**
-- `experiments/W7BC_HOW_IT_SPEAKS.md` — the complete mathematical mechanism of how wskan7bc speaks language (canonical, fresh-checkpoint numbers)
-- `experiments/W7BC_FINAL_CLEAN_REPORT.md` — canonical comparison numbers (fresh interp tier, single code/protocol)
-- `experiments/W7BC_10M_INTERPRETABILITY_REPORT.md` — 10M×3-seed interpretability replication + scale laws
+- **`experiments/W11_FINAL_INTERPRETATION_REPORT.md` — THE definitive report (3-epoch campaign, 5 seeds, full interpretation; performance as footnote)**
+- `experiments/W7BC_FINAL_REPORT.md` — wskan7bc consolidated report (matrix era)
+- `experiments/W7BC_HOW_IT_SPEAKS.md` — the complete mathematical mechanism (canonical numbers)
+- `experiments/W7BC_FINAL_CLEAN_REPORT.md` — canonical comparison numbers (fresh interp tier)
+- `experiments/W7BC_10M_INTERPRETABILITY_REPORT.md` — 10M×3-seed replication + scale laws
 - `experiments/V6_FINAL_LANGUAGE_ACCOUNT.md` — how the model learned language (capstone)
 - `experiments/W7BC_GENERATION_ACCOUNT.md` — how it speaks (production-side)
 - `experiments/W7BC_CROSS_FAMILY_REPORT.md` — 225-run cross-family benchmark

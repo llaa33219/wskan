@@ -2,41 +2,49 @@
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
 model: wskan11real  params: 10,153,996  device: cuda
-[W920 01:40:29.378396070 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 147718144, total: 8220180480).
-[W920 01:40:29.424748464 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
-[W920 01:40:29.424859118 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 402653184 bytes (free: 281935872, total: 8220180480).
-Traceback (most recent call last):
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
-    main()
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 293, in main
-    loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1261, in compile_wrapper
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/models/V1_LM.py", line 64, in loss
-    def loss(self, idx: torch.Tensor) -> torch.Tensor:
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1289, in forward
-    return compiled_fn(full_args)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 1189, in runtime_wrapper
-    result = _codegen_runtime_wrapper(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(runtime_wrapper_orchestration)", line 11, in _runtime_wrapper
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 118, in g
-    return f(*args)
-           ^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 3521, in forward
-    return CompiledFunction._fwd_fn(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(compiled_function_forward)", line 2, in _compiled_forward
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/output_code.py", line 828, in __call__
-    return self.current_callable(inputs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/tmp/opencode/inductor/yo/cyobu3zpz4gbxpr5gqlmfwpmjxecjood5fxepnlb62qvmlodzvnv.py", line 1992, in call
-    buf64 = empty_strided_cuda((64, 512, 6, 512), (1572864, 3072, 512, 1), torch.float32)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 384.00 MiB. GPU 0 has a total capacity of 7.66 GiB of which 268.88 MiB is free. Including non-PyTorch memory, this process has 7.34 GiB memory in use. Of the allocated memory 7.13 GiB is allocated by PyTorch, and 22.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+step     1  train 5.5733  eval 4.4886  pmax 3.0  (11s)
+step  1000  train 1.1770  eval 1.1372  pmax 3.1  (295s)
+step  2000  train 1.0960  eval 1.0806  pmax 3.2  (579s)
+step  3000  train 1.0703  eval 1.0672  pmax 3.2  (863s)
+step  4000  train 0.9657  eval 0.9887  pmax 3.3  (1147s)
+step  5000  train 1.0426  eval 1.0397  pmax 3.3  (1431s)
+  [checkpoint + sample saved at step 5000]
+step  6000  train 1.0331  eval 0.9883  pmax 3.3  (1717s)
+step  7000  train 0.9620  eval 1.0420  pmax 3.3  (2001s)
+step  8000  train 0.9550  eval 0.9549  pmax 3.3  (2285s)
+step  9000  train 0.9630  eval 0.9862  pmax 3.3  (2569s)
+step 10000  train 0.9535  eval 0.9854  pmax 3.3  (2853s)
+  [checkpoint + sample saved at step 10000]
+step 11000  train 0.9314  eval 0.9185  pmax 3.3  (3139s)
+step 12000  train 0.9444  eval 0.9933  pmax 3.3  (3423s)
+step 13000  train 0.9683  eval 0.9524  pmax 3.4  (3708s)
+step 14000  train 0.9141  eval 0.9361  pmax 3.4  (3992s)
+step 15000  train 0.9042  eval 0.9657  pmax 3.4  (4275s)
+  [checkpoint + sample saved at step 15000]
+step 16000  train 0.9356  eval 0.9223  pmax 3.4  (4561s)
+step 17000  train 0.8966  eval 0.9037  pmax 3.4  (4845s)
+step 18000  train 0.9096  eval 0.9114  pmax 3.4  (5129s)
+step 19000  train 0.9402  eval 0.9567  pmax 3.4  (5413s)
+step 20000  train 0.9404  eval 0.9325  pmax 3.4  (5697s)
+  [checkpoint + sample saved at step 20000]
+step 21000  train 0.8935  eval 0.8701  pmax 3.4  (5983s)
+step 22000  train 0.8877  eval 0.9047  pmax 3.4  (6267s)
+step 23000  train 0.9120  eval 0.9448  pmax 3.4  (6551s)
+step 24000  train 0.8898  eval 0.9252  pmax 3.4  (6835s)
+step 25000  train 0.8516  eval 0.9303  pmax 3.4  (7119s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 0.9060  eval 0.8737  pmax 3.4  (7405s)
+step 27000  train 0.8672  eval 0.8764  pmax 3.4  (7689s)
+step 28000  train 0.8912  eval 0.8970  pmax 3.4  (7973s)
+step 29000  train 0.9125  eval 0.9039  pmax 3.4  (8257s)
+step 30000  train 0.8566  eval 0.8860  pmax 3.4  (8541s)
+  [checkpoint + sample saved at step 30000]
+step 31000  train 0.8882  eval 0.9379  pmax 3.4  (8827s)
+step 32000  train 0.8929  eval 0.8832  pmax 3.4  (9110s)
+step 33000  train 0.8864  eval 0.8928  pmax 3.4  (9394s)
+step 34000  train 0.8864  eval 0.8899  pmax 3.4  (9678s)
+step 35000  train 0.9454  eval 0.8759  pmax 3.4  (9961s)
+  [checkpoint + sample saved at step 35000]
+step 36000  train 0.8947  eval 0.8744  pmax 3.4  (10247s)
+  [checkpoint + sample saved at step 36000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/wskan11real_ultrachat_10m_3ep_s42

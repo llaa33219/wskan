@@ -1,1037 +1,119 @@
 /home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
-model: tf  params: 98,800  device: cuda
-W0920 13:33:27.103000 993467 .venv/lib/python3.12/site-packages/torch/_inductor/utils.py:1806] [0/0] Not enough SMs to use max_autotune_gemm mode
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [60,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [58,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [32,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [33,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [34,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [35,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [36,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [37,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [38,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [39,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [40,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [41,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [42,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [43,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [44,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [45,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [46,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [47,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [48,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [49,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [50,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [51,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [52,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [53,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [54,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [55,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [56,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [57,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [58,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [59,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [60,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [61,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [62,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [63,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [32,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [33,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [34,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [35,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [36,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [37,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [38,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [39,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [40,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [41,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [42,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [43,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [44,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [45,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [46,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [47,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [48,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [49,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [50,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [51,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [52,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [53,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [54,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [55,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [56,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [57,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [58,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [59,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [60,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [61,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [62,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [63,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [96,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [97,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [98,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [99,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [100,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [101,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [102,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [103,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [104,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [105,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [106,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [107,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [108,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [109,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [110,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [111,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [112,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [113,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [114,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [115,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [116,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [117,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [118,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [119,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [120,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [121,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [122,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [123,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [124,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [125,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [126,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [57,0,0], thread: [127,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [32,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [33,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [34,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [35,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [36,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [37,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [38,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [39,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [40,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [41,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [42,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [43,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [44,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [45,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [46,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [47,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [48,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [49,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [50,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [51,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [52,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [53,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [54,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [55,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [56,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [57,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [58,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [59,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [60,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [61,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [62,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [63,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [96,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [97,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [98,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [99,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [100,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [101,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [102,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [103,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [104,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [105,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [106,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [107,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [108,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [109,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [110,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [111,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [112,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [113,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [114,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [115,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [116,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [117,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [118,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [119,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [120,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [121,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [122,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [123,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [124,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [125,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [126,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [61,0,0], thread: [127,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [32,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [33,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [34,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [35,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [36,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [37,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [38,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [39,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [40,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [41,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [42,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [43,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [44,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [45,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [46,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [47,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [48,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [49,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [50,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [51,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [52,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [53,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [54,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [55,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [56,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [57,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [58,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [59,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [60,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [61,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [62,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [63,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [96,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [97,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [98,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [99,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [100,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [101,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [102,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [103,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [104,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [105,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [106,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [107,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [108,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [109,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [110,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [111,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [112,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [113,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [114,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [115,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [116,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [117,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [118,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [119,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [120,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [121,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [122,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [123,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [124,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [125,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [126,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [59,0,0], thread: [127,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [96,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [97,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [98,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [99,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [100,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [101,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [102,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [103,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [104,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [105,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [106,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [107,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [108,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [109,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [110,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [111,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [112,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [113,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [114,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [115,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [116,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [117,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [118,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [119,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [120,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [121,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [122,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [123,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [124,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [125,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [126,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [62,0,0], thread: [127,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [79,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [71,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [64,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [43,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [48,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [64,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [65,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [66,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [67,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [68,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [69,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [70,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [71,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [72,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [73,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [74,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [75,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [76,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [77,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [78,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [79,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [80,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [81,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [82,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [83,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [84,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [85,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [86,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [87,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [88,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [89,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [90,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [91,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [92,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [93,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [94,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [41,0,0], thread: [95,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [0,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [1,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [2,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [3,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [4,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [5,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [6,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [7,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [8,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [9,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [10,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [11,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [12,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [13,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [14,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [15,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [16,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [17,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [18,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [19,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [20,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [21,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [22,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [23,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [24,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [25,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [26,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [27,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [28,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [29,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [30,0,0] Assertion `index out of bounds: x1 < 256` failed.
-/tmp/opencode/inductor/qu/cquqlh62nyj4eqemygqfyyefpb5clqp6xdangdokrv5jv5mxrss3.py:25: unknown: block: [66,0,0], thread: [31,0,0] Assertion `index out of bounds: x1 < 256` failed.
-Traceback (most recent call last):
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
-    main()
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 293, in main
-    loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1261, in compile_wrapper
-    result = fn(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 70, in loss
-    def loss(self, idx):
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/aot_autograd.py", line 1289, in forward
-    return compiled_fn(full_args)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 1189, in runtime_wrapper
-    result = _codegen_runtime_wrapper(
-             ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(runtime_wrapper_orchestration)", line 11, in _runtime_wrapper
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/utils.py", line 118, in g
-    return f(*args)
-           ^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/runtime_wrappers.py", line 3521, in forward
-    return CompiledFunction._fwd_fn(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_functorch/_aot_autograd/codegen.py:codegen(compiled_function_forward)", line 2, in _compiled_forward
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/output_code.py", line 828, in __call__
-    return self.current_callable(inputs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/tmp/opencode/inductor/2s/c2ss2w4uezgezainja67tkktizrlrksfx2cxdhbxoi54ypy6ijkl.py", line 1357, in call
-    triton_poi_fused_embedding_0.run(primals_3, buf2, 20480, stream=raw_stream0)
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 2516, in run
-    self.autotune_to_one_config(*args, **kwargs)
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1883, in autotune_to_one_config
-    timings = self.benchmark_all_configs(*args, **kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1836, in benchmark_all_configs
-    timing = self.bench(launcher, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/triton_heuristics.py", line 1566, in bench
-    result = benchmarker.benchmark(
-             ^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 193, in wrapper
-    return fn(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 308, in benchmark
-    return benchmark_fn(self, _callable, warmup=warmup, rep=rep, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 408, in _default_cuda_bench
-    return self.benchmark_gpu(f, warmup=warmup, rep=rep, **kw)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 193, in wrapper
-    return fn(self, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 88, in wrapper
-    return fn(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/_inductor/runtime/benchmarking.py", line 713, in benchmark_gpu
-    device_interface.synchronize()
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/cuda/__init__.py", line 1281, in synchronize
-    return torch._C._cuda_synchronize()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.AcceleratorError: CUDA error: device-side assert triggered
-Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
-CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1
-The CUDA driver logged these messages, which may provide useful details:
-Returning 710 (CUDA_ERROR_ASSERT) from cuCtxSynchronize_v2
-
-
+model: tf  params: 109,040  device: cuda
+step     1  train 5.5351  eval 5.4103  pmax 1.0  (5s)
+step  1000  train 1.9217  eval 1.9339  pmax 2.1  (20s)
+step  2000  train 1.7227  eval 1.6623  pmax 2.3  (35s)
+step  3000  train 1.6377  eval 1.6317  pmax 2.4  (50s)
+step  4000  train 1.5555  eval 1.5870  pmax 2.4  (65s)
+step  5000  train 1.5951  eval 1.5380  pmax 2.4  (81s)
+step  6000  train 1.5885  eval 1.5690  pmax 2.5  (96s)
+step  7000  train 1.5023  eval 1.5569  pmax 2.5  (111s)
+step  8000  train 1.5586  eval 1.5611  pmax 2.5  (126s)
+step  9000  train 1.4937  eval 1.4906  pmax 2.5  (141s)
+step 10000  train 1.5065  eval 1.4803  pmax 2.5  (156s)
+step 11000  train 1.5138  eval 1.5053  pmax 2.5  (171s)
+step 12000  train 1.4836  eval 1.5306  pmax 2.5  (187s)
+step 13000  train 1.4953  eval 1.5443  pmax 2.5  (202s)
+step 14000  train 1.5228  eval 1.4797  pmax 2.5  (217s)
+step 15000  train 1.4321  eval 1.4442  pmax 2.5  (232s)
+step 16000  train 1.4970  eval 1.5037  pmax 2.5  (247s)
+step 17000  train 1.4937  eval 1.4833  pmax 2.6  (262s)
+step 18000  train 1.4447  eval 1.5433  pmax 2.7  (278s)
+step 19000  train 1.4478  eval 1.5179  pmax 2.8  (293s)
+step 20000  train 1.4628  eval 1.4929  pmax 3.0  (308s)
+step 21000  train 1.4903  eval 1.5249  pmax 3.1  (323s)
+step 22000  train 1.4753  eval 1.4879  pmax 3.2  (338s)
+step 23000  train 1.4790  eval 1.4661  pmax 3.4  (353s)
+step 24000  train 1.4465  eval 1.4170  pmax 3.5  (368s)
+step 25000  train 1.5008  eval 1.4939  pmax 3.6  (383s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 1.4482  eval 1.4649  pmax 3.8  (399s)
+step 27000  train 1.4172  eval 1.4796  pmax 3.9  (415s)
+step 28000  train 1.4033  eval 1.4618  pmax 4.0  (430s)
+step 29000  train 1.4954  eval 1.4512  pmax 4.1  (445s)
+step 30000  train 1.4462  eval 1.4807  pmax 4.1  (460s)
+step 31000  train 1.4221  eval 1.4546  pmax 4.2  (475s)
+step 32000  train 1.4298  eval 1.4383  pmax 4.3  (490s)
+step 33000  train 1.4235  eval 1.3697  pmax 4.3  (505s)
+step 34000  train 1.4409  eval 1.4508  pmax 4.4  (520s)
+step 35000  train 1.4490  eval 1.4595  pmax 4.4  (536s)
+step 36000  train 1.4242  eval 1.4143  pmax 4.5  (551s)
+step 37000  train 1.4630  eval 1.4758  pmax 4.6  (566s)
+step 38000  train 1.4260  eval 1.4001  pmax 4.6  (581s)
+step 39000  train 1.4363  eval 1.3964  pmax 4.7  (596s)
+step 40000  train 1.4444  eval 1.3863  pmax 4.8  (611s)
+step 41000  train 1.4593  eval 1.4571  pmax 4.9  (627s)
+step 42000  train 1.4645  eval 1.4655  pmax 4.9  (642s)
+step 43000  train 1.4115  eval 1.4654  pmax 4.9  (657s)
+step 44000  train 1.3754  eval 1.4723  pmax 5.0  (672s)
+step 45000  train 1.4197  eval 1.3812  pmax 5.1  (688s)
+step 46000  train 1.3926  eval 1.4652  pmax 5.1  (703s)
+step 47000  train 1.4061  eval 1.4694  pmax 5.2  (718s)
+step 48000  train 1.3723  eval 1.3876  pmax 5.2  (733s)
+step 49000  train 1.3697  eval 1.4323  pmax 5.3  (748s)
+step 50000  train 1.3881  eval 1.4183  pmax 5.3  (764s)
+  [checkpoint + sample saved at step 50000]
+step 51000  train 1.3831  eval 1.4180  pmax 5.3  (780s)
+step 52000  train 1.4072  eval 1.4139  pmax 5.4  (795s)
+step 53000  train 1.3923  eval 1.3853  pmax 5.4  (810s)
+step 54000  train 1.3999  eval 1.4529  pmax 5.4  (825s)
+step 55000  train 1.3680  eval 1.3555  pmax 5.4  (840s)
+step 56000  train 1.4004  eval 1.4222  pmax 5.5  (855s)
+step 57000  train 1.4124  eval 1.2968  pmax 5.5  (871s)
+step 58000  train 1.3821  eval 1.3720  pmax 5.5  (886s)
+step 59000  train 1.3737  eval 1.4106  pmax 5.5  (901s)
+step 60000  train 1.3998  eval 1.3805  pmax 5.6  (917s)
+step 61000  train 1.4142  eval 1.3826  pmax 5.6  (932s)
+step 62000  train 1.3576  eval 1.3985  pmax 5.6  (947s)
+step 63000  train 1.3900  eval 1.3735  pmax 5.6  (962s)
+step 64000  train 1.4039  eval 1.4096  pmax 5.6  (977s)
+step 65000  train 1.3802  eval 1.3941  pmax 5.6  (992s)
+step 66000  train 1.4300  eval 1.4011  pmax 5.6  (1008s)
+step 67000  train 1.3684  eval 1.4147  pmax 5.7  (1023s)
+step 68000  train 1.3517  eval 1.3997  pmax 5.7  (1038s)
+step 69000  train 1.3616  eval 1.3848  pmax 5.7  (1053s)
+step 70000  train 1.4491  eval 1.3968  pmax 5.7  (1068s)
+step 71000  train 1.3744  eval 1.4834  pmax 5.7  (1084s)
+step 72000  train 1.4234  eval 1.3837  pmax 5.7  (1099s)
+step 73000  train 1.3959  eval 1.4004  pmax 5.7  (1114s)
+step 74000  train 1.3756  eval 1.3393  pmax 5.7  (1129s)
+step 75000  train 1.4142  eval 1.3918  pmax 5.7  (1145s)
+  [checkpoint + sample saved at step 75000]
+step 76000  train 1.3742  eval 1.4198  pmax 5.7  (1160s)
+step 77000  train 1.3705  eval 1.4182  pmax 5.7  (1176s)
+step 78000  train 1.3642  eval 1.3585  pmax 5.7  (1191s)
+step 79000  train 1.3588  eval 1.3109  pmax 5.7  (1206s)
+step 80000  train 1.4184  eval 1.3813  pmax 5.7  (1221s)
+step 81000  train 1.3748  eval 1.4149  pmax 5.8  (1237s)
+step 82000  train 1.3676  eval 1.3703  pmax 5.8  (1252s)
+step 83000  train 1.3595  eval 1.4525  pmax 5.7  (1267s)
+step 84000  train 1.4218  eval 1.3847  pmax 5.7  (1282s)
+step 85000  train 1.4056  eval 1.3309  pmax 5.7  (1297s)
+step 86000  train 1.4243  eval 1.4334  pmax 5.8  (1313s)
+step 87000  train 1.3891  eval 1.3869  pmax 5.8  (1328s)
+step 88000  train 1.3703  eval 1.4023  pmax 5.8  (1343s)
+step 89000  train 1.4231  eval 1.4068  pmax 5.8  (1359s)
+step 90000  train 1.3862  eval 1.3327  pmax 5.8  (1374s)
+step 91000  train 1.3309  eval 1.3403  pmax 5.8  (1389s)
+step 92000  train 1.3825  eval 1.3928  pmax 5.8  (1405s)
+step 93000  train 1.3531  eval 1.4083  pmax 5.7  (1420s)
+step 94000  train 1.3891  eval 1.3872  pmax 5.8  (1435s)
+step 95000  train 1.3855  eval 1.3488  pmax 5.8  (1450s)
+step 96000  train 1.3429  eval 1.4053  pmax 5.8  (1466s)
+step 97000  train 1.3868  eval 1.3913  pmax 5.8  (1481s)
+step 98000  train 1.3289  eval 1.3842  pmax 5.8  (1496s)
+step 99000  train 1.3239  eval 1.3957  pmax 5.8  (1511s)
+step 100000  train 1.3850  eval 1.3494  pmax 5.8  (1526s)
+  [checkpoint + sample saved at step 100000]
+step 101000  train 1.3460  eval 1.3395  pmax 5.8  (1542s)
+step 102000  train 1.3706  eval 1.3605  pmax 5.8  (1557s)
+step 103000  train 1.3864  eval 1.3888  pmax 5.8  (1573s)
+step 104000  train 1.3491  eval 1.3664  pmax 5.8  (1588s)
+step 105000  train 1.3615  eval 1.3505  pmax 5.8  (1603s)
+step 106000  train 1.3826  eval 1.4365  pmax 5.8  (1618s)
+step 107000  train 1.3869  eval 1.3138  pmax 5.8  (1634s)
+step 108000  train 1.3651  eval 1.3813  pmax 5.8  (1649s)
+  [checkpoint + sample saved at step 108000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_100k_3ep_s31337

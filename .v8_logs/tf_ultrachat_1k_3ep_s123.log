@@ -1,240 +1,44 @@
 /home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
-model: tf  params: 2,284  device: cuda
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [304,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [289,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [320,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [271,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [417,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [274,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-Traceback (most recent call last):
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
-    main()
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 293, in main
-    loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 71, in loss
-    logits = self(idx[:, :-1])
-             ^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 67, in forward
-    x = b(x)
-        ^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 33, in forward
-    h = self.ln1(x)
-        ^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 228, in forward
-    return F.layer_norm(
-           ^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2993, in layer_norm
-    return torch.layer_norm(
-           ^^^^^^^^^^^^^^^^^
-torch.AcceleratorError: CUDA error: device-side assert triggered
-Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
-CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1
-
+model: tf  params: 3,308  device: cuda
+step     1  train 5.5619  eval 5.5353  pmax 1.0  (1s)
+step  1000  train 2.7778  eval 2.7839  pmax 2.1  (10s)
+step  2000  train 2.7797  eval 2.7505  pmax 2.5  (19s)
+step  3000  train 2.7619  eval 2.7323  pmax 3.0  (28s)
+step  4000  train 2.7131  eval 2.7736  pmax 3.4  (37s)
+step  5000  train 2.7467  eval 2.6965  pmax 3.2  (46s)
+step  6000  train 2.7107  eval 2.7468  pmax 3.6  (55s)
+step  7000  train 2.7142  eval 2.6768  pmax 4.0  (64s)
+step  8000  train 2.7216  eval 2.6763  pmax 4.3  (73s)
+step  9000  train 2.7384  eval 2.7215  pmax 4.4  (82s)
+step 10000  train 2.7244  eval 2.7382  pmax 4.5  (92s)
+step 11000  train 2.7268  eval 2.6845  pmax 4.6  (101s)
+step 12000  train 2.6769  eval 2.7199  pmax 4.8  (110s)
+step 13000  train 2.6828  eval 2.6642  pmax 5.0  (119s)
+step 14000  train 2.7066  eval 2.7033  pmax 5.4  (128s)
+step 15000  train 2.7003  eval 2.6718  pmax 5.7  (138s)
+step 16000  train 2.6953  eval 2.7124  pmax 6.0  (147s)
+step 17000  train 2.6940  eval 2.7268  pmax 6.1  (156s)
+step 18000  train 2.7213  eval 2.6794  pmax 6.3  (165s)
+step 19000  train 2.7160  eval 2.6899  pmax 6.4  (174s)
+step 20000  train 2.6689  eval 2.7244  pmax 6.6  (183s)
+step 21000  train 2.7061  eval 2.7350  pmax 6.7  (192s)
+step 22000  train 2.7193  eval 2.7327  pmax 6.8  (201s)
+step 23000  train 2.7148  eval 2.6750  pmax 6.9  (210s)
+step 24000  train 2.6820  eval 2.6790  pmax 6.9  (220s)
+step 25000  train 2.7095  eval 2.7083  pmax 7.0  (229s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 2.6840  eval 2.6842  pmax 7.0  (238s)
+step 27000  train 2.6910  eval 2.6846  pmax 7.1  (247s)
+step 28000  train 2.6753  eval 2.6946  pmax 7.1  (256s)
+step 29000  train 2.6861  eval 2.6926  pmax 7.1  (266s)
+step 30000  train 2.7267  eval 2.7179  pmax 7.1  (275s)
+step 31000  train 2.7097  eval 2.7270  pmax 7.1  (284s)
+step 32000  train 2.6903  eval 2.7260  pmax 7.1  (293s)
+step 33000  train 2.6806  eval 2.6975  pmax 7.1  (302s)
+step 34000  train 2.7311  eval 2.6772  pmax 7.1  (311s)
+step 35000  train 2.7075  eval 2.6895  pmax 7.1  (320s)
+step 36000  train 2.7136  eval 2.7317  pmax 7.1  (329s)
+  [checkpoint + sample saved at step 36000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_1k_3ep_s123

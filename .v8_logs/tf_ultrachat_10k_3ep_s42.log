@@ -1,80 +1,63 @@
 /home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py:107: UserWarning: The given buffer is not writable, and PyTorch does not support non-writable tensors. This means you can write to the underlying (supposedly non-writable) buffer using the tensor. You may want to copy the buffer to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_new.cpp:1556.)
   train_ids = torch.frombuffer(train_text.encode("utf-8", errors="ignore"), dtype=torch.uint8)
 train bytes: 1,195,926,439  eval bytes: 2,859,070
-model: tf  params: 9,840  device: cuda
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [0,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [1,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [2,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [3,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [4,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [5,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [6,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [7,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [8,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [9,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [10,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [11,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [12,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [13,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [14,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [15,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [16,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [17,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [18,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [19,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [20,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [21,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [22,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [23,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [24,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [25,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [26,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [27,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [28,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [29,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [30,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-/__w/pytorch/pytorch/aten/src/ATen/native/cuda/IndexKernelUtils.cu:19: vectorized_gather_kernel: block: [408,0,0], thread: [31,0,0] Assertion `ind >=0 && ind < ind_dim_size && "vectorized gather kernel index out of bounds"` failed.
-Traceback (most recent call last):
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 325, in <module>
-    main()
-  File "/home/luke/Wavelet-State-KAN/experiments/V1_train_tinystories_lm.py", line 293, in main
-    loss = loss_fn(get_batch(train_ids, args.batch, args.block, device))
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 71, in loss
-    logits = self(idx[:, :-1])
-             ^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 67, in forward
-    x = b(x)
-        ^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/experiments/baselines.py", line 33, in forward
-    h = self.ln1(x)
-        ^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/modules/normalization.py", line 228, in forward
-    return F.layer_norm(
-           ^^^^^^^^^^^^^
-  File "/home/luke/Wavelet-State-KAN/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 2993, in layer_norm
-    return torch.layer_norm(
-           ^^^^^^^^^^^^^^^^^
-torch.AcceleratorError: CUDA error: device-side assert triggered
-Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
-CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
-For debugging consider passing CUDA_LAUNCH_BLOCKING=1
-
+model: tf  params: 12,912  device: cuda
+step     1  train 5.5561  eval 5.5165  pmax 1.0  (1s)
+step  1000  train 2.5265  eval 2.5279  pmax 2.3  (14s)
+step  2000  train 2.3689  eval 2.3449  pmax 2.6  (28s)
+step  3000  train 2.2977  eval 2.2820  pmax 2.7  (40s)
+step  4000  train 2.2418  eval 2.2722  pmax 2.8  (53s)
+step  5000  train 2.2325  eval 2.2856  pmax 2.8  (67s)
+step  6000  train 2.2561  eval 2.2369  pmax 2.9  (80s)
+step  7000  train 2.2232  eval 2.2470  pmax 3.0  (92s)
+step  8000  train 2.1778  eval 2.1709  pmax 3.0  (105s)
+step  9000  train 2.2140  eval 2.2048  pmax 3.0  (118s)
+step 10000  train 2.2428  eval 2.2266  pmax 3.1  (131s)
+step 11000  train 2.2277  eval 2.2646  pmax 3.1  (144s)
+step 12000  train 2.2008  eval 2.1970  pmax 3.1  (157s)
+step 13000  train 2.1604  eval 2.1655  pmax 3.2  (170s)
+step 14000  train 2.1966  eval 2.1793  pmax 3.2  (183s)
+step 15000  train 2.2080  eval 2.1742  pmax 3.2  (195s)
+step 16000  train 2.1913  eval 2.1728  pmax 3.3  (208s)
+step 17000  train 2.1362  eval 2.2006  pmax 3.3  (221s)
+step 18000  train 2.2344  eval 2.1870  pmax 3.3  (234s)
+step 19000  train 2.1401  eval 2.1576  pmax 3.3  (246s)
+step 20000  train 2.1755  eval 2.1338  pmax 3.3  (259s)
+step 21000  train 2.1289  eval 2.1175  pmax 3.3  (271s)
+step 22000  train 2.1914  eval 2.1668  pmax 3.3  (284s)
+step 23000  train 2.1142  eval 2.1652  pmax 3.3  (297s)
+step 24000  train 2.1444  eval 2.1560  pmax 3.3  (309s)
+step 25000  train 2.1416  eval 2.1413  pmax 3.3  (322s)
+  [checkpoint + sample saved at step 25000]
+step 26000  train 2.1241  eval 2.1141  pmax 3.3  (335s)
+step 27000  train 2.1534  eval 2.1537  pmax 3.3  (349s)
+step 28000  train 2.1723  eval 2.1096  pmax 3.3  (361s)
+step 29000  train 2.1096  eval 2.1556  pmax 3.3  (374s)
+step 30000  train 2.1819  eval 2.1422  pmax 3.4  (386s)
+step 31000  train 2.0811  eval 2.1252  pmax 3.3  (398s)
+step 32000  train 2.1524  eval 2.1034  pmax 3.3  (411s)
+step 33000  train 2.1791  eval 2.1130  pmax 3.4  (424s)
+step 34000  train 2.0905  eval 2.1597  pmax 3.3  (437s)
+step 35000  train 2.0969  eval 2.1088  pmax 3.3  (449s)
+step 36000  train 2.1668  eval 2.0920  pmax 3.4  (461s)
+step 37000  train 2.1117  eval 2.1000  pmax 3.4  (474s)
+step 38000  train 2.1006  eval 2.1889  pmax 3.4  (488s)
+step 39000  train 2.0954  eval 2.1474  pmax 3.4  (501s)
+step 40000  train 2.1021  eval 2.1631  pmax 3.4  (514s)
+step 41000  train 2.0966  eval 2.1230  pmax 3.4  (526s)
+step 42000  train 2.1160  eval 2.0939  pmax 3.4  (539s)
+step 43000  train 2.0885  eval 2.1409  pmax 3.4  (551s)
+step 44000  train 2.1411  eval 2.0729  pmax 3.4  (564s)
+step 45000  train 2.1340  eval 2.1073  pmax 3.4  (577s)
+step 46000  train 2.1012  eval 2.1065  pmax 3.4  (589s)
+step 47000  train 2.1048  eval 2.0929  pmax 3.4  (602s)
+step 48000  train 2.0973  eval 2.0540  pmax 3.4  (615s)
+step 49000  train 2.0908  eval 2.1133  pmax 3.4  (627s)
+step 50000  train 2.1067  eval 2.1363  pmax 3.4  (639s)
+  [checkpoint + sample saved at step 50000]
+step 51000  train 2.1270  eval 2.0837  pmax 3.4  (652s)
+step 52000  train 2.1134  eval 2.0433  pmax 3.4  (665s)
+step 53000  train 2.1222  eval 2.1231  pmax 3.4  (677s)
+step 54000  train 2.1064  eval 2.0820  pmax 3.4  (690s)
+  [checkpoint + sample saved at step 54000]
+done. artifacts in /home/luke/Wavelet-State-KAN/checkpoints/tf_ultrachat_10k_3ep_s42

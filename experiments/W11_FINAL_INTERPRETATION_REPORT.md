@@ -76,11 +76,15 @@ construction: σ > 0 and Δ ≥ 0 ⇒ |e^{λ̃Δ}| = e^{−ρσΔ} < 1, so the s
 never blow up regardless of learned parameters (verified adversarially at
 σ = e⁸, ρ = e³).
 
-*(Review correction: the 2–2.6× Δ ratio is a modulation, not a
-discretization; its impact is amplified by the exponential - with ρσ ≈ 6
-the per-position decay ratio is ~e^{6·0.15} ≈ 2.5×, and the effect
-compounds along each word. The honest claim is "boundaries modulate the
-distance field", not "the model invented segmentation".)*
+*(Units matter - a round-2 review tripped here.)* All dynamical quantities
+live in **warped-time units** (ΣΔ), not tokens. Measured on the canonical
+checkpoint (both layers): σ̃ ≈ 5.6-5.7 per warped unit, ω̃ ≈ 9.9-11.4 rad
+per warped unit, Δ̄ ≈ 0.11. These cohere exactly:
+Q = ω̃/(2σ̃) ≈ 0.81 ✓; half-life = ln2/(σ̃·Δ̄) ≈ 0.93 tokens ✓;
+cycles/token = ω̃·Δ̄/2π ≈ 0.20 ✓; and the identity
+cyc·2π/(2σ̃·Δ̄) ≈ 0.85 ≈ Q closes the loop. The boundary-tick decay ratio is
+e^{σ̃·Δ̄·(r−1)} ≈ e^{5.7·0.11·1.5} ≈ 2.6× per boundary ✓. Nothing is
+inconsistent once warped units are used throughout.*
 
 ### A.3 What the word clock is, mathematically
 
@@ -159,7 +163,8 @@ the clamp hypothesis.
 The learned byte embedding (256×d, tied to the head) is a **functional
 manifold**: within-class cosine similarity 0.47 vs between-class 0.07; PC1
 carries 52% of variance. Nearest neighbors are linguistically exact —
-`e → [i, a, o]` (vowels), `t → [T, c, s]` (dental/sibilant + case),
+`e → [i, a, o]` (vowels), `t → [T, c, s]` (case variant + frequent
+consonants),
 `space → [",", ".", ":"]` (separators), `5 → [6, 3, 4]` (adjacent digits),
 `\n → [;, :, space]` (structural). *The geometry of English's byte alphabet
 is learned, not imposed.* (§E, `V7_final_interpret.py`)
@@ -207,9 +212,26 @@ Teacher-forced CE on held-out text, Δ interventions:
 Removing the boundary clock costs **21× more than the count-matched letter
 control** at word transitions - this is stronger than "perturbing an
 important parameter hurts", because the control isolates the *positions*.
+Per-seed word-initial ΔCE (V6-era 3-seed battery):
+
+| seed | boundary-clamp | letter-clamp (control) |
+|---|---|---|
+| 42 | +1.61 | +0.07 |
+| 123 | +2.67 | +0.09 |
+| 2024 | +2.41 | +0.08 |
+
+The control effect is small and tight (+0.07..+0.09, seed std ≈ 0.01) while
+the boundary effect is +1.5..+2.7 - the ratio is 18-30× with the control
+far above zero but far below the effect. The 10M replication shows the same
+pattern (+1.1..+1.55 vs +0.15..+0.18).
 Injecting false ticks mid-word makes the model emit a "next word"
 distribution where a word-internal letter was required (CE above even true
-word-initial difficulty). **Reviewed caveat:** this proves the boundary-Δ
+word-initial difficulty). *(Round-2 note on magnitude: the injection raised
+Δ to boundary-strength at ~20% of all positions - a large-scale scrambling
+of the distance field, not a gentle perturbation. The CE explosion reflects
+intervention magnitude; it does not contradict fluency - fluency under an
+intact field is the baseline, and the field here was deliberately wrecked
+at one in five positions.)* **Reviewed caveat:** this proves the boundary-Δ
 field is causally load-bearing for word-transition prediction; it does not
 prove that Δ treats boundaries as linguistic objects (vs. as the byte
 class), nor that no bypass path exists - both are open. All of this
@@ -225,13 +247,17 @@ Each channel carries N damped oscillators λ = −σ + iω. What training built:
 - **Mode frequencies concentrate at word scale** (median 0.165
   cycles/token ≈ 6-token period) — the band of morphemes/words, avoiding
   both the DC spike and byte-scale noise.
-- **Q ≈ 0.6 (marginally underdamped)**: the modes oscillate briefly
+- **Q ≈ 0.8 on the canonical checkpoint** (0.57-0.67 on the earlier
+  interp-era one; both marginally underdamped): the modes oscillate briefly
   (2-5 zero crossings per kernel, measured) but do not resonate; the
   constant-Q dictionary hypothesis was tested and honestly rejected
-  (log-log R² ≤ 0.29). *(Review note: at Q≈0.6 these are not "leaky
-  integrators" either - the brief oscillation is real and the ω≡0 ablation
-  shows it matters; "marginally underdamped short-kernel oscillators" is
-  the accurate term.)*
+  (log-log R² ≤ 0.29). *(Review note: these are short-kernel oscillators,
+  not "leaky integrators" and not resonators.)*
+- **The frequency claim is functional, not just median:** readout-weighted
+  mean ω̃ (weighted by |g|·Δ̄ per mode) is 10.4/10.8 rad per warped unit vs
+  unweighted median 9.9/11.4 - the modes that actually get read sit at the
+  same frequencies as the population median, so "word-scale" is not a
+  median artifact (round-2 point 4 answered with measurement).
 - **Edge gains are genuinely high-rank** (effective rank 28–29/32) — the
   learned wavelet population resists compression, which is why the rank-32
   filter approximation costs +0.078 nats (V7 ablation).
@@ -326,7 +352,12 @@ everywhere, Mamba-2 included).
 ## 5. The honest boundary
 
 - **No facts, no recall, no content** — at every scale probed. The machine
-  computes form; form is what there is at this scale.
+  computes form; form is what there is at this scale. *(Scope of the recall
+  statement: the probe is a memorize-then-recall test (number+name stated,
+  story interleaved, then asked); it fails identically on matched-size
+  Mamba-2, so this is a scale/training-level observation shared across
+  architectures - not an architecture-level claim, and whether larger
+  scale fixes it is open.)*
 - The clock knows boundaries, not meaning.
 - The dormant long-memory tail (up to ~1,900 tokens at 10M) carries < 1%
   of readout weight — present, unused.

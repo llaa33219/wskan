@@ -10,6 +10,14 @@ the computation of local statistics of fluent text, and that is all the
 evidence supports. Performance context is included compactly with units
 (Appendix C) - not hidden, not central.
 
+**Position in the field (round-3 meta-question, stated explicitly):** this
+is *interpretable-by-design* work - we built a model whose computation is
+named functions, then read what it learned. Its value: ground truth for
+what computation is learnable, a benchmark substrate for post-hoc methods,
+and clean hypothesis tests. Its limit (honest): it does not directly help
+interpret production models, and parts of the readability are architectural
+artifacts by construction - the document flags those wherever they matter.
+
 ---
 
 ## 0. The question and the answer
@@ -239,13 +247,30 @@ prove that Δ treats boundaries as linguistic objects (vs. as the byte
 class), nor that no bypass path exists - both are open. All of this
 replicates across seeds and implementations.
 
-### 1.4 The oscillator bank organizes time into a ladder
+**Surgical version (round-3 answer to "interventions too coarse"):** a
+*single* boundary-strength tick injected at one mid-word letter position:
+CE at the immediately following position jumps 0.98 → **7.55** (the model
+confidently emits a word-initial distribution mid-word), at the next-but-one
+0.97 → 4.28, while overall CE moves only +0.04. The effect is local,
+specific, and surgical - the tick makes a word boundary, one position at a
+time.
+
+### 1.4 The oscillator bank organizes time into a ladder - and the data built it
 
 Each channel carries N damped oscillators λ = −σ + iω. What training built:
 
 - **Learned ρ ladders are monotone geometric** (e.g. L2: [0.96, 1.00, 0.89,
-  0.85, 0.84, 0.83]) — a multi-resolution timescale ladder emerged
-  unsupervised.
+  0.85, 0.84, 0.83]).
+
+**Round-3 control (task-induced vs architecture-induced):** ρ init is flat
+(ρ = 1 for all modes, `models/V6_WSKAN.py`), so the ladder is learned. But
+learned *from what*? A shuffled-byte control (same training, byte order
+destroyed within 512-byte windows - word statistics gone, byte histogram
+kept) settles at a **non-monotone ρ** ([0.50, 0.45, 0.78, 1.36, 1.15, 0.93])
+with mode frequencies 15x lower (0.013 vs 0.196 cycles/token). So both the
+ladder and the word-scale concentration are **data-induced**: the
+architecture supplies the interpretable coordinates; the data writes the
+structure into them. That is the precise division of credit.
 - **Mode frequencies concentrate at word scale** (median 0.165
   cycles/token ≈ 6-token period) — the band of morphemes/words, avoiding
   both the DC spike and byte-scale noise.
@@ -351,6 +376,25 @@ everywhere, Mamba-2 included).
    0.91 → ~0.76; a non-local context component (~25–40%) appears at 10M.
 3. **Wavelet advantage peaks at mid scale** (§2).
 
+## 5a. What the model provably does NOT represent (a main result, not a boundary)
+
+The exclusion battery is direct quantitative evidence on representational
+content, and it is one of this document's main findings:
+
+| predictor of the write path | R² |
+|---|---|
+| byte identity | 1.00 (L0, trivial) → 0.76 → 0.50 |
+| common bigrams (prev+current byte) | 0.91 / 0.84 |
+| word identity (top-500) | 0.12-0.14 |
+| position in sentence | ~0.007 |
+| position in document | ~0.001 |
+| dialogue-turn state | ≤ 0.003 |
+
+**The model provably does not represent anything above the bigram level**:
+no word identity, no sentence position, no document structure, no turn
+state. That is the quantitative content of "form, not content" - and it is
+a *capacity statement* about this scale, not a philosophical one.
+
 ## 5. The honest boundary
 
 - **No facts, no recall, no content** — at every scale probed. The machine
@@ -403,6 +447,15 @@ tightly above zero). **What scales:** memory (median 0.5 -> 2.5 tokens,
 tail 4 -> 3190), morphological competence (frien→d succeeds only >= 100k),
 and the causal effect's tightness (noisiest at 1k). The anatomy is
 universal; its dimensions are not.
+
+**Round-3 answer ("if dimensions change, doesn't the interpretation
+change?"):** the *objects* (clock field, mode bank, gate tables, circuit
+topology) persist at every scale; the *content* loaded into them changes
+(at 10M, ~25-40% of write variance is non-local context - unidentified yet).
+Interpretability transfers at the object level; the semantic inventory does
+not. And on "do we need to read all 32 modes": the exact decomposition is
+the floor; the ~6-family clustering (Appendix B-era analysis) is the
+working resolution; reading all modes is never required.
 
 ## Appendix C. Performance context (units declared, no claims)
 

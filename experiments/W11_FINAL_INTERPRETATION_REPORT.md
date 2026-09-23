@@ -88,13 +88,20 @@ never blow up regardless of learned parameters (verified adversarially at
 "100k-centric" point is answered in Appendix B: the same anatomy measured
 at all five tiers - the clock is universal, its dimensions scale.)* All dynamical quantities
 live in **warped-time units** (ΣΔ), not tokens. Measured on the canonical
-checkpoint (both layers): σ̃ ≈ 5.6-5.7 per warped unit, ω̃ ≈ 9.9-11.4 rad
-per warped unit, Δ̄ ≈ 0.11. These cohere exactly:
-Q = ω̃/(2σ̃) ≈ 0.81 ✓; half-life = ln2/(σ̃·Δ̄) ≈ 0.93 tokens ✓;
-cycles/token = ω̃·Δ̄/2π ≈ 0.20 ✓; and the identity
-cyc·2π/(2σ̃·Δ̄) ≈ 0.85 ≈ Q closes the loop. The boundary-tick decay ratio is
-e^{σ̃·Δ̄·(r−1)} ≈ e^{5.7·0.11·1.5} ≈ 2.6× per boundary ✓. Nothing is
-inconsistent once warped units are used throughout.*
+checkpoint (marginal medians over modes): L0 σ̃ ≈ 5.7, ω̃ ≈ 9.9; L1 σ̃ ≈ 5.6,
+ω̃ ≈ 11.4 rad per warped unit; Δ̄ ≈ 0.11–0.15.
+
+*Round-4 correction:* the pointwise identities (Q = ω/2σ, half-life =
+ln2/(σΔ̄), cycles/token = ωΔ̄/2π) hold **per mode, exactly, by construction**,
+but **not for medians** — the median of a ratio of correlated quantities is
+not the ratio of the medians, and σ̃, ω̃, Δ̄ are correlated across modes.
+An earlier version of this paragraph marked the medians as mutually coherent
+with ✓; that was wrong, and the marks are removed. What is exact: any single
+mode's tuple. Representative example (L1, channel 0, mode 3): σ̃ = 6.107,
+ω̃ = 13.169, Δ̄ = 0.153 ⇒ Q = 1.078, half-life = 0.740 tokens,
+cycles/token = 0.321 — identity exact. The boundary-tick decay ratio is
+e^{σ̃Δ̄(r−1)} ≈ 2.5× per boundary at median values (order-of-magnitude,
+not an identity).
 
 ### A.3 What the word clock is, mathematically
 
@@ -129,10 +136,27 @@ $$\text{logit}_v = W^{(v)}_{\text{head}} \cdot \Big[\, \text{emb}(x_{-1}) + \sum
 
 and every summand is readable. Since the scan output itself is
 $y_{n,o} = \sum_{i,k} C_{n,ik}\,\mathrm{Re}[g_{iok} h_{n,ik}]$, the decision
-decomposes **exactly** to named (channel, mode) pairs — e.g. the measured
-`frien→d` margin 8.86 with per-mode contributions
-[+1.94, +3.91, +0.73, +7.70, +4.87, −0.35], dominated by channel 0 · mode 3.
-No probing, no approximation: this is the model's own arithmetic.
+decomposes **exactly** to named (channel, mode) pairs. *Round-4 correction:*
+the earlier version of this table quoted pre-norm units that did not sum to
+the margin (and, worse, were computed from a history-free length-1 call that
+dropped the scan state). Recomputed on the canonical checkpoint with the full
+context and the final LayerNorm applied to each summand, the measured
+`frien→d` decision (margin **8.30** for 'd' over the runner-up 't') is:
+
+| summand | margin contribution |
+|---|---|
+| token embedding | +0.83 |
+| L0 base (skip) | +5.34 |
+| L0 wave (scan) | −5.34 |
+| L1 base (skip) | +0.86 |
+| L1 wave (scan) | **+7.39** |
+| norm constant | −0.79 |
+| **sum** | **+8.30** (exact) |
+
+The L1-wave term further decomposes per mode (summed over channels):
+[−2.91, +5.64, −0.81, +1.22, **+7.36**, −3.09] — modes 4 and 1 carry the
+morphological completion, modes 0 and 5 vote against. No probing, no
+approximation: this is the model's own arithmetic.
 
 ### A.6 The parallel-scan algebra (implementation, for completeness)
 
@@ -322,13 +346,14 @@ level, not edge level.
 ### 1.7 The decision: exact integration, opposing votes
 
 Additive residual + linear head ⇒ every decision margin decomposes
-**exactly**. Canonical case `frien→d`: margin 8.86 for 'd' over 'n';
-per-mode contributions [+1.94, +3.91, +0.73, **+7.70**, +4.87, −0.35],
-channel 0 dominant — morphological completion localizes to named modes.
-Word endings resolve as **L1-over-L0 disagreement resolutions**: the
-shallow layer resists ending the word (L0-wave negative at boundaries), the
-deep layer ends it. The token-embedding prior votes *against* the produced
-letter on average — context beats prior.
+**exactly**. Canonical case `frien→d` (margin 8.30 for 'd' over 't', full
+table in §A.5): the L0 base vote (+5.34) and token prior (+0.83) favor 'd',
+the L0 wave path opposes it (−5.34), and the **L1 wave path decides it
+(+7.39)**, carried by modes 4 (+7.36) and 1 (+5.64) against modes 0 and 5
+(−2.91, −3.09). Word endings resolve as **L1-over-L0 disagreement
+resolutions**: the shallow layer's wavelet path resists ending the word, the
+deep layer ends it. Across the attribution battery the token-embedding prior
+votes *against* the produced letter on average — context beats prior.
 
 ### 1.8 Production: the clock paces speech
 
@@ -370,18 +395,20 @@ everywhere, Mamba-2 included).
 
 ## 4. Scale laws (measured, multi-seed)
 
-1. **Memory length grows with capacity**: half-life 1 → 4.5–5 tokens
-   median, tail to ~1,900; σ clamp binding 43% → 0%.
+1. **Memory length grows with capacity**: half-life median 0.53 → 2.45
+   tokens, tail 4 → ~3,190 (canonical all-sizes battery, Appendix B; an
+   earlier draft quoted 4.5–5/~1,900 from the pre-campaign V3-era probe —
+   superseded). σ clamp binding 43% → 0%.
 2. **Content locality loosens**: byte identity 0.76 → ~0.55; bigrams
    0.91 → ~0.76; a non-local context component (~25–40%) appears at 10M.
 3. **Wavelet advantage peaks at mid scale** (§2).
 
-## 5a. What the model provably does NOT represent (a main result, not a boundary)
+## 5. What the model does NOT represent linearly (a main result, not a boundary)
 
 The exclusion battery is direct quantitative evidence on representational
 content, and it is one of this document's main findings:
 
-| predictor of the write path | R² |
+| predictor of the write path | linear R² |
 |---|---|
 | byte identity | 1.00 (L0, trivial) → 0.76 → 0.50 |
 | common bigrams (prev+current byte) | 0.91 / 0.84 |
@@ -390,12 +417,23 @@ content, and it is one of this document's main findings:
 | position in document | ~0.001 |
 | dialogue-turn state | ≤ 0.003 |
 
-**The model provably does not represent anything above the bigram level**:
+**The model has no *linear* readout of anything above the bigram level**:
 no word identity, no sentence position, no document structure, no turn
-state. That is the quantitative content of "form, not content" - and it is
-a *capacity statement* about this scale, not a philosophical one.
+state is linearly decodable from the write path. *Round-4 correction and
+scope limit:* an earlier version of this section said "provably does not
+represent anything above the bigram level" — that overclaims, because the
+battery used linear probes only. A nonlinear probe (1-hidden-layer MLP,
+500-way word-identity classification) recovers word identity at **37.8%
+accuracy (chance 0.2%)**: word-level information *is* present in the write
+path, but it is not linearly exposed — the model's own linear readout (C)
+cannot see it. The honest claim is therefore about the *linear
+accessibility* of content, which is what the model's readout can actually
+use; sentence/document/turn variables remain undetected even linearly, and
+we did not establish their nonlinear status. That is the quantitative
+content of "form, not content" - and it is a *capacity statement* about
+this scale, not a philosophical one.
 
-## 5. The honest boundary
+## 6. The honest boundary
 
 - **No facts, no recall, no content** — at every scale probed. The machine
   computes form; form is what there is at this scale. *(Scope of the recall
@@ -405,13 +443,13 @@ a *capacity statement* about this scale, not a philosophical one.
   architectures - not an architecture-level claim, and whether larger
   scale fixes it is open.)*
 - The clock knows boundaries, not meaning.
-- The dormant long-memory tail (up to ~1,900 tokens at 10M) carries < 1%
-  of readout weight — present, unused.
+- The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
+  carries < 1% of readout weight — present, unused.
 - No forward hand-simulation: we decompose any decision exactly after the
   fact and predict interventions qualitatively; we do not derive outputs
   without execution (the scale-imposed ceiling).
 
-## 6. Why this is (and isn't) a KAN-specific answer
+## 7. Why this is (and isn't) a KAN-specific answer
 
 *Corrected after review:* exact residual-stream decomposition is NOT unique
 to this architecture - any additive-residual + linear-head model
@@ -420,6 +458,19 @@ specific to wskan11 is the **unit of decomposition**: per-edge functions
 ψ_io(t) (named time functions) rather than per-head attention maps or MLP
 neuron activations, plus the clock field Δ as a first-class object. The
 decomposition machinery is shared; the objects decomposed into are not.
+
+## 8. Reproduction
+
+```bash
+.venv/bin/python experiments/W7BC_canonical_probe.py        # §1.2–1.5 (canonical ckpt)
+.venv/bin/python experiments/V7_causal_clock_full.py        # §1.3 causal battery
+.venv/bin/python experiments/W7BC_generation_analysis.py    # §1.8 production trace
+.venv/bin/python experiments/CAMPAIGN_aggregate.py          # §2 ablation + footnote tables
+```
+Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
+Interpretation checkpoints (protected): `checkpoints/*_interp_*`.
+Numbers: `figures/v7e_canonical_probe.json`, `v7e_10m_analysis.json`,
+`v7e_strengthening.json`, campaign CSVs.
 
 ## Appendix B. The same anatomy at every scale (5 tiers x 5 seeds)
 
@@ -475,16 +526,3 @@ and rankings shuffle by dataset.
 Reading: Mamba-2 leads at 100k (narrowly) and at 10m (clearly); wskan11 is
 competitive but not dominant anywhere; the ω≡0 ablation loses to wskan11 in
 72/75 paired cells. Full tables: `CAMPAIGN_aggregate.py`.
-
-## 7. Reproduction
-
-```bash
-.venv/bin/python experiments/W7BC_canonical_probe.py        # §1.2–1.5 (canonical ckpt)
-.venv/bin/python experiments/V7_causal_clock_full.py        # §1.3 causal battery
-.venv/bin/python experiments/W7BC_generation_analysis.py    # §1.8 production trace
-.venv/bin/python experiments/CAMPAIGN_aggregate.py          # §2 ablation + footnote tables
-```
-Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
-Interpretation checkpoints (protected): `checkpoints/*_interp_*`.
-Numbers: `figures/v7e_canonical_probe.json`, `v7e_10m_analysis.json`,
-`v7e_strengthening.json`, campaign CSVs.

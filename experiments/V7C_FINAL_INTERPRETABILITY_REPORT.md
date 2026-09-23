@@ -55,6 +55,16 @@ channel clusters amplify which — a modulation layer, not a bottleneck.
 
 ## I. Exact logit attribution — decisions emerge from opposing contributions
 
+> **Erratum (2026-09-24, round-4 review):** the table below was computed by
+> calling each layer on a **length-1 slice** of its input, which discards the
+> scan state — the "wave" contributions are history-free and the numbers are
+> therefore incorrect as path attributions (the qualitative finding that
+> layers disagree survives; the magnitudes do not). The corrected method —
+> full-sequence layer calls with the final LayerNorm applied per summand, so
+> the parts sum exactly to the margin — is used in
+> `W11_FINAL_INTERPRETATION_REPORT.md` §A.5 (canonical wskan11 checkpoint:
+> frien→d margin 8.30; L1-wave +7.39 decisive against L0-wave −5.34).
+
 The residual stream is additive and the head linear, so the decision margin
 (top1 − top2 logit) decomposes **exactly** into path contributions:
 

@@ -30,6 +30,123 @@ to the spoken output.
 
 ---
 
+## A. The mathematics of the mechanism
+
+This section is the rigorous form; each equation carries its measured value
+in this model. Derivations are exact where marked exact; measured
+quantities are labeled.
+
+### A.1 The edge function space (what a KAN edge is here)
+
+Every edge (i, o) owns an explicit scalar function built from N damped
+oscillators per input channel:
+
+$$\psi_{io}(t) = \sum_{k=1}^{N} \mathrm{Re}\!\left[g_{iok}\, e^{\tilde\lambda_{ik} t}\right]
+= \sum_k e^{-\tilde\sigma_{ik} t}\left(a_{iok}\cos\tilde\omega_{ik} t + b_{iok}\sin\tilde\omega_{ik} t\right),$$
+
+with $\tilde\lambda_{ik} = \rho_k\lambda_{ik} = \rho_k(-\sigma_{ik} + i\omega_{ik})$
+(the static ladder ρ_k reparameterizes both decay and frequency). This is
+**exactly** the family of impulse responses of finite-dimensional stable
+LTI systems — a theorem in both directions: h′ = λ̃h + u, y = Re[g·h] has
+impulse response ψ, and every finite sum of damped exponentials is such a
+response. So "the edge function" and "the SSM" are the same object. The
+admissibility (zero-mean) correction is closed-form:
+
+$$\tilde\psi(t) = \psi(t) - \Big(\textstyle\sum_k a_k \frac{2\sigma_k}{\sigma_k^2+\omega_k^2}\Big)\,\frac{\bar\sigma}{2}e^{-\bar\sigma|t|},
+\qquad \bar\sigma = \tfrac1N\textstyle\sum_k\sigma_k,$$
+
+exact for the pure envelope and O(ε) under the smoothed modulus
+√(t²+ε) used in code (documented in `models/V1_README.md`).
+
+### A.2 The selective scan and its exact closed form (the content-warped transform)
+
+Per channel i, mode k, the recurrence with input-driven step Δ^dyn_{n,i}
+and ZOH-consistent write:
+
+$$h_{n,ik} = e^{\tilde\lambda_{ik}\Delta^{\text{dyn}}_{n,i}}\, h_{n-1,ik} + B_{n,ik}\,\Delta^{\text{dyn}}_{n,i}\, x_{n,i},$$
+
+has the exact solution, with warped time $T_{n,i} = \sum_{j\le n}\Delta^{\text{dyn}}_{j,i}$:
+
+$$h_{n,ik} = \sum_{m\le n} e^{\tilde\lambda_{ik}(T_{n,i}-T_{m,i})}\, B_{m,ik}\,\Delta^{\text{dyn}}_{m,i}\, x_{m,i}.$$
+
+**This is the key equation of the model**: the edge applies its wavelet to
+the input with the time axis warped by content. Token distance is not
+position distance; it is accumulated dilation. Stability is by
+construction: σ > 0 and Δ ≥ 0 ⇒ |e^{λ̃Δ}| = e^{−ρσΔ} < 1, so the state can
+never blow up regardless of learned parameters (verified adversarially at
+σ = e⁸, ρ = e³).
+
+### A.3 What the word clock is, mathematically
+
+The measured Δ field (§1.2) has boundary:letter ratio r ≈ 2.0–2.6. In
+warped time, the distance between two letters separated by one boundary is
+(1 + r)/(1 + 1) ≈ 1.5–1.8× the distance of two adjacent letters, and the
+kernel $e^{\tilde\lambda(T_j - T_i)}$ evaluated at that distance decays
+accordingly: a boundary multiplies effective distance and thereby
+exponentially gates cross-word influence. **Word segmentation is not a
+rule; it is the level set of a learned distance function.** The causal
+battery (§1.3) is precisely an intervention on this distance field: setting
+boundary Δ to the letter mean flattens the level set; injecting ticks
+mid-word introduces spurious distances. The measured effects (+1.50 nats at
+word-initial under flattening; CE explosion under injection) are the
+empirical signs of the distance field's role.
+
+### A.4 The gates' algebra (structure vs content)
+
+$$B_{n,ik} = \underbrace{\sum_f \alpha_f(\text{byte}_n)\, M^B_{f,ik}}_{\text{structural (lookup-readable)}} + \underbrace{W^B_{\text{lr}}\, x_n}_{\text{content (residual)}},$$
+
+with fixed named features α ∈ {space, newline, punct, upper, lower, digit,
+vowel, 1}. Measured split (§1.5): the named rows carry the discrete
+formatting bytes (digit 1.42, newline, punct); the residual carries byte
+identity (R² 1.00→0.76→0.50 with depth) and local bigram statistics
+(R² 0.91/0.84). The same form holds for C (read).
+
+### A.5 The exact decision decomposition
+
+The residual stream is additive and the head is linear (tied embedding),
+so for the final position the logit of byte v is
+
+$$\text{logit}_v = W^{(v)}_{\text{head}} \cdot \Big[\, \text{emb}(x_{-1}) + \sum_{l=1}^{L} \big(\underbrace{x_{\text{in},l} W_{\text{base},l}}_{\text{skip}} + \underbrace{\text{wave}_l}_{\text{scan output}}\big)\Big],$$
+
+and every summand is readable. Since the scan output itself is
+$y_{n,o} = \sum_{i,k} C_{n,ik}\,\mathrm{Re}[g_{iok} h_{n,ik}]$, the decision
+decomposes **exactly** to named (channel, mode) pairs — e.g. the measured
+`frien→d` margin 8.86 with per-mode contributions
+[+1.94, +3.91, +0.73, +7.70, +4.87, −0.35], dominated by channel 0 · mode 3.
+No probing, no approximation: this is the model's own arithmetic.
+
+### A.6 The parallel-scan algebra (implementation, for completeness)
+
+The recurrence is the associative composition
+$(a_1, u_1) \circ (a_2, u_2) = (a_1 a_2,\; a_2 u_1 + u_2)$ on complex pairs;
+the log-depth Hillis-Steele scan evaluates it in O(L log L) with the prefix
+product p_n = Π_{j≤n} a_j updated by p_n ← p_n · p_{n−s} at shift s
+(invariant: p is the prefix product *so far* — the comment in
+`models/V8_WSKAN.py` marks the line where this was once wrong). Backward is
+the same scan over time-reversed inputs with the **conjugated** multiplier:
+since the forward Jacobian of h_n w.r.t. h_{n−1} is the complex multiply by
+a_n, its adjoint is the multiply by conj(a_n) — so
+D_n = G_n + conj(a_{n+1})·D_{n+1}, and
+da_re = D_re·h_prev_re + D_im·h_prev_im,
+da_im = D_im·h_prev_re − D_re·h_prev_im, du = D
+(all verified ≤ 2e-6 against serial-loop autograd). The fused V11 kernel
+computes both directions with `tl.associative_scan` over a coalesced
+(L, N) tile — one launch per layer.
+
+### A.7 What is measured vs what is derived (honesty map)
+
+**Derived (exact):** the SSM⇔wavelet identity, admissibility correction,
+the warped-time closed form, stability bounds, the decision decomposition,
+the scan's forward/backward recurrences.
+**Measured (checkpoint-read or intervention):** the Δ field values, the ρ
+ladders, frequency placement, the causal effect sizes, the R² splits, the
+Q statistic, the effective ranks.
+**Rejected by measurement (kept for honesty):** constant-Q self-organization,
+text-spectral-peak locking, turn-state tracking, the conv substitution,
+the clamp hypothesis.
+
+---
+
 ## 1. The emergence chain (each link measured, most links causal)
 
 ### 1.1 The byte manifold organizes itself by linguistic function

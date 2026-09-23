@@ -1,32 +1,32 @@
-# Why Language Emerges in WSKAN
-### The definitive mechanism monograph: from bytes to fluent form, every step read from the model's own functions
+# Anatomy of Language Form in WSKAN
+### How the model computes the local statistics of fluent text - a mechanistic anatomy, every step read from the model's own functions
 
 **Date:** 2026-09-13 · **Subject:** wskan11 (fused-kernel wavelet-SSM),
 canonical checkpoint `wskan11_ultrachat_100k_3ep_s42` (3-epoch campaign,
-5 seeds). Every number below was measured from checkpoints' own mathematical
-objects; the central ones are intervention-proven. **This document contains
-no benchmark claims** — leaderboards are in `CAMPAIGN_aggregate.py`'s
-output if anyone insists; they are not the point.
+5 seeds). **Scope (corrected after external review):** this is an anatomy of
+*how the model computes form* - boundary timing, oscillator structure,
+gates, decisions. It is not a theory of language emergence: what emerged is
+the computation of local statistics of fluent text, and that is all the
+evidence supports. Performance context is included compactly with units
+(Appendix C) - not hidden, not central.
 
 ---
 
 ## 0. The question and the answer
 
-**Why does a pile of damped oscillators with a learned clock learn to write
-fluent English?**
+**What did the model actually learn, and how does it compute it?**
 
-Because the architecture's two primitives — *content-warped time* and
-*multi-scale damped oscillation* — align with the two deep facts of
-language: **words are the unit** (not bytes), and **structure is
-multi-scale** (letters → morphemes → words → phrases → register). The model
-does not receive these facts. It *discovers* them: it invents a word
-boundary clock (causally proven), arranges its oscillators into a
-frequency ladder, and routes decisions through channels that specialize
-into boundary detectors and position trackers — all measurable in the
-checkpoint, none of it programmed.
+Measured answer: it learned to compute the **local statistics of fluent
+text** - and the machinery it built for that is more structured than the
+task requires. It routes existing boundary bytes through a learned clock
+(2-2.6x faster ticks at boundaries), arranges damped oscillators into a
+self-organized frequency ladder, splits write gates into structural and
+content channels, and makes decisions as exact, attributable integrations.
+None of this is programmed; all of it is measurable in the checkpoint.
 
-The rest of this document is the evidence chain, in order, from the input
-to the spoken output.
+What it did NOT learn (same evidence): facts, recall, content. The output
+is grammatical fluency without meaning. That boundary is part of the
+findings, not a footnote.
 
 ---
 
@@ -76,20 +76,25 @@ construction: σ > 0 and Δ ≥ 0 ⇒ |e^{λ̃Δ}| = e^{−ρσΔ} < 1, so the s
 never blow up regardless of learned parameters (verified adversarially at
 σ = e⁸, ρ = e³).
 
+*(Review correction: the 2–2.6× Δ ratio is a modulation, not a
+discretization; its impact is amplified by the exponential - with ρσ ≈ 6
+the per-position decay ratio is ~e^{6·0.15} ≈ 2.5×, and the effect
+compounds along each word. The honest claim is "boundaries modulate the
+distance field", not "the model invented segmentation".)*
+
 ### A.3 What the word clock is, mathematically
 
 The measured Δ field (§1.2) has boundary:letter ratio r ≈ 2.0–2.6. In
-warped time, the distance between two letters separated by one boundary is
-(1 + r)/(1 + 1) ≈ 1.5–1.8× the distance of two adjacent letters, and the
-kernel $e^{\tilde\lambda(T_j - T_i)}$ evaluated at that distance decays
-accordingly: a boundary multiplies effective distance and thereby
-exponentially gates cross-word influence. **Word segmentation is not a
-rule; it is the level set of a learned distance function.** The causal
-battery (§1.3) is precisely an intervention on this distance field: setting
-boundary Δ to the letter mean flattens the level set; injecting ticks
-mid-word introduces spurious distances. The measured effects (+1.50 nats at
-word-initial under flattening; CE explosion under injection) are the
-empirical signs of the distance field's role.
+warped time, a boundary multiplies effective distance by ~(1+r)/2, and the
+kernel $e^{\tilde\lambda(T_j - T_i)}$ decays accordingly - boundaries
+exponentially gate cross-word influence. **Precise claim (review-corrected):**
+the clock is an input-driven boundary-responsive distance modulation,
+byte-keyed at the input layer, partially generalized at depth. We did NOT
+show that Δ aligns with word boundaries independently of spaces, nor that
+no bypass paths exist; what the battery shows is that Δ at boundary
+positions is position-specifically load-bearing for word-transition
+prediction (21× the matched control). That is the exact scope of the
+causal claim.
 
 ### A.4 The gates' algebra (structure vs content)
 
@@ -147,7 +152,7 @@ the clamp hypothesis.
 
 ---
 
-## 1. The emergence chain (each link measured, most links causal)
+## 1. The computation chain (each link measured, most links causal)
 
 ### 1.1 The byte manifold organizes itself by linguistic function
 
@@ -159,7 +164,7 @@ carries 52% of variance. Nearest neighbors are linguistically exact —
 `\n → [;, :, space]` (structural). *The geometry of English's byte alphabet
 is learned, not imposed.* (§E, `V7_final_interpret.py`)
 
-### 1.2 The model invents tokenization — as a clock
+### 1.2 The model routes existing boundaries through a learned clock
 
 The single most important object: Δ = softplus(W_dt · norm(x)), the
 input-driven dilation. Measured on the canonical checkpoint (3-epoch, both
@@ -176,18 +181,19 @@ layers):
 
 Word boundaries advance the clock **2–2.6× faster** than letters, in every
 layer. Since per-token state decay is e^{−ρσΔ}, a boundary erases
-exponentially more of the current word's memory — **the effective unit of
-distance is the word, not the byte**. This is tokenizer-free word
-segmentation, learned through time warping alone.
+exponentially more of the current word's memory. **Corrected claim (external
+review):** the input layer's pulse is largely byte-keyed recognition of the
+existing boundary bytes - with spaces deleted it vanishes at L0 (ratio
+1.01). What is non-trivial: (a) deeper layers retain ~16% elevation at
+implicit boundaries without any space input (partial learned
+generalization), and (b) the *function* of this modulation is
+position-specifically load-bearing (§1.3), i.e. the model did not merely
+detect boundaries - it built its memory gating on them.
 
-The distribution confirms it is not a mean artifact: space's p10 ≈
-lowercase's p90 (E2 quantiles). And the whitespace-removal test sharpens
-the claim honestly: with spaces deleted, the input layer's boundary pulse
-vanishes (ratio 1.01) while deeper layers keep ~16% elevation at implicit
-boundaries — the clock is an **input-driven boundary detector**, primarily
-byte-keyed at L0, partially space-independent deeper.
+The distribution confirms the elevation is not a mean artifact: space's
+p10 ≈ lowercase's p90 (E2 quantiles).
 
-### 1.3 The causal proof (necessity AND sufficiency, replicated)
+### 1.3 Position-specific causal evidence (necessity + sufficiency, with the reviewed caveat)
 
 Teacher-forced CE on held-out text, Δ interventions:
 
@@ -198,15 +204,16 @@ Teacher-forced CE on held-out text, Δ interventions:
 | count-matched control (letters) | 1.993 | 2.89 (+0.07) |
 | inject boundary-strength ticks mid-word | **3.49** | 3.67 |
 
-Removing the boundary clock costs **21× more than the matched control**
-at word transitions (necessity). Injecting false ticks mid-word makes the
-model emit a "next word" distribution where a word-internal letter was
-required — CE above even true word-initial difficulty (sufficiency: the
-tick *causes* boundary behavior). The clamp cost decomposes 33% at
-boundaries / 28% word-initial / 46% propagated — the clock is global in
-effect, strongest exactly at word transitions. All of this replicates
-across seeds and implementations (chunked-era and fused-kernel-era
-checkpoints agree).
+Removing the boundary clock costs **21× more than the count-matched letter
+control** at word transitions - this is stronger than "perturbing an
+important parameter hurts", because the control isolates the *positions*.
+Injecting false ticks mid-word makes the model emit a "next word"
+distribution where a word-internal letter was required (CE above even true
+word-initial difficulty). **Reviewed caveat:** this proves the boundary-Δ
+field is causally load-bearing for word-transition prediction; it does not
+prove that Δ treats boundaries as linguistic objects (vs. as the byte
+class), nor that no bypass path exists - both are open. All of this
+replicates across seeds and implementations.
 
 ### 1.4 The oscillator bank organizes time into a ladder
 
@@ -218,9 +225,13 @@ Each channel carries N damped oscillators λ = −σ + iω. What training built:
 - **Mode frequencies concentrate at word scale** (median 0.165
   cycles/token ≈ 6-token period) — the band of morphemes/words, avoiding
   both the DC spike and byte-scale noise.
-- **Q ≈ 0.6 (overdamped)**: the modes act as short-kernel *phase shapers*,
-  not resonators; the constant-Q dictionary hypothesis was tested and
-  honestly rejected (log-log R² ≤ 0.29).
+- **Q ≈ 0.6 (marginally underdamped)**: the modes oscillate briefly
+  (2-5 zero crossings per kernel, measured) but do not resonate; the
+  constant-Q dictionary hypothesis was tested and honestly rejected
+  (log-log R² ≤ 0.29). *(Review note: at Q≈0.6 these are not "leaky
+  integrators" either - the brief oscillation is real and the ω≡0 ablation
+  shows it matters; "marginally underdamped short-kernel oscillators" is
+  the accurate term.)*
 - **Edge gains are genuinely high-rank** (effective rank 28–29/32) — the
   learned wavelet population resists compression, which is why the rank-32
   filter approximation costs +0.078 nats (V7 ablation).
@@ -277,10 +288,10 @@ production loop is the analysis loop, seen from the inside.
 
 ---
 
-## 2. What the wavelet specifically buys (mechanism evidence, 5 seeds)
+## 2. What the wavelet specifically buys: modest, consistent, scale-shrinking
 
-The ablation (wskan11 vs ω≡0, identical everything) is the cleanest proof
-that the oscillatory function space does real work:
+The ablation (wskan11 vs ω≡0, identical everything) measures the
+oscillatory function space's contribution. **It is small, and we say so:**
 
 - **72 of 75 cells negative** (5 seeds × 5 sizes × 3 datasets): −0.035 /
   −0.046 / −0.041 nats at the 100k tier (TinyStories/UltraChat/WikiText).
@@ -289,9 +300,12 @@ that the oscillatory function space does real work:
   differentiator at small/mid scale — exactly where memory is short and
   phase-shaped kernels do the lifting.
 
-This is the KAN answer to "why this architecture": the edge function space
-(damped oscillations) matches the structure of the signal's local
-transitions.
+**Honest size assessment (review-driven):** −0.03…−0.05 nats at mid scale
+is a real but modest effect (a few percent of CE), and it shrinks with
+scale - at 10M the oscillation is a small consistent bonus, not the
+mechanism. The claim that survives is narrow: at small/mid scale, edge
+functions with phase structure beat pure-decay edges, consistently. Nothing
+larger is claimed.
 
 ## 3. What 3 epochs buy (qualitative, all tiers)
 
@@ -320,14 +334,34 @@ everywhere, Mamba-2 included).
   fact and predict interventions qualitatively; we do not derive outputs
   without execution (the scale-imposed ceiling).
 
-## 6. Why this is the KAN answer
+## 6. Why this is (and isn't) a KAN-specific answer
 
-A transformer hides its computation in QK^V·V products; an SSM hides it in
-recurrent state. wskan11's computation is **named functions all the way
-down**: ψ_io(t) per edge, ρ ladders per layer, Δ per position, named gate
-tables, per-mode decision contributions. That is what made every measurement
-in this document possible without a single probing model or activation
-atlas — the functions are the analysis.
+*Corrected after review:* exact residual-stream decomposition is NOT unique
+to this architecture - any additive-residual + linear-head model
+(transformers included) admits the same path-level decomposition. What is
+specific to wskan11 is the **unit of decomposition**: per-edge functions
+ψ_io(t) (named time functions) rather than per-head attention maps or MLP
+neuron activations, plus the clock field Δ as a first-class object. The
+decomposition machinery is shared; the objects decomposed into are not.
+
+## Appendix C. Performance context (units declared, no claims)
+
+All numbers are **byte-level cross-entropy** (nats per byte) on held-out
+data, 3-epoch campaign, matched parameter tiers, 5 seeds. This is context,
+not a claim of superiority - at every tier the field is within ~0.1 nats
+and rankings shuffle by dataset.
+
+| tier | wskan11 | wskan11real | mamba2 | tf |
+|---|---|---|---|---|
+| 100k (TinyStories) | 0.776±.008 | 0.812±.005 | **0.747±.004** | 0.836±.020 |
+| 100k (UltraChat) | 1.184±.021 | 1.230±.018 | **1.158±.019** | 1.288±.027 |
+| 100k (WikiText) | 1.303±.012 | 1.344±.008 | **1.282±.010** | 1.397±.021 |
+| 10m (TinyStories) | 0.546±.005 | 0.558±.004 | **0.478±.007** | 0.487±.009 |
+| 10m (UltraChat) | 0.833±.006 | 0.861±.007 | **0.716±.007** | 0.799±.027 |
+
+Reading: Mamba-2 leads at 100k (narrowly) and at 10m (clearly); wskan11 is
+competitive but not dominant anywhere; the ω≡0 ablation loses to wskan11 in
+72/75 paired cells. Full tables: `CAMPAIGN_aggregate.py`.
 
 ## 7. Reproduction
 

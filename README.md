@@ -64,6 +64,8 @@ experiments/
   BENCH_orchestrate.py + BENCH_worker.sh + BENCH_aggregate.py  # 225-run matrix tooling
   W7BC_CROSS_FAMILY_REPORT.md        # 5 families x 5 sizes x 3 datasets x 3 seeds + interpretability axis
   V3_interpret.py                 # edge-function extraction + figures
+  W11_all_sizes_analysis.py       # all-sizes anatomy battery (5 tiers x 5 seeds; Appendix B)
+  W11_hand_simulation.py          # deriving the next token by hand (Appendix D)
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)
   {model}_{dataset}_interp_s{seed}/   # canonical interpretation tier

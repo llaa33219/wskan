@@ -445,9 +445,13 @@ this scale, not a philosophical one.
 - The clock knows boundaries, not meaning.
 - The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
   carries < 1% of readout weight — present, unused.
-- No forward hand-simulation: we decompose any decision exactly after the
-  fact and predict interventions qualitatively; we do not derive outputs
-  without execution (the scale-imposed ceiling).
+- Forward hand-simulation: **partially lifted (Appendix D)** — at 1k/10k
+  the next-token decision is derived completely by hand-readable
+  arithmetic (every intermediate printed; median 12–26 of ≤ 1,728 history
+  terms); at 100k the median decision needs 6 of 11,520 terms and ≤ 25
+  terms suffice in 74% of contexts, but a full forward derivation is not
+  hand-followable and the input-dependent gates must still be executed,
+  not predicted.
 
 ## 7. Why this is (and isn't) a KAN-specific answer
 
@@ -466,6 +470,7 @@ decomposition machinery is shared; the objects decomposed into are not.
 .venv/bin/python experiments/V7_causal_clock_full.py        # §1.3 causal battery
 .venv/bin/python experiments/W7BC_generation_analysis.py    # §1.8 production trace
 .venv/bin/python experiments/CAMPAIGN_aggregate.py          # §2 ablation + footnote tables
+.venv/bin/python experiments/W11_hand_simulation.py         # Appendix D hand-simulation
 ```
 Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
 Interpretation checkpoints (protected): `checkpoints/*_interp_*`.
@@ -526,3 +531,72 @@ and rankings shuffle by dataset.
 Reading: Mamba-2 leads at 100k (narrowly) and at 10m (clearly); wskan11 is
 competitive but not dominant anywhere; the ω≡0 ablation loses to wskan11 in
 72/75 paired cells. Full tables: `CAMPAIGN_aggregate.py`.
+
+## Appendix D. Deriving the next token by hand (the ceiling, attacked)
+
+*This appendix answers a natural question raised against section 6: if the
+model is a bundle of named functions, can its next-token prediction be
+derived by hand, not merely decomposed after the fact? Script:
+`experiments/W11_hand_simulation.py`, numbers:
+`figures/w11_hand_simulation.json`.*
+
+**What "by hand" means here (machine-verified hand-simulation):** an
+itemized from-scratch forward pass — serial scan, explicit warped-time
+history sums, every gate value printed — reproduces the model's logits to
+**max error 3.8e-6** at the 1k/10k/100k tiers (per-position scan error
+≤ 1.5e-5), and every decomposition below is integrity-checked
+(parts must sum to the normed final state within 1e-4, asserted). The
+script performs only arithmetic whose every intermediate is displayed; any
+single step is checkable with a calculator. At 1k (d = 4, one layer, six
+modes) the entire computation fits on a page: 576 history terms for a
+24-byte context, 4 clock numbers per byte.
+
+**Worked example (1k, TinyStories, eval stream).** Context
+`utiful yellow sunrise.\nO` → the model produces 'n' (a new sentence:
+"Once/On..."). The clock field is readable at a glance — spaces tick
+Δ ≈ [0.68, 0.65, 0.63, 0.26], '.' ≈ [0.82, 0.72, 0.59, 0.32], letters
+lower — and the decision decomposes exactly: embedding −3.46, base +1.66,
+**wave +9.26**, norm-const +0.69 (sum 8.15, exact). The wave's top history
+term is the **period two bytes back**, read through mode 4 at warped
+distance 0.628: +5.37; the newline adds +3.16; the current 'O' contributes
++0.74. The decision is literally "the period–newline pair two steps back,
+attenuated by the learned kernel, primes a sentence start, and given 'O'
+the completion 'n' (On/Once) wins." A wrong
+case is equally legible: after `"Ow! Tha` the model says 'n' (**"Than"**)
+where the text has 't' ("That") — a near-miss, driven by the base path
+(+9.05); failures at this scale are readable, not mysterious.
+
+**How many terms a hand must sum (truncation curve, 50 contexts each):**
+
+| tier | history terms | static parts alone correct | median terms needed | ≤ 25 terms | p90 |
+|---|---|---|---|---|---|
+| 1k | 576 | 10% | 12 | 76% | 38 |
+| 10k | 1,728 | 14% | 26 | 50% | 135 |
+| 100k | 11,520 | 26% | 6 | 74% | 97 |
+
+Two findings. (i) The static parts (embedding + base + norm) almost never
+decide alone — **history is the decision**, even at 1k. (ii) Yet the
+decision is a low-rank event: the median context needs 6–26 of up to
+11,520 history terms, ranked by contribution to the predicted byte, for
+the prediction to stabilize — and this holds at 100k, not just at the toy
+tiers. A human summing the top terms reproduces the model's argmax in
+most contexts; the long tail is real but rarely load-bearing.
+
+**Dictionary-guided prediction at 100k (the honest limit).** A
+pre-registered rule — 4-byte suffixes seen ≥ 8 times in training with
+≥ 75% next-byte purity (20 eval contexts) — matches the model's output
+**20/20**: the model has these completions. But the *mechanism* varies:
+the L1 wave path is the dominant margin contributor in only 8/20 (L0
+wave/base decide the rest), and the canonical `frien→d` mode dictionary
+{modes 1, 4} appears in the top-2 of just 2/20. **The object-level
+anatomy transfers; the specific mode assignments are per-decision, not a
+global dictionary** — the Appendix B answer, now measured at the decision
+level.
+
+**What this closes and what it does not.** The section-6 ceiling is
+lifted at 1k/10k (complete derivation, every number on the page) and
+partially at 100k (truncated derivation: median 6 terms; plus the exact
+post-hoc decomposition of §A.5). Not closed: full forward derivation at
+100k+ — the gates are input-dependent, so per-position gate values must
+still be computed (they are printed, not predicted); and no claim is made
+that a human *without* the printed tables predicts anything.

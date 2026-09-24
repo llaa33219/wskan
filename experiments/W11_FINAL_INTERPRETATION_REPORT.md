@@ -476,13 +476,20 @@ open. The recall statement (§6) is behavioral and unaffected.
   information present throughout, but only in linearly inaccessible form.
   The machine computes form; the only content it provably *uses* is form.
 - The clock knows boundaries, not meaning.
-- **Why the excess organization arises is open.** The observed structure —
-  the frequency ladder, the structure/content gate split, the antipodal
-  specialists — exceeds what next-byte prediction strictly requires (the
-  task needs local statistics; the model built a structured instrument for
-  them). Whether that excess is an optimization-path artifact, an inductive
-  bias of the SSM parameterization, or something general about
-  gradient-trained sequence models, we do not know. Stated, not answered.
+- **The "excess organization" question — resolved
+  (`W11_EXCESS_STRUCTURE_REPORT.md`).** The structure is not excess: it is
+  load-bearing (timescale-ladder flattening +0.125 nats; frequency–mode
+  consistency +2.6; timescale–mode consistency +1.9; feature-table
+  assignment +5.9; a full mode permutation is an exact gauge symmetry,
+  +0.0000 — the mode is a coherent object). Its origin is decomposed:
+  the frequency ladder's skeleton is an architectural prior (π-harmonic
+  init, preserved); the timescale ladder, boundary clock, and gate split
+  are learned — within ~250 steps, oscillation-independently (wskan11real
+  builds them too), and architecture-generally (mamba2 learns
+  boundary-responsive dt with the opposite sign convention). What remains
+  open is narrower: seed-level convergence of the specific assignments,
+  and the antipodal-metric discrepancy (§1.6 is a routing-level claim;
+  gain-space antipodality is weak).
 - The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
   carries < 1% of readout weight — present, unused.
 - Forward derivation without execution: **not achieved, at any scale
@@ -524,6 +531,7 @@ and the claims are scoped to them.
 .venv/bin/python experiments/CAMPAIGN_aggregate.py          # §2 ablation + footnote tables
 .venv/bin/python experiments/W11_hand_simulation.py         # Appendix D hand-simulation
 .venv/bin/python experiments/W11_round5_probes.py           # §4 trigram identification, §5 usefulness ladder
+.venv/bin/python experiments/W11_excess_structure.py        # §6 organization-origin battery
 ```
 Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
 Interpretation checkpoints (protected): `checkpoints/*_interp_*`.

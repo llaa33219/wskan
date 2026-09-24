@@ -67,6 +67,8 @@ experiments/
   W11_all_sizes_analysis.py       # all-sizes anatomy battery (5 tiers x 5 seeds; Appendix B)
   W11_hand_simulation.py          # deriving the next token by hand (Appendix D)
   W11_round5_probes.py            # usefulness ladder (nonlinear probes) + 10M trigram identification
+  W11_excess_structure.py         # origin of the organization: interventions, init-vs-trained, dynamics
+  W11_EXCESS_STRUCTURE_REPORT.md  # the "excess structure" is load-bearing; origin decomposed
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)
   {model}_{dataset}_interp_s{seed}/   # canonical interpretation tier

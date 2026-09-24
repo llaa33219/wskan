@@ -385,6 +385,16 @@ mechanism. The claim that survives is narrow: at small/mid scale, edge
 functions with phase structure beat pure-decay edges, consistently. Nothing
 larger is claimed.
 
+**Why the architecture exists, then (round-5 answer):** not for the nats.
+The ablation answers only "does the phase structure do anything at all" —
+yes, consistently, exactly where memory is short. The architecture's
+reason to exist is the analyzable object itself: edge functions as named,
+causal, exactly decomposable mechanisms, i.e. everything in this document
+outside Appendix C. If the performance effect vanished entirely at every
+scale, the interpretability results would stand unchanged. Whether a
+narrow-but-real efficiency effect at small scale is *important* is a
+judgment we leave to the reader; we claim only that it is measured.
+
 ## 3. What 3 epochs buy (qualitative, all tiers)
 
 Grammatical fluency and structural markers ("The end.", list formatting,
@@ -399,8 +409,17 @@ everywhere, Mamba-2 included).
    tokens, tail 4 → ~3,190 (canonical all-sizes battery, Appendix B; an
    earlier draft quoted 4.5–5/~1,900 from the pre-campaign V3-era probe —
    superseded). σ clamp binding 43% → 0%.
-2. **Content locality loosens**: byte identity 0.76 → ~0.55; bigrams
-   0.91 → ~0.76; a non-local context component (~25–40%) appears at 10M.
+2. **Content locality loosens — and the looseness is identified
+   (round-5)**: byte identity 0.76 → ~0.55; bigrams 0.91 → ~0.76; the
+   remainder at 10M (~25–40%) was "unidentified" in earlier revisions. A
+   sequential family decomposition of the 10M write path (UltraChat,
+   `experiments/W11_round5_probes.py`) shows it is predominantly
+   **trigram-level statistics**: cumulative explained variance 0.48
+   (byte) → 0.65 (bigram) → **0.94 (trigram)**; word identity adds 0.09,
+   previous-word/positions ≤ 0.02 each; 5.4% genuinely unidentified
+   (single seed, single dataset — scope noted). What grows with scale is
+   the *order* of local statistics the model writes, not a new class of
+   structure.
 3. **Wavelet advantage peaks at mid scale** (§2).
 
 ## 5. What the model does NOT represent linearly (a main result, not a boundary)
@@ -420,38 +439,61 @@ content, and it is one of this document's main findings:
 **The model has no *linear* readout of anything above the bigram level**:
 no word identity, no sentence position, no document structure, no turn
 state is linearly decodable from the write path. *Round-4 correction and
-scope limit:* an earlier version of this section said "provably does not
-represent anything above the bigram level" — that overclaims, because the
-battery used linear probes only. A nonlinear probe (1-hidden-layer MLP,
-500-way word-identity classification) recovers word identity at **37.8%
-accuracy (chance 0.2%)**: word-level information *is* present in the write
-path, but it is not linearly exposed — the model's own linear readout (C)
-cannot see it. The honest claim is therefore about the *linear
-accessibility* of content, which is what the model's readout can actually
-use; sentence/document/turn variables remain undetected even linearly, and
-we did not establish their nonlinear status. That is the quantitative
-content of "form, not content" - and it is a *capacity statement* about
-this scale, not a philosophical one.
+round-5 refinement:* an earlier version of this section said "provably does
+not represent anything above the bigram level" — that overclaims, because
+the battery used linear probes only. Nonlinear probes (1-hidden-layer MLP,
+500-way word-identity, **held-out split**; the 37.8% figure quoted in the
+round-4 revision was train-contaminated and is superseded) measure how the
+information attenuates along the path the model itself uses:
+
+| signal | linear R² | MLP held-out acc (chance 0.3%) |
+|---|---|---|
+| residual-B (the write path) | 0.149 | 26.3% |
+| y (post-gate wave output — what enters the stream) | 0.155 | 23.4% |
+| residual stream (what the head sees) | 0.157 | 21.5% |
+
+Two facts, kept separate. (i) Word-level information **is present** at
+every stage, and the model's own gate/readout does **not** filter it out —
+it attenuates only mildly (26% → 22%). (ii) At no stage is it **linearly
+accessible**, and the model's readout (C) is linear — so the information
+is not exposed in any form the model's own linear machinery can read.
+Whether downstream nonlinearities (the next layer's gates) exploit it
+anyway is possible in principle and not established either way. The honest
+title of this section's finding is therefore **"linearly accessible form,
+linearly inaccessible content"** — a statement about what the model can
+*use*, not about what its signals contain. Sentence/document/turn
+variables remain undetected even linearly, and their nonlinear status is
+open. The recall statement (§6) is behavioral and unaffected.
 
 ## 6. The honest boundary
 
-- **No facts, no recall, no content** — at every scale probed. The machine
-  computes form; form is what there is at this scale. *(Scope of the recall
-  statement: the probe is a memorize-then-recall test (number+name stated,
-  story interleaved, then asked); it fails identically on matched-size
-  Mamba-2, so this is a scale/training-level observation shared across
-  architectures - not an architecture-level claim, and whether larger
-  scale fixes it is open.)*
+- **No facts, no recall** — at every scale probed (behavioral
+  memorize-then-recall probe: number+name stated, story interleaved, then
+  asked; fails identically on matched-size Mamba-2, so this is a
+  scale/training-level observation shared across architectures - not an
+  architecture-level claim, and whether larger scale fixes it is open).
+  **Content** is *not absent* from the signals — §5 shows word-level
+  information present throughout, but only in linearly inaccessible form.
+  The machine computes form; the only content it provably *uses* is form.
 - The clock knows boundaries, not meaning.
+- **Why the excess organization arises is open.** The observed structure —
+  the frequency ladder, the structure/content gate split, the antipodal
+  specialists — exceeds what next-byte prediction strictly requires (the
+  task needs local statistics; the model built a structured instrument for
+  them). Whether that excess is an optimization-path artifact, an inductive
+  bias of the SSM parameterization, or something general about
+  gradient-trained sequence models, we do not know. Stated, not answered.
 - The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
   carries < 1% of readout weight — present, unused.
-- Forward hand-simulation: **partially lifted (Appendix D)** — at 1k/10k
-  the next-token decision is derived completely by hand-readable
-  arithmetic (every intermediate printed; median 12–26 of ≤ 1,728 history
-  terms); at 100k the median decision needs 6 of 11,520 terms and ≤ 25
-  terms suffice in 74% of contexts, but a full forward derivation is not
-  hand-followable and the input-dependent gates must still be executed,
-  not predicted.
+- Forward derivation without execution: **not achieved, at any scale
+  (Appendix D)**. What exists is *transparent simulation* — execution
+  whose every intermediate is named and printed. At 1k/10k it is complete
+  (the whole computation fits in working memory; median 12–26 of ≤ 1,728
+  history terms carry the decision); at 100k it is truncated (median 6 of
+  11,520; ≤ 25 terms suffice in 74% of contexts). But the gates are
+  input-dependent and must be *executed*, not derived — so "the ceiling is
+  lifted" was too generous; the precise statement is that the computation
+  is fully transparent at small scale and translucent at 100k.
 
 ## 7. Why this is (and isn't) a KAN-specific answer
 
@@ -463,6 +505,16 @@ specific to wskan11 is the **unit of decomposition**: per-edge functions
 neuron activations, plus the clock field Δ as a first-class object. The
 decomposition machinery is shared; the objects decomposed into are not.
 
+*On the value of interpretable-by-design (round-5):* this work does not
+directly help interpret production models, and we do not claim otherwise.
+What it offers is (a) a **ground truth** of learnable computation — every
+mechanism here is measured, not hypothesized; (b) a **benchmark** on which
+post-hoc interpretability methods can be validated against exact answers;
+(c) **clean hypothesis tests** (clock, gate split, mode roles) of the kind
+that are ambiguous in larger models. How much that is worth is the
+community's call; what we stand behind is that the measurements are exact
+and the claims are scoped to them.
+
 ## 8. Reproduction
 
 ```bash
@@ -471,6 +523,7 @@ decomposition machinery is shared; the objects decomposed into are not.
 .venv/bin/python experiments/W7BC_generation_analysis.py    # §1.8 production trace
 .venv/bin/python experiments/CAMPAIGN_aggregate.py          # §2 ablation + footnote tables
 .venv/bin/python experiments/W11_hand_simulation.py         # Appendix D hand-simulation
+.venv/bin/python experiments/W11_round5_probes.py           # §4 trigram identification, §5 usefulness ladder
 ```
 Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
 Interpretation checkpoints (protected): `checkpoints/*_interp_*`.
@@ -506,10 +559,13 @@ universal; its dimensions are not.
 
 **Round-3 answer ("if dimensions change, doesn't the interpretation
 change?"):** the *objects* (clock field, mode bank, gate tables, circuit
-topology) persist at every scale; the *content* loaded into them changes
-(at 10M, ~25-40% of write variance is non-local context - unidentified yet).
-Interpretability transfers at the object level; the semantic inventory does
-not. And on "do we need to read all 32 modes": the exact decomposition is
+topology) persist at every scale; the *content* loaded into them changes.
+Round-5 measurement sharpened what changes: the 10M write path's
+non-bigram share is predominantly **trigram-level** statistics (§4), not
+discourse structure - so the scale change is the *order of local
+statistics*, not a new class of object. Interpretability transfers at the
+object level; the semantic inventory grows by one n-gram order at 10M.
+And on "do we need to read all 32 modes": the exact decomposition is
 the floor; the ~6-family clustering (Appendix B-era analysis) is the
 working resolution; reading all modes is never required.
 
@@ -593,10 +649,13 @@ anatomy transfers; the specific mode assignments are per-decision, not a
 global dictionary** — the Appendix B answer, now measured at the decision
 level.
 
-**What this closes and what it does not.** The section-6 ceiling is
-lifted at 1k/10k (complete derivation, every number on the page) and
-partially at 100k (truncated derivation: median 6 terms; plus the exact
-post-hoc decomposition of §A.5). Not closed: full forward derivation at
-100k+ — the gates are input-dependent, so per-position gate values must
-still be computed (they are printed, not predicted); and no claim is made
-that a human *without* the printed tables predicts anything.
+**What this closes and what it does not.** *Round-5 terminology
+correction:* "lifting the ceiling" was too generous. What exists is
+**transparent simulation** — execution whose every intermediate is named
+and printed — not derivation. At 1k/10k the transparent simulation is
+complete (every number on the page); at 100k it is truncated (median 6
+terms, plus the exact post-hoc decomposition of §A.5). **Derivation
+without execution is achieved nowhere**: the gates are input-dependent,
+so per-position gate values must still be computed (printed, not
+predicted), and no claim is made that a human *without* the printed
+tables predicts anything.

@@ -1,0 +1,48 @@
+{
+  "part1_usefulness_ladder": {
+    "resB": {
+      "linear_r2": 0.1491,
+      "mlp_acc_heldout": 0.2632
+    },
+    "y_used": {
+      "linear_r2": 0.1547,
+      "mlp_acc_heldout": 0.2338
+    },
+    "stream": {
+      "linear_r2": 0.1567,
+      "mlp_acc_heldout": 0.2154
+    }
+  },
+  "part2_10m_families": {
+    "total_var_mean": 67281.671875,
+    "byte-32": {
+      "r2_gain_alone": 0.4737,
+      "cumulative_explained": 0.4757
+    },
+    "bigram-128": {
+      "r2_gain_alone": 0.33,
+      "cumulative_explained": 0.6503
+    },
+    "trigram-2k": {
+      "r2_gain_alone": 0.8198,
+      "cumulative_explained": 0.938
+    },
+    "word-id-500": {
+      "r2_gain_alone": 0.0903,
+      "cumulative_explained": 0.9436
+    },
+    "prev-word-500": {
+      "r2_gain_alone": 0.0235,
+      "cumulative_explained": 0.945
+    },
+    "pos-in-word-16": {
+      "r2_gain_alone": 0.0097,
+      "cumulative_explained": 0.9455
+    },
+    "sent-pos-60": {
+      "r2_gain_alone": 0.0091,
+      "cumulative_explained": 0.946
+    },
+    "unidentified_remainder": 0.054
+  }
+}

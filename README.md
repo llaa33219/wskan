@@ -70,6 +70,8 @@ experiments/
   W11_excess_structure.py         # origin of the organization: interventions, init-vs-trained, dynamics
   W11_ablation_retrain.py         # task-requirement test: retrain with structure impossible
   W11_round6_probes.py            # multi-seed interventions, mamba2 skip-vs-reset, antipodal profile metric
+  W11_round7_probes.py            # antipodal permutation test, 5-seed convergence, paired baselines
+  W11_dynamics_20k.py             # emergence trajectories extended to 20k steps
   W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)

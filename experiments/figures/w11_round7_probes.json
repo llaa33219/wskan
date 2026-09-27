@@ -1,0 +1,193 @@
+{
+  "A": {
+    "init": [
+      {
+        "layer": 0,
+        "observed": 1,
+        "null_mean": 18.59,
+        "null_p95": 28.0,
+        "z": -3.24
+      },
+      {
+        "layer": 1,
+        "observed": 2,
+        "null_mean": 20.88,
+        "null_p95": 32.04999999999998,
+        "z": -2.93
+      }
+    ],
+    "s42": [
+      {
+        "layer": 0,
+        "observed": 11,
+        "null_mean": 27.8,
+        "null_p95": 40.0,
+        "z": -2.51
+      },
+      {
+        "layer": 1,
+        "observed": 10,
+        "null_mean": 47.84,
+        "null_p95": 69.04999999999998,
+        "z": -3.42
+      }
+    ],
+    "s7": [
+      {
+        "layer": 0,
+        "observed": 15,
+        "null_mean": 26.73,
+        "null_p95": 38.14999999999995,
+        "z": -1.8
+      },
+      {
+        "layer": 1,
+        "observed": 4,
+        "null_mean": 52.7,
+        "null_p95": 67.0,
+        "z": -5.89
+      }
+    ],
+    "s123": [
+      {
+        "layer": 0,
+        "observed": 16,
+        "null_mean": 28.39,
+        "null_p95": 39.04999999999998,
+        "z": -1.84
+      },
+      {
+        "layer": 1,
+        "observed": 2,
+        "null_mean": 45.2,
+        "null_p95": 61.0,
+        "z": -4.93
+      }
+    ]
+  },
+  "B": {
+    "per_seed": [
+      {
+        "seed": 42,
+        "L0_tsladder_r2": 0.638,
+        "L0_freqladder_r2": 0.948,
+        "L1_tsladder_r2": 0.894,
+        "L1_freqladder_r2": 0.904,
+        "clock": [
+          2.556,
+          1.947
+        ],
+        "gate_named_share": [
+          0.155,
+          0.195
+        ]
+      },
+      {
+        "seed": 7,
+        "L0_tsladder_r2": 0.757,
+        "L0_freqladder_r2": 0.942,
+        "L1_tsladder_r2": 0.76,
+        "L1_freqladder_r2": 0.898,
+        "clock": [
+          2.36,
+          2.157
+        ],
+        "gate_named_share": [
+          0.136,
+          0.163
+        ]
+      },
+      {
+        "seed": 123,
+        "L0_tsladder_r2": 0.816,
+        "L0_freqladder_r2": 0.943,
+        "L1_tsladder_r2": 0.7,
+        "L1_freqladder_r2": 0.913,
+        "clock": [
+          2.521,
+          2.052
+        ],
+        "gate_named_share": [
+          0.156,
+          0.162
+        ]
+      },
+      {
+        "seed": 2024,
+        "L0_tsladder_r2": 0.826,
+        "L0_freqladder_r2": 0.944,
+        "L1_tsladder_r2": 0.825,
+        "L1_freqladder_r2": 0.917,
+        "clock": [
+          2.5,
+          1.518
+        ],
+        "gate_named_share": [
+          0.136,
+          0.193
+        ]
+      },
+      {
+        "seed": 31337,
+        "L0_tsladder_r2": 0.564,
+        "L0_freqladder_r2": 0.927,
+        "L1_tsladder_r2": 0.953,
+        "L1_freqladder_r2": 0.924,
+        "clock": [
+          2.65,
+          1.811
+        ],
+        "gate_named_share": [
+          0.155,
+          0.194
+        ]
+      }
+    ],
+    "convergence": {
+      "sorted_sigma_spread_cv": [
+        [
+          0.064,
+          0.075,
+          0.065,
+          0.071,
+          0.065,
+          0.085
+        ],
+        [
+          0.139,
+          0.14,
+          0.13,
+          0.12,
+          0.126,
+          0.12
+        ]
+      ],
+      "sorted_omega_spread_cv": [
+        [
+          0.056,
+          0.054,
+          0.043,
+          0.065,
+          0.047,
+          0.032
+        ],
+        [
+          0.086,
+          0.121,
+          0.123,
+          0.149,
+          0.138,
+          0.129
+        ]
+      ]
+    }
+  },
+  "C": {
+    "wskan11_s7": 1.2996,
+    "wskan11real_s7": 1.3408,
+    "wskan11_s123": 1.3082,
+    "wskan11real_s123": 1.3328,
+    "wskan11_s42": 1.2907,
+    "wskan11real_s42": 1.328
+  }
+}

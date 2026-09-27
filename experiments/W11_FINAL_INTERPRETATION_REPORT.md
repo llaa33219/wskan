@@ -331,22 +331,18 @@ this readable by lookup):
 
 ### 1.6 Circuits: generalists, specialist singletons, one hub
 
-*Round-6 retitle (was "antipodal specialists"): the mirror-image pairing
-is real but weaker and less exclusive than the original clustering
-formulation — see below.* Channels cluster into many generalists plus
-1–3 **specialist singletons** per layer (boundary detector, word-initial
-detector, uppercase-suffix detector). The singletons are individually
-load-bearing: zeroing the L0 boundary singleton alone costs **+1.08 CE**.
-Depth retunes the code from byte-class (L0) to position-in-word (L1/L2).
-On the "antipodal" pairing specifically (measured in
-`W11_EXCESS_STRUCTURE_REPORT.md` §6): profile-level mirror pairs exist
-above the init baseline (11–19 vs 6 pairs per layer at 100k, profile corr
-< −0.8), so the pairing is learned — but a chance-level baseline exists
-and gain-space antipodality is weak; read "antipodal" as "mirror-image
-activation profiles", not as an exact circuit class. Kernel families (~6
-per layer) route through channel clusters with a depth-migrating
-topology, converging onto a single L2 output hub channel that the head
-reads. Family ablations: the four big families are co-equal workhorses
+*Round-6/7 retitle and retraction: the earlier "antipodal specialists"
+pairing claim was a metric artifact — a position-shuffle null produces
+more mirror-image profile pairs (18–53) than the trained model (2–16);
+see `W11_EXCESS_STRUCTURE_REPORT.md` §6.* Channels cluster into many
+generalists plus 1–3 **specialist singletons** per layer (boundary
+detector, word-initial detector, uppercase-suffix detector). The
+singletons are individually load-bearing: zeroing the L0 boundary
+singleton alone costs **+1.08 CE**. Depth retunes the code from
+byte-class (L0) to position-in-word (L1/L2). Kernel families (~6 per
+layer) route through channel clusters with a depth-migrating topology,
+converging onto a single L2 output hub channel that the head reads.
+Family ablations: the four big families are co-equal workhorses
 (+0.29–0.36 each); the small specialist family is nearly redundant
 (+0.017) — specialization lives at channel level, not edge level.
 
@@ -484,19 +480,23 @@ open. The recall statement (§6) is behavioral and unaffected.
   The machine computes form; the only content it provably *uses* is form.
 - The clock knows boundaries, not meaning.
 - **The organization: load-bearing for the found solution, NOT required
-  by the task — both directions measured
+  by the task — both directions measured, 3 seeds
   (`W11_EXCESS_STRUCTURE_REPORT.md`).** Surgery on the found solution
   (3 seeds × 3 perms): ladder flatten +0.13–0.33, mode-consistency
   shuffles +1.8–2.6, feature tables +5.5 nats; a full mode permutation is
   an exact gauge (+1e-8). Retraining with the structure impossible
-  (campaign protocol): feature tables +0.006, ρ ladder +0.009, single
-  mode +0.041 (param-matched), no frequency +0.037. Gradient descent
-  finds this organization *immediately and reliably* (π-harmonic prior +
-  ~250-step emergence, oscillation-free in wskan11real, boundary gating
-  also in mamba2 with the opposite operation — skip vs reset, measured) —
-  but the task barely requires any single piece of it. The structure is
-  the path of least resistance under this parameterization, which is what
-  makes it worth analyzing.
+  (campaign protocol, 3 seeds, paired deltas): feature tables −0.002 ±
+  0.007 and ρ ladder −0.001 ± 0.017 — **indistinguishable from zero**;
+  single mode +0.028 ± 0.019 (3/3 positive); no frequency +0.034 ± 0.009;
+  π-harmonic prior unnecessary (flat-ω init matches, −0.002 ± 0.009, and
+  rebuilds the ladder from zero). Gradient descent finds this
+  organization *immediately and reliably* (250-step emergence; 5-seed
+  convergence of coarse structure and sorted mode values, CV 3–15%;
+  oscillation-free in wskan11real; boundary gating also in mamba2 with
+  the opposite operation — skip vs reset, measured) — but the task barely
+  requires any single piece of it. The structure is the path of least
+  resistance under this parameterization, which is what makes it worth
+  analyzing.
 - The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
   carries < 1% of readout weight — present, unused.
 - Forward derivation without execution: **not achieved, at any scale

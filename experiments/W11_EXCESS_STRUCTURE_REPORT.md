@@ -53,7 +53,13 @@ is not decorative", not as "no simpler solution exists".
 
 The frequency ladder's *skeleton* is an architectural prior (harmonics of
 π); training preserves it (even slightly degrades it at 100k L1: 0.94 →
-0.90). Everything else is learned from flat initialization.
+0.90). *Round-7 sharpening:* the prior is **unnecessary** — a trainable
+flat-ω init matches baseline CE (mean Δ −0.002 over 3 seeds, §8) and the
+frequency organization is rebuilt from zero (ladder R² 0.83–0.96). The
+π-harmonic init chooses the basin, not the loss; whether the learned
+frequency placement is load-bearing in either case is the ω≡0 question
+(+0.034, §8). Everything else in the table is learned from flat
+initialization.
 
 ## 3. Oscillation-independent (wskan11real, ω ≡ 0, 100k)
 
@@ -82,33 +88,46 @@ its small consistent bonus, §2 of the monograph).
   (Init dt ratios vary by random seed; the trained inversion is the
   signal.)
 
-## 5. Emergence order (from-scratch dynamics, 3,000 steps)
+## 5. Emergence order (from-scratch dynamics; round-7: extended to 20,000 steps)
 
-100k tier: by step 250 (eval CE 5.45 → 1.55) the timescale organization
-and the clock (1.39) are already in place; the gate named-share collapses
-from ~1.0 to 0.06–0.08 within 250 steps (the content residual grows
-first) and then slowly re-equilibrates (0.16–0.31 at convergence). 1k
-tier: the timescale ladder forms as fast, but the boundary clock has
-*not* emerged by 3,000 steps (0.92) — the clock is slower to emerge at
-the smallest scale (full 1k runs are 20k steps). Step-1 ladder R² values
-are metric noise (tiny perturbations of a flat init fit any line);
-robust readings start ~step 250.
+*The first version of this section used a 3,000-step window (2.8% of the
+campaign length); round-7 extended it to 20,000
+(`experiments/W11_dynamics_20k.py`, figures `w11_dynamics20k_*.json`).*
 
-## 6. The antipodal caveat (honesty, round-6 replication)
+1k tier (TinyStories): timescale organization is immediate (ladder R²
+0.85–0.95 throughout, after the noisy first steps); the gate named-share
+collapses from 1.00 to ~0.02–0.14 within the first ~250–2,000 steps
+(content residual grows first), then **re-equilibrates slowly to a plateau
+of 0.34 at ~16–18k steps** (matching the converged campaign value 0.31) —
+the re-equilibration does plateau, and the 3k window was mid-transition.
+The boundary clock emerges at 2–4k steps (1.53 → 2.31) — later than the
+ladder, and later than at 100k. 100k tier (UltraChat, 20k): clock at 2.18
+by 2.5k steps, plateau ~2.2; gate share collapses to ~0.08 and creeps to
+0.10 at 20k (converged campaign value 0.16–0.20 — the slow
+re-equilibration continues past 20k at this tier; the 20k run's cosine
+schedule ends at 20k, so its eval CE 1.341 is not step-matched to the
+campaign's 108k schedule).
 
-Two metrics, two answers. By the **readout-gain cosine** metric,
-antipodal pairing is weak everywhere — wskan11 1k/10k/100k
-(−0.12…−0.22 trained vs −0.09…−0.20 init) and wskan7bc (−0.13…−0.17).
-By the **original V7BC profile metric** (channel activation profiles over
-12 byte-class × position-in-word bins; mirror pairs = profile corr
-< −0.8), trained wskan11-100k has **11–19 mirror pairs per layer vs 6 at
-init** (wskan7bc: 6–9 vs 0 at init) — so profile-level antipodality is
-real and learned, but (i) a chance-level baseline of such pairs exists at
-init, and (ii) the pair counts exceed the "1–3 specialist pairs" of the
-original clustering formulation. The defensible claim: *training roughly
-doubles-to-triples mirror-image channel profiles above a nonzero chance
-baseline*; "antipodal specialists" as a named circuit class is stronger
-than the current metric supports.
+Emergence order, both tiers: (1) timescale organization, immediately;
+(2) content-residual growth (named-share collapse); (3) boundary clock
+(250 steps at 100k, 2–4k at 1k); (4) slow gate-split re-equilibration to
+a plateau.
+
+## 6. The antipodal claim — retracted (round-7 permutation test)
+
+Three metrics, and the honest end point. (i) Readout-gain cosine: weak
+everywhere (−0.12…−0.22 trained). (ii) The V7BC profile metric (12-bin
+activation profiles, mirror pairs at corr < −0.8) *seemed* to support the
+claim (trained 11–19 pairs vs 6 at init) — but the init comparison was
+the wrong baseline. (iii) A proper null (round-7: shuffle the
+position→bin assignment, 200 permutations) produces **18–53 mirror pairs
+by chance** — far *above* the observed trained counts (2–16; z = −1.8 …
+−5.9). Pair counts on this metric are anti-correlated with real
+structure, not evidence of it. **The "antipodal specialists"
+characterization is retracted.** What survives is the channel-level
+*causal* evidence (V7D: zeroing the L0 boundary singleton costs +1.08 CE)
+— specialist singleton channels exist and are load-bearing; their alleged
+mirror-image pairing was a metric artifact.
 
 ## 7. Answer (round-6 revised)
 
@@ -116,62 +135,128 @@ than the current metric supports.
    right, and §8 now separates the two claims by measurement.** Within the
    found solution the organization is load-bearing (surgery: +0.13…+5.9
    nats, 3 seeds × 3 perms; the mode is a coherent object — exact gauge).
-   But retraining without the structure recovers almost everything
-   (§8: feature tables +0.006, ρ ladder +0.009, single mode +0.041
-   param-matched, no frequency +0.037). An earlier version of this section
-   said "the task requires this organization; naive intuition about
-   requirements was what exceeded the evidence" — **that claim is
-   retracted**: the retrain test falsified it. What exceeds the evidence
-   was the surgical inference itself.
+   Retraining without the structure (3 seeds, §8): feature tables and the
+   ρ ladder are **not distinguishable from zero** (deltas straddle zero);
+   mode multiplicity +0.028 ± 0.019 (3/3 positive); oscillation +0.034 ±
+   0.009; the π-harmonic prior is unnecessary (−0.002 ± 0.009, and the
+   frequency ladder is rebuilt from flat init). An earlier version of this
+   section said "the task requires this organization" — **retracted** in
+   round 6; the round-7 multi-seed rerun then downgraded the first
+   retrain numbers themselves from "+0.006/+0.009" to "indistinguishable
+   from zero at this noise level". Both corrections stand.
 2. **Origin is decomposed, and it is a prior+landscape story, not a
    task-necessity story.** Frequency skeleton: given by the prior
-   (π-harmonics), not destroyed. Timescale ladder, clock, gate split:
-   learned from flat init within a few hundred steps, oscillation-free
-   (wskan11real), and in analogous form across architectures (mamba2:
-   given-and-preserved ladder; boundary gating with the opposite
-   *operation* — skip vs reset, §4). Gradient descent finds this
-   organization *immediately and reliably* under this parameterization;
+   (π-harmonics), not destroyed — but the prior is unnecessary (flat-ω
+   retrains match baseline and rebuild the ladder, §8). Timescale ladder,
+   clock, gate split: learned from flat init within a few hundred steps,
+   oscillation-free (wskan11real), and in analogous form across
+   architectures (mamba2: given-and-preserved ladder; boundary gating
+   with the opposite *operation* — skip vs reset, §4). Gradient descent
+   finds this organization *immediately and reliably* under this
+   parameterization — "reliably" now measured across 5 seeds (§9): same
+   coarse organization, same sorted mode-value distribution (CV 3–15%);
    the parameterization makes it the path of least resistance, not the
    task's only solution.
-3. **§7.3's earlier argument ("the data's correlation orders require
-   multiple timescales") is downgraded from argument to small measured
-   effect:** multiresolution state helps (+0.041, param-matched
-   single-mode), oscillation helps (+0.037) — both real, both modest,
-   neither necessary.
-4. **What remains open (narrower):** seed-level convergence of the
-   specific assignments; the antipodal formulation gap (§6); why the
-   landscape prefers this basin so early (the ~250-step emergence is
-   measured, not explained).
+3. **The earlier "the data's correlation orders require multiple
+   timescales" argument is replaced by the measured effect:**
+   multiresolution state helps (+0.028 ± 0.019, param-matched
+   single-mode, 3 seeds), oscillation helps (+0.034 ± 0.009) — both real,
+   both modest, neither necessary.
+4. **What remains open (narrower):** why the landscape prefers this basin
+   so early (the ~250-step emergence is measured, not explained); the
+   seed-level question is closed at the gauge-invariant level (§9); the
+   antipodal claim is retracted (§6).
 5. **The interpretability value framing survives, strengthened:** the
    architecture makes an *analyzable* organization the path of least
    resistance — that, not task necessity, is the reason the structure is
-   worth studying.
+   worth studying. The performance cost of that choice is the
+   architecture-level gap to mamba2, not the organization (§10).
 
-## 8. The retrain test (round-6): what the task actually requires
+## 8. The retrain test (round-6, extended to 3 seeds in round-7): what the task actually requires
 
 Surgery measures the found solution's dependence; the task-requirement
 question needs retraining with the structure impossible from the start.
-Campaign protocol (UltraChat, 100k tier, 3ep, 108k steps, seed 42;
-`experiments/W11_ablation_retrain.py`), fixed 16-chunk eval:
+Campaign protocol (UltraChat, 100k tier, 3ep, 108k steps, seeds 42/7/123;
+`experiments/W11_ablation_retrain.py`). **All numbers on 16 fixed eval
+chunks (513 bytes each); NOT comparable to the campaign's random-batch
+eval in Appendix C of the monograph (baseline 1.2907 here vs 1.184
+there, same checkpoint, different eval set).** Paired per-seed deltas
+(variant − baseline, same seed, same chunks); baseline CEs 1.2907 /
+1.2996 / 1.3082 for seeds 42/7/123 (baseline seed std 0.009):
 
-| variant | params | eval CE | Δ vs baseline |
-|---|---|---|---|
-| wskan11 baseline | 113.6k | 1.2907 | — |
-| nofeat (named feature tables removed) | 113.6k | 1.2971 | **+0.006** |
-| rhofrozen (ρ ≡ 1, no learnable ladder) | 113.6k | 1.2993 | **+0.009** |
-| n1wide (single mode, param-matched) | 109.3k | 1.3321 | **+0.041** |
-| wskan11real (ω ≡ 0, from the campaign) | 113.6k | 1.3280 | +0.037 |
-| n1 (single mode, *not* param-matched) | 48.0k | 1.4469 | +0.156 (confounded) |
+| variant | ΔCE per seed (42 / 7 / 123) | mean ± std |
+|---|---|---|
+| nofeat (named feature tables removed) | +0.006 / −0.004 / −0.007 | **−0.002 ± 0.007** |
+| rhofrozen (ρ ≡ 1, no learnable ladder) | +0.009 / +0.010 / −0.022 | **−0.001 ± 0.017** |
+| n1wide (single mode, param-matched 109k) | +0.041 / +0.036 / +0.007 | **+0.028 ± 0.019** |
+| flatomega (ω init 0, trainable; π prior removed) | +0.008 / −0.004 / −0.009 | **−0.002 ± 0.009** |
+| wskan11real (ω ≡ 0 frozen; campaign, paired) | +0.037 / +0.041 / +0.025 | **+0.034 ± 0.009** |
 
-The surgery/retrain gap is the headline: feature tables +5.5 by surgery
-vs **+0.006** by retrain (~900×); ρ ladder +0.13–0.33 vs +0.009; mode
-consistency +1.8–2.6 vs (mode *count*) +0.041. Two notes. (i) ρ-freeness
-is recoverable because the effective timescale is σ·ρ and σ is free per
-mode — the ρ ladder is a redundant parameterization; surgery hurts
-because σ cannot retake ρ's share in-place, retraining just learns it.
-(ii) The n1/n1wide pair shows why param-matching matters: half the
-apparent cost of losing the mode bank was lost parameters, not lost
-structure.
+Round-7 verdicts, by variant:
+
+- **Feature tables and the ρ ladder: not distinguishable from zero at 3
+  seeds** — the deltas straddle zero (sign flips, as the round-7 review
+  predicted for the single-seed +0.006/+0.009). The correct statement is
+  "no measurable task-requirement at this noise level", not the round-6
+  "+0.006".
+- **Mode multiplicity: small, consistently positive cost** (+0.028,
+  positive in 3/3 seeds) — comparable to oscillation itself (+0.034).
+  Real but modest.
+- **The π-harmonic frequency prior is unnecessary**: flat-ω trainable
+  init matches the baseline (mean −0.002), and the trained flat-ω models
+  *rebuild* frequency organization from zero (ladder R² 0.83–0.96,
+  narrower ω range 0.9–1.7). The prior chooses the basin, not the loss.
+- ρ-freeness is recoverable because the effective timescale is σ·ρ and σ
+  is free per mode — a redundant parameterization. The n1/n1wide pair
+  shows why param-matching matters: half the apparent cost of losing the
+  mode bank was lost parameters, not lost structure.
+
+*Limits:* 3 seeds per variant; one tier (100k), one dataset; fixed-chunk
+eval.
+
+## 9. Seed-level convergence (round-7): what "reliably" means
+
+Five campaign seeds, 100k, UltraChat — coarse structure converges
+tightly: boundary clock 1.5–2.65 at every layer and seed; gate
+named-share 0.136–0.195; timescale-ladder R² 0.56–0.95. And the
+gauge-invariant mode content — the *sorted* per-mode (σ̃, ω̃) vectors —
+agrees across seeds with cross-seed coefficient of variation 3–15% per
+mode-rank. The specific mode *indices* are gauge (§1), so "assignment
+convergence" is only defined up to permutation; what converges is the
+multiset of mode values. "Path of least resistance" is therefore precise
+at this level: **the same coarse organization and the same mode-value
+distribution, at every seed** — while the indexing and (per round-6) the
+necessity of any single piece do not survive.
+
+## 10. Terminology and the performance tradeoff (round-7)
+
+**Terminology.** "Excess structure" was the reviewer's framing and this
+report's working term, but it presupposes a task-minimal structure that
+was never shown to exist. The accurate phrase is
+**architecturally-induced organization**: prior skeleton (frequency
+ladder) plus the optimization landscape's preferred basin (everything
+else). The file name stays for continuity; the term should be read with
+this meaning.
+
+**The performance tradeoff, stated plainly.** Mamba-2 outperforms wskan11
+(100k UltraChat: 1.158 vs 1.184; 10m: 0.716 vs 0.833 — Appendix C of the
+monograph) with a *different* organization. So the WSKAN organization is
+not a performance optimum, and the interpretability is not free: the cost
+is the architecture-level gap (~0.03 nats at 100k, ~0.12 at 10m). What
+the retrain test adds: the gap is not caused by the *analyzable
+structure itself* (removing the feature tables or the ρ ladder costs
+≈ 0) — it is the price of the *parameterization* that makes the
+structure analyzable (edge functions as the unit). Whether that price is
+worth a ground-truth benchmark substrate is a research-value judgment,
+stated as such — not hidden.
+
+**Frequency vs timescale ladders are parameterization-specific objects.**
+WSKAN gets a frequency skeleton by prior (π-harmonics) and a timescale
+ladder by learning; mamba2 has no frequency object at all (real A) and
+gets its timescale ladder from init prior; the transformer baseline gets
+frequencies from fixed RoPE and has no decay ladder. What generalizes
+across all three is only "a multi-scale bank"; the frequency/timescale
+decomposition is WSKAN's coordinate system, not a universal one.
 
 *Limits:* single seed per variant; one tier (100k), one dataset; the
 eval set differs from the campaign's random-batch eval (baselines

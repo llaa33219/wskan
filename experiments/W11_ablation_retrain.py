@@ -33,7 +33,7 @@ from models.V11_WSKAN import WaveletStateKANLMV11
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--variant", choices=["n1", "n1wide", "nofeat", "rhofrozen"], required=True)
+    p.add_argument("--variant", choices=["n1", "n1wide", "nofeat", "rhofrozen", "flatomega"], required=True)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--steps", type=int, default=108000)
     p.add_argument("--eval-every", type=int, default=2000)
@@ -57,6 +57,9 @@ def main():
     if args.variant == "rhofrozen":
         for layer in m.layers:
             layer.log_rho.requires_grad_(False)
+    if args.variant == "flatomega":
+        for layer in m.layers:
+            layer.omega.data.zero_()   # pi-harmonic prior removed; omega stays trainable
     print(f"variant {args.variant} seed {args.seed} params {sum(q.numel() for q in m.parameters()):,}",
           flush=True)
 

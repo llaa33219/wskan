@@ -485,11 +485,12 @@ open. The recall statement (§6) is behavioral and unaffected.
   (3 seeds × 3 perms): ladder flatten +0.13–0.33, mode-consistency
   shuffles +1.8–2.6, feature tables +5.5 nats; a full mode permutation is
   an exact gauge (+1e-8). Retraining with the structure impossible
-  (campaign protocol, 3 seeds, paired deltas): feature tables −0.002 ±
+  (campaign protocol, paired deltas): feature tables −0.002 ±
   0.007 and ρ ladder −0.001 ± 0.017 — **indistinguishable from zero**;
-  single mode +0.028 ± 0.019 (3/3 positive); no frequency +0.034 ± 0.009;
-  π-harmonic prior unnecessary (flat-ω init matches, −0.002 ± 0.009, and
-  rebuilds the ladder from zero). Gradient descent finds this
+  single mode +0.033 ± 0.020 (5 seeds, 5/5 positive, p = 0.021); no
+  frequency +0.037 ± 0.007 (5 seeds, p = 3e-4); π-harmonic prior
+  unnecessary (flat-ω init matches, −0.002 ± 0.009, and rebuilds the
+  ladder from zero). Gradient descent finds this
   organization *immediately and reliably* (250-step emergence; 5-seed
   convergence of coarse structure and sorted mode values, CV 3–15%;
   oscillation-free in wskan11real; boundary gating also in mamba2 with

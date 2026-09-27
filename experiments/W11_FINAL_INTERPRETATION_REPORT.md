@@ -1,5 +1,5 @@
 # Anatomy of Language Form in WSKAN
-### How the model computes the local statistics of fluent text - a mechanistic anatomy, every step read from the model's own functions
+### How the model computes the local statistics of fluent text - a mechanistic anatomy, every step read from the model's own functions; and, in the later sections, a case study in interpretability methodology (surgery vs retrain, gauge tests, null baselines)
 
 **Date:** 2026-09-13 · **Subject:** wskan11 (fused-kernel wavelet-SSM),
 canonical checkpoint `wskan11_ultrachat_100k_3ep_s42` (3-epoch campaign,
@@ -231,6 +231,15 @@ detect boundaries - it built its memory gating on them.
 
 The distribution confirms the elevation is not a mean artifact: space's
 p10 ≈ lowercase's p90 (E2 quantiles).
+
+**Cross-architecture (round-6/7, promoted from the excess report):**
+boundary-responsive gating is not specific to this model — trained
+Mamba-2 develops it too, but with the **opposite operation**: its dt and
+ZOH write magnitude drop to 0.13–0.65 / 0.15–0.70 at spaces — mamba2
+*skips* boundaries, WSKAN *resets* at them. Same functional object,
+different computation, measured (not hypothesized). The clock is a
+general solution to byte text; only its sign convention is
+architecture-specific.
 
 ### 1.3 Position-specific causal evidence (necessity + sufficiency, with the reviewed caveat)
 
@@ -524,9 +533,12 @@ decomposition machinery is shared; the objects decomposed into are not.
 directly help interpret production models, and we do not claim otherwise.
 What it offers is (a) a **ground truth** of learnable computation — every
 mechanism here is measured, not hypothesized; (b) a **benchmark** on which
-post-hoc interpretability methods can be validated against exact answers;
-(c) **clean hypothesis tests** (clock, gate split, mode roles) of the kind
-that are ambiguous in larger models. How much that is worth is the
+post-hoc interpretability methods are validated against exact answers —
+demonstrated, not just proposed (`W11_EXCESS_STRUCTURE_REPORT.md` §12:
+leave-one-out attribution agrees with the exact decomposition at only
+ρ ≈ 0.34–0.46; a linear probe's "no word identity" conclusion is a false
+negative the substrate catches); (c) **clean hypothesis tests** (clock,
+gate split, mode roles) of the kind that are ambiguous in larger models. How much that is worth is the
 community's call; what we stand behind is that the measurements are exact
 and the claims are scoped to them.
 

@@ -203,21 +203,36 @@ Round-7 verdicts, by variant:
   "no measurable task-requirement at this noise level", not the round-6
   "+0.006".
 - **Mode multiplicity: small and now significant** — +0.033 ± 0.020 over
-  5 seeds, positive in 5/5, t = 3.7, p = 0.021 (the 3-seed version,
-  +0.028, was direction-consistent but not significant, p ≈ 0.13; the
-  round-8 seed extension settled it). Oscillation: +0.037 ± 0.007,
-  p = 3e-4 (5 seeds). Both real, both modest.
+  5 seeds, positive in 5/5, t = 3.7, p = 0.021; the assumption-free sign
+  test agrees (5/5 positive: p = 1/32 ≈ 0.031). Oscillation: +0.037 ±
+  0.007, p = 3e-4 (5 seeds). Both real, both modest.
 - **The π-harmonic frequency prior is unnecessary**: flat-ω trainable
   init matches the baseline (mean −0.002), and the trained flat-ω models
   *rebuild* frequency organization from zero (ladder R² 0.83–0.96,
   narrower ω range 0.9–1.7). The prior chooses the basin, not the loss.
+  *This is basin selection in the lottery-ticket sense, measured
+  directly:* two inits, two frequency organizations, one loss level —
+  the init decides which analyzable basin you get, not whether you
+  converge.
 - ρ-freeness is recoverable because the effective timescale is σ·ρ and σ
   is free per mode — a redundant parameterization. The n1/n1wide pair
   shows why param-matching matters: half the apparent cost of losing the
   mode bank was lost parameters, not lost structure.
 
-*Limits:* 3 seeds per variant; one tier (100k), one dataset; fixed-chunk
-eval.
+*Second-dataset replication (round-9, TinyStories, 108k steps — note:
+fewer epochs than TinyStories' 300k-step campaign schedule, but internally
+consistent since baseline and variants share the protocol):*
+
+| variant | ΔCE per seed (42 / 7) | reading |
+|---|---|---|
+| nofeat | −0.001 / +0.007 | zero again (sign flips) |
+| n1wide | +0.045 / +0.064 | positive again, slightly larger than UltraChat |
+
+The headline survives a second dataset: feature tables remain unrequired,
+the mode bank's small cost replicates.
+
+*Limits:* 3 seeds per variant (5 for n1wide/wskan11real) on UltraChat,
+2 seeds on TinyStories; one tier (100k); fixed-chunk eval.
 
 ## 9. Seed-level convergence (round-7): what "reliably" means
 
@@ -259,8 +274,10 @@ figures `w11_basin_origin.json`):
    from a perfectly symmetric mode init (ω = 0, σ uniform, ρ = 1) —
    symmetry breaking is data-driven, prior-free.
 
-*Limits:* gradient anatomy is step-0 on one batch; the Δ-scale runs are
-2k steps at 1k only.
+*Limits:* the Δ-scale runs are 2k steps at 1k only. (Gradient anatomy was
+single-batch in the first version; round-9 re-ran it on 20 batches:
+per-mode CV L0 0.427 ± 0.077, L1 0.278 ± 0.050; embedding gradient share
+94.7% ± 0.1% — stable.)
 
 ## 11. Terminology and the performance tradeoff (round-7)
 
@@ -292,11 +309,38 @@ frequencies from fixed RoPE and has no decay ladder. What generalizes
 across all three is only "a multi-scale bank"; the frequency/timescale
 decomposition is WSKAN's coordinate system, not a universal one.
 
-*Limits (whole report, round-8 current):* interventions 3 seeds × 3
-permutations (§1); retrains 3 seeds per variant, n1wide 5 seeds (§8);
-surgical CE evals 60 chunks, retrain evals 16 fixed chunks (not
-comparable to Appendix C of the monograph); dynamics extended to 20,000
-steps (§5) — still short of the 108k campaign; basin-origin battery is
-step-0 gradients + 2k-step 1k runs (§10); the antipodal claim is
-retracted, not merely metric-sensitive (§6); one tier (100k) and one
-dataset (UltraChat) for §1/§8.
+## 12. The benchmark substrate, demonstrated (round-9)
+
+The claimed value "a benchmark on which post-hoc interpretability methods
+can be validated against exact answers" was aspirational until now.
+`experiments/W11_benchmark_demo.py` scores two standard post-hoc
+attribution methods against the exact per-position decision contributions
+(the model's own arithmetic, Appendix D of the monograph), on three
+canonical 100k decisions:
+
+| context (tail) | decision | saliency (grad×input) Spearman ρ, top-3 | LOO-replacement ρ, top-3 |
+|---|---|---|---|
+| `…my dear frien` | d vs t | +0.88, 3/3 | +0.34, 2/3 |
+| `…annual repor` | t vs a | +0.70, 3/3 | +0.46, 3/3 |
+| `…cup of suga` | r vs l | +0.89, 1/3 | +0.40, 1/3 |
+
+Gradient saliency tracks the truth moderately (ρ 0.7–0.9) but misranks
+the decisive terms (top-3 overlap as low as 1/3); **leave-one-out
+replacement — a standard "causal" attribution — agrees with the truth at
+only ρ ≈ 0.34–0.46**. On this substrate the error is quantified, not
+suspected. Demo 2 (already in the monograph §5): a linear probe on the
+write path concludes "no word identity" (R² ≈ 0.15); the substrate's
+nonlinear probe + readout analysis shows the information is present but
+linearly inaccessible — a false negative the substrate adjudicates.
+Neither demo shows the methods are useless; they show their error is
+measurable here and not elsewhere.
+
+*Limits (whole report, round-9 current):* interventions 3 seeds × 3
+permutations (§1); retrains 3 seeds per variant (n1wide/wskan11real 5),
+replicated on a second dataset at 2 seeds (§8); surgical CE evals 60
+chunks, retrain evals 16 fixed chunks (not comparable to Appendix C of
+the monograph); dynamics extended to 20,000 steps (§5) — still short of
+the 108k campaign; basin-origin: 20-batch gradient anatomy + 2k-step 1k
+runs (§10); the antipodal claim is retracted, not merely metric-sensitive
+(§6); benchmark demo: 3 decisions, 2 post-hoc methods (§12); one tier
+(100k) throughout.

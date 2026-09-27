@@ -72,6 +72,8 @@ experiments/
   W11_round6_probes.py            # multi-seed interventions, mamba2 skip-vs-reset, antipodal profile metric
   W11_round7_probes.py            # antipodal permutation test, 5-seed convergence, paired baselines
   W11_dynamics_20k.py             # emergence trajectories extended to 20k steps
+  W11_basin_origin.py             # why the organized basin is entered early (gradient anatomy, dt-init scale)
+  W11_benchmark_demo.py           # post-hoc attribution methods scored against exact ground truth
   W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)

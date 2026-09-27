@@ -1,0 +1,35 @@
+{
+  "ar frien": {
+    "context": "User: Hello! How are you today, my dear frien",
+    "pair": [
+      "d",
+      "t"
+    ],
+    "saliency_spearman": 0.8805006587615284,
+    "loo_spearman": 0.33702239789196303,
+    "saliency_top3_overlap": 3,
+    "loo_top3_overlap": 2
+  },
+  "al repor": {
+    "context": "The committee shall review the annual repor",
+    "pair": [
+      "t",
+      "a"
+    ],
+    "saliency_spearman": 0.6991845363938387,
+    "loo_spearman": 0.4578677136816672,
+    "saliency_top3_overlap": 3,
+    "loo_top3_overlap": 3
+  },
+  " of suga": {
+    "context": "Ingredients: 2 cups of flour, 1 cup of suga",
+    "pair": [
+      "r",
+      "l"
+    ],
+    "saliency_spearman": 0.8915735427363335,
+    "loo_spearman": 0.40305043793415885,
+    "saliency_top3_overlap": 1,
+    "loo_top3_overlap": 1
+  }
+}

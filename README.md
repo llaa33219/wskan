@@ -68,7 +68,9 @@ experiments/
   W11_hand_simulation.py          # deriving the next token by hand (Appendix D)
   W11_round5_probes.py            # usefulness ladder (nonlinear probes) + 10M trigram identification
   W11_excess_structure.py         # origin of the organization: interventions, init-vs-trained, dynamics
-  W11_EXCESS_STRUCTURE_REPORT.md  # the "excess structure" is load-bearing; origin decomposed
+  W11_ablation_retrain.py         # task-requirement test: retrain with structure impossible
+  W11_round6_probes.py            # multi-seed interventions, mamba2 skip-vs-reset, antipodal profile metric
+  W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)
   {model}_{dataset}_interp_s{seed}/   # canonical interpretation tier

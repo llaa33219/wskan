@@ -1,0 +1,134 @@
+{
+  "A": {
+    "42": {
+      "baseline": 1.2804,
+      "omega_shuffled": {
+        "mean": 2.4807,
+        "std": 0.5244
+      },
+      "sigmarho_shuffled": {
+        "mean": 1.8292,
+        "std": 0.5326
+      },
+      "rho_flattened": 0.1253,
+      "features_shuffled": {
+        "mean": 5.5811,
+        "std": 0.348
+      }
+    },
+    "7": {
+      "baseline": 1.2781,
+      "omega_shuffled": {
+        "mean": 2.6266,
+        "std": 0.5273
+      },
+      "sigmarho_shuffled": {
+        "mean": 1.9433,
+        "std": 0.619
+      },
+      "rho_flattened": 0.3283,
+      "features_shuffled": {
+        "mean": 5.3756,
+        "std": 0.751
+      }
+    },
+    "123": {
+      "baseline": 1.2831,
+      "omega_shuffled": {
+        "mean": 2.4393,
+        "std": 0.5718
+      },
+      "sigmarho_shuffled": {
+        "mean": 1.5277,
+        "std": 0.5985
+      },
+      "rho_flattened": 0.3188,
+      "features_shuffled": {
+        "mean": 5.5864,
+        "std": 0.4513
+      }
+    }
+  },
+  "B": [
+    {
+      "layer": 0,
+      "dt_space_letter": 0.653,
+      "write_space_letter": 1.415
+    },
+    {
+      "layer": 1,
+      "dt_space_letter": 0.133,
+      "write_space_letter": 0.147
+    },
+    {
+      "layer": 2,
+      "dt_space_letter": 0.48,
+      "write_space_letter": 0.576
+    },
+    {
+      "layer": 3,
+      "dt_space_letter": 0.504,
+      "write_space_letter": 0.696
+    }
+  ],
+  "C": {
+    "wskan11_100k_trained": [
+      {
+        "layer": 0,
+        "antipodal_pairs": 11,
+        "min_corr": -0.9346628986540557
+      },
+      {
+        "layer": 1,
+        "antipodal_pairs": 19,
+        "min_corr": -0.9548487739230855
+      }
+    ],
+    "wskan11_100k_init": [
+      {
+        "layer": 0,
+        "antipodal_pairs": 6,
+        "min_corr": -0.9036190065918707
+      },
+      {
+        "layer": 1,
+        "antipodal_pairs": 6,
+        "min_corr": -0.9036190065918707
+      }
+    ],
+    "wskan7bc_trained": [
+      {
+        "layer": 0,
+        "antipodal_pairs": 6,
+        "min_corr": -0.8994411715078275
+      },
+      {
+        "layer": 1,
+        "antipodal_pairs": 9,
+        "min_corr": -0.8998200844932714
+      },
+      {
+        "layer": 2,
+        "antipodal_pairs": 8,
+        "min_corr": -0.8989364946110376
+      }
+    ],
+    "wskan7bc_init": [
+      {
+        "layer": 0,
+        "antipodal_pairs": 0,
+        "min_corr": -0.7945419504843974
+      },
+      {
+        "layer": 1,
+        "antipodal_pairs": 0,
+        "min_corr": -0.7945419504843974
+      },
+      {
+        "layer": 2,
+        "antipodal_pairs": 0,
+        "min_corr": -0.7945419504843974
+      }
+    ]
+  }
+}

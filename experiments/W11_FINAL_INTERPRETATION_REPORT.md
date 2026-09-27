@@ -329,19 +329,26 @@ this readable by lookup):
   position ~0.007; document position ~0.001; dialogue-turn state ≤ 0.003
   (refuted). Nothing word-level or discourse-level was found at 100k.
 
-### 1.6 Circuits: generalists, antipodal specialists, one hub
+### 1.6 Circuits: generalists, specialist singletons, one hub
 
-Channels cluster into many generalists plus 1–3 **antipodal specialist
-singletons** per layer (boundary detector, word-initial detector,
-uppercase-suffix detector — mirror-image pairs). The singletons are
-individually load-bearing: zeroing the L0 boundary singleton alone costs
-**+1.08 CE**. Depth retunes the code from byte-class (L0) to
-position-in-word (L1/L2). Kernel families (~6 per layer) route through
-channel clusters with a depth-migrating topology, converging onto a single
-L2 output hub channel that the head reads. Family ablations: the four big
-families are co-equal workhorses (+0.29–0.36 each); the small specialist
-family is nearly redundant (+0.017) — specialization lives at channel
-level, not edge level.
+*Round-6 retitle (was "antipodal specialists"): the mirror-image pairing
+is real but weaker and less exclusive than the original clustering
+formulation — see below.* Channels cluster into many generalists plus
+1–3 **specialist singletons** per layer (boundary detector, word-initial
+detector, uppercase-suffix detector). The singletons are individually
+load-bearing: zeroing the L0 boundary singleton alone costs **+1.08 CE**.
+Depth retunes the code from byte-class (L0) to position-in-word (L1/L2).
+On the "antipodal" pairing specifically (measured in
+`W11_EXCESS_STRUCTURE_REPORT.md` §6): profile-level mirror pairs exist
+above the init baseline (11–19 vs 6 pairs per layer at 100k, profile corr
+< −0.8), so the pairing is learned — but a chance-level baseline exists
+and gain-space antipodality is weak; read "antipodal" as "mirror-image
+activation profiles", not as an exact circuit class. Kernel families (~6
+per layer) route through channel clusters with a depth-migrating
+topology, converging onto a single L2 output hub channel that the head
+reads. Family ablations: the four big families are co-equal workhorses
+(+0.29–0.36 each); the small specialist family is nearly redundant
+(+0.017) — specialization lives at channel level, not edge level.
 
 ### 1.7 The decision: exact integration, opposing votes
 
@@ -476,20 +483,20 @@ open. The recall statement (§6) is behavioral and unaffected.
   information present throughout, but only in linearly inaccessible form.
   The machine computes form; the only content it provably *uses* is form.
 - The clock knows boundaries, not meaning.
-- **The "excess organization" question — resolved
-  (`W11_EXCESS_STRUCTURE_REPORT.md`).** The structure is not excess: it is
-  load-bearing (timescale-ladder flattening +0.125 nats; frequency–mode
-  consistency +2.6; timescale–mode consistency +1.9; feature-table
-  assignment +5.9; a full mode permutation is an exact gauge symmetry,
-  +0.0000 — the mode is a coherent object). Its origin is decomposed:
-  the frequency ladder's skeleton is an architectural prior (π-harmonic
-  init, preserved); the timescale ladder, boundary clock, and gate split
-  are learned — within ~250 steps, oscillation-independently (wskan11real
-  builds them too), and architecture-generally (mamba2 learns
-  boundary-responsive dt with the opposite sign convention). What remains
-  open is narrower: seed-level convergence of the specific assignments,
-  and the antipodal-metric discrepancy (§1.6 is a routing-level claim;
-  gain-space antipodality is weak).
+- **The organization: load-bearing for the found solution, NOT required
+  by the task — both directions measured
+  (`W11_EXCESS_STRUCTURE_REPORT.md`).** Surgery on the found solution
+  (3 seeds × 3 perms): ladder flatten +0.13–0.33, mode-consistency
+  shuffles +1.8–2.6, feature tables +5.5 nats; a full mode permutation is
+  an exact gauge (+1e-8). Retraining with the structure impossible
+  (campaign protocol): feature tables +0.006, ρ ladder +0.009, single
+  mode +0.041 (param-matched), no frequency +0.037. Gradient descent
+  finds this organization *immediately and reliably* (π-harmonic prior +
+  ~250-step emergence, oscillation-free in wskan11real, boundary gating
+  also in mamba2 with the opposite operation — skip vs reset, measured) —
+  but the task barely requires any single piece of it. The structure is
+  the path of least resistance under this parameterization, which is what
+  makes it worth analyzing.
 - The dormant long-memory tail (up to ~3,190 tokens at 10M, Appendix B)
   carries < 1% of readout weight — present, unused.
 - Forward derivation without execution: **not achieved, at any scale
@@ -532,6 +539,7 @@ and the claims are scoped to them.
 .venv/bin/python experiments/W11_hand_simulation.py         # Appendix D hand-simulation
 .venv/bin/python experiments/W11_round5_probes.py           # §4 trigram identification, §5 usefulness ladder
 .venv/bin/python experiments/W11_excess_structure.py        # §6 organization-origin battery
+.venv/bin/python experiments/W11_ablation_retrain.py --variant {n1|n1wide|nofeat|rhofrozen}  # §6 retrain test
 ```
 Canonical checkpoint: `checkpoints/wskan11_ultrachat_100k_3ep_s42/`.
 Interpretation checkpoints (protected): `checkpoints/*_interp_*`.

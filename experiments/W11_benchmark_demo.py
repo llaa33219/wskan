@@ -104,6 +104,56 @@ def main():
         print(f"  ...{tag!r} ({row['pair'][0]!r}/{row['pair'][1]!r}): "
               f"saliency rho {row['saliency_spearman']:+.2f} top3 {row['saliency_top3_overlap']}/3 | "
               f"LOO rho {row['loo_spearman']:+.2f} top3 {row['loo_top3_overlap']}/3")
+
+    # ---- extended: the 20 pre-registered completion contexts from the
+    # hand-simulation battery (same selection rule, same eval stream) ----
+    from experiments.V1_train_tinystories_lm import load_data
+    tr, ev = load_data(1400000, 500, 42, "ultrachat")
+    tr_arr = tr.numpy()[:2_000_000]
+    ev_arr = ev.numpy()
+    from collections import defaultdict
+    stats = defaultdict(lambda: np.zeros(256, dtype=np.int64))
+    for s in range(len(tr_arr) - 5):
+        stats[bytes(tr_arr[s:s + 4])][tr_arr[s + 4]] += 1
+    rng = np.random.default_rng(3)
+    cand = rng.choice(len(ev_arr) - 40, size=8000, replace=False)
+    contexts = []
+    for s in cand:
+        ctxb = ev_arr[s:s + 24]
+        key = bytes(ctxb[-4:])
+        if not all(chr(c).isalpha() for c in key):
+            continue
+        cnt = stats.get(key)
+        if cnt is None or cnt.sum() < 8:
+            continue
+        if cnt.max() / cnt.sum() < 0.75:
+            continue
+        contexts.append(ctxb)
+        if len(contexts) >= 20:
+            break
+    sal_rhos, loo_rhos, sal_top, loo_top = [], [], 0, 0
+    for ctxb in contexts:
+        idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
+        exact, logits, t12 = exact_per_position(m, idx)
+        sal = saliency_per_position(m, idx)
+        loo = loo_per_position(m, idx, logits, t12)
+        sal_rhos.append(spearman(np.abs(exact), sal))
+        loo_rhos.append(spearman(np.abs(exact), np.abs(loo)))
+        top3_exact = set(np.argsort(-np.abs(exact))[:3].tolist())
+        sal_top += len(top3_exact & set(np.argsort(-sal)[:3].tolist()))
+        loo_top += len(top3_exact & set(np.argsort(-np.abs(loo))[:3].tolist()))
+    out["preregistered_20"] = dict(
+        n=len(contexts),
+        saliency_spearman_mean=round(float(np.mean(sal_rhos)), 3),
+        saliency_spearman_std=round(float(np.std(sal_rhos)), 3),
+        loo_spearman_mean=round(float(np.mean(loo_rhos)), 3),
+        loo_spearman_std=round(float(np.std(loo_rhos)), 3),
+        saliency_top3_rate=round(sal_top / (3 * len(contexts)), 3),
+        loo_top3_rate=round(loo_top / (3 * len(contexts)), 3),
+    )
+    print(f"  20 pre-registered contexts: saliency rho {np.mean(sal_rhos):+.2f}±{np.std(sal_rhos):.2f} "
+          f"(top-3 {sal_top}/{3*len(contexts)}) | LOO rho {np.mean(loo_rhos):+.2f}±{np.std(loo_rhos):.2f} "
+          f"(top-3 {loo_top}/{3*len(contexts)})")
     with open("experiments/figures/w11_benchmark_demo.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved experiments/figures/w11_benchmark_demo.json")

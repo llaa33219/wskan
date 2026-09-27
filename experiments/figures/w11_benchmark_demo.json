@@ -31,5 +31,14 @@
     "loo_spearman": 0.40305043793415885,
     "saliency_top3_overlap": 1,
     "loo_top3_overlap": 1
+  },
+  "preregistered_20": {
+    "n": 20,
+    "saliency_spearman_mean": 0.782,
+    "saliency_spearman_std": 0.092,
+    "loo_spearman_mean": 0.37,
+    "loo_spearman_std": 0.19,
+    "saliency_top3_rate": 0.733,
+    "loo_top3_rate": 0.533
   }
 }

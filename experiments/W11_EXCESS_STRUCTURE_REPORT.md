@@ -135,17 +135,17 @@ mirror-image pairing was a metric artifact.
    right, and §8 now separates the two claims by measurement.** Within the
    found solution the organization is load-bearing (surgery: +0.13…+5.9
    nats, 3 seeds × 3 perms; the mode is a coherent object — exact gauge).
-   Retraining without the structure (3–5 seeds, §8): feature tables and the
+   Retraining without the structure (3–7 seeds, §8): feature tables and the
    ρ ladder are **not distinguishable from zero** (deltas straddle zero);
-   mode multiplicity +0.033 ± 0.020 (5/5 positive, p = 0.021);
+   mode multiplicity +0.038 ± 0.019 (7 seeds, 7/7 positive, p = 0.002);
    oscillation +0.037 ± 0.007 (p = 3e-4); the π-harmonic prior is
    unnecessary (−0.002 ± 0.009, and the frequency ladder is rebuilt from
    flat init). An earlier version of this section said "the task requires
    this organization" — **retracted** in round 6; the round-7 multi-seed
    rerun then downgraded the first retrain numbers themselves from
    "+0.006/+0.009" to "indistinguishable from zero at this noise level";
-   round 8 extended n1wide/wskan11real to 5 seeds for significance. All
-   corrections stand.
+   rounds 8–10 extended n1wide to 7 seeds and wskan11real to 5 for
+   significance. All corrections stand.
 2. **Origin is decomposed, and it is a prior+landscape story, not a
    task-necessity story.** Frequency skeleton: given by the prior
    (π-harmonics), not destroyed — but the prior is unnecessary (flat-ω
@@ -161,8 +161,8 @@ mirror-image pairing was a metric artifact.
    task's only solution.
 3. **The earlier "the data's correlation orders require multiple
    timescales" argument is replaced by the measured effect:**
-   multiresolution state helps (+0.033 ± 0.020, param-matched
-   single-mode, 5 seeds, p = 0.021), oscillation helps (+0.037 ± 0.007,
+   multiresolution state helps (+0.038 ± 0.019, param-matched
+   single-mode, 7 seeds, p = 0.002), oscillation helps (+0.037 ± 0.007,
    p = 3e-4) — both real, both modest, neither necessary.
 4. **What remains open (narrower):** the early-basin question is now
    measured (§10: data gradients differentiate modes from step 0; the Δ
@@ -187,11 +187,11 @@ there, same checkpoint, different eval set).** Paired per-seed deltas
 (variant − baseline, same seed, same chunks); baseline CEs 1.2907 /
 1.2996 / 1.3082 for seeds 42/7/123 (baseline seed std 0.009):
 
-| variant | ΔCE per seed (42 / 7 / 123 / 2024 / 31337) | mean ± std | t (df) | p |
+| variant | ΔCE per seed (42 / 7 / 123 / 2024 / 31337 / 999 / 777) | mean ± std | t (df) | p |
 |---|---|---|---|---|
 | nofeat (named feature tables removed) | +0.006 / −0.004 / −0.007 | −0.002 ± 0.007 (n=3) | — | n.s. |
 | rhofrozen (ρ ≡ 1, no learnable ladder) | +0.009 / +0.010 / −0.022 | −0.001 ± 0.017 (n=3) | — | n.s. |
-| n1wide (single mode, param-matched 109k) | +0.041 / +0.036 / +0.007 / +0.022 / +0.060 | **+0.033 ± 0.020 (n=5)** | 3.7 (4) | **0.021** |
+| n1wide (single mode, param-matched 109k) | +0.041 / +0.036 / +0.007 / +0.022 / +0.060 / +0.062 / +0.038 | **+0.038 ± 0.019 (n=7)** | 5.2 (6) | **0.002** |
 | flatomega (ω init 0, trainable; π prior removed) | +0.008 / −0.004 / −0.009 | −0.002 ± 0.009 (n=3) | — | n.s. |
 | wskan11real (ω ≡ 0 frozen; campaign, paired) | +0.037 / +0.041 / +0.025 / +0.040 / +0.042 | **+0.037 ± 0.007 (n=5)** | 11.4 (4) | **3e-4** |
 
@@ -202,10 +202,10 @@ Round-7 verdicts, by variant:
   predicted for the single-seed +0.006/+0.009). The correct statement is
   "no measurable task-requirement at this noise level", not the round-6
   "+0.006".
-- **Mode multiplicity: small and now significant** — +0.033 ± 0.020 over
-  5 seeds, positive in 5/5, t = 3.7, p = 0.021; the assumption-free sign
-  test agrees (5/5 positive: p = 1/32 ≈ 0.031). Oscillation: +0.037 ±
-  0.007, p = 3e-4 (5 seeds). Both real, both modest.
+- **Mode multiplicity: small and significant** — +0.038 ± 0.019 over
+  7 paired seeds (7/7 positive; t = 5.2, p = 0.002; sign test across both
+  datasets 9/9, p ≈ 0.002). Oscillation: +0.037 ± 0.007, p = 3e-4
+  (5 seeds). Both real, both modest.
 - **The π-harmonic frequency prior is unnecessary**: flat-ω trainable
   init matches the baseline (mean −0.002), and the trained flat-ω models
   *rebuild* frequency organization from zero (ladder R² 0.83–0.96,
@@ -230,6 +230,13 @@ consistent since baseline and variants share the protocol):*
 
 The headline survives a second dataset: feature tables remain unrequired,
 the mode bank's small cost replicates.
+
+*Eval-protocol bridge (round-10):* the fixed-16-chunk eval reads ~0.04
+higher than a 64×512 random-batch eval on the same checkpoints (baseline
+1.2907 fixed / 1.2494 ± 0.004 random; campaign's own log reads 1.2316 —
+trained with bf16 scan, evaluated here in fp32). The deltas replicate
+across protocols with the same signs: nofeat −0.006, n1wide +0.051,
+rhofrozen +0.009 (random-batch, s42).
 
 *Limits:* 3 seeds per variant (5 for n1wide/wskan11real) on UltraChat,
 2 seeds on TinyStories; one tier (100k); fixed-chunk eval.
@@ -264,15 +271,18 @@ figures `w11_basin_origin.json`):
    gate tables suffice). The 250-step emergence is then simply the time
    the initially-tiny SSM gradients need to accumulate — there is no
    barrier; the organized basin is the bottom of the local landscape.
-2. **Δ-init-scale sensitivity (1k):** the softplus bias init (Δ₀ = 0.05)
-   controls emergence *order*: with Δ₀ = 0.005 (long-memory init) the
-   clock emerges slower but the ladder faster; with Δ₀ = 0.5 (short-memory
-   init) the clock does **not** emerge within 2k steps at all. The initial
-   step scale sets how much boundary contrast survives the decay — a
-   concrete parameterization property gating the clock.
-3. **Flat-ω emergence (1k):** ladder and clock emerge at the same speed
-   from a perfectly symmetric mode init (ω = 0, σ uniform, ρ = 1) —
-   symmetry breaking is data-driven, prior-free.
+2. **Δ-init-scale sensitivity (1k, extended to 10k steps in round-10):**
+   the softplus bias init (Δ₀ = 0.05) controls emergence *order*; with
+   Δ₀ = 0.005 (long-memory init) the clock overshoots early (2.43 at 3k)
+   then settles ~2.0; with Δ₀ = 0.5 (short-memory init) the clock does
+   **not emerge at all within 10k steps** (ratio stays 1.00–1.03) — the
+   initial step scale is a *necessary condition* for the clock, not a
+   timing detail. (Constant-lr 1k runs; the campaign schedule may differ
+   late.)
+3. **Flat-ω emergence (1k, extended to 10k):** the clock emerges from a
+   perfectly symmetric mode init too, though more slowly at this tier
+   (1.32 at 10k vs 1.91 for π-harmonic init) — the prior accelerates but
+   does not enable; at 100k the final losses match (§8).
 
 *Limits:* the Δ-scale runs are 2k steps at 1k only. (Gradient anatomy was
 single-batch in the first version; round-9 re-ran it on 20 batches:
@@ -335,12 +345,11 @@ linearly inaccessible — a false negative the substrate adjudicates.
 Neither demo shows the methods are useless; they show their error is
 measurable here and not elsewhere.
 
-*Limits (whole report, round-9 current):* interventions 3 seeds × 3
-permutations (§1); retrains 3 seeds per variant (n1wide/wskan11real 5),
-replicated on a second dataset at 2 seeds (§8); surgical CE evals 60
-chunks, retrain evals 16 fixed chunks (not comparable to Appendix C of
-the monograph); dynamics extended to 20,000 steps (§5) — still short of
-the 108k campaign; basin-origin: 20-batch gradient anatomy + 2k-step 1k
-runs (§10); the antipodal claim is retracted, not merely metric-sensitive
-(§6); benchmark demo: 3 decisions, 2 post-hoc methods (§12); one tier
-(100k) throughout.
+*Limits (whole report, round-10 current):* interventions 3 seeds × 3
+permutations (§1); retrains 3 seeds per variant (n1wide 7, wskan11real
+5), replicated on a second dataset at 2 seeds (§8); surgical CE evals 60
+chunks, retrain evals 16 fixed chunks bridged to random-batch (§8 bridge
+note); dynamics extended to 20,000 steps (§5); basin-origin: 20-batch
+gradient anatomy + 10k-step 1k Δ-scale runs (§10); the antipodal claim is
+retracted, not merely metric-sensitive (§6); benchmark demo: 3 decisions,
+2 post-hoc methods (§12); one tier (100k) throughout.

@@ -1,0 +1,290 @@
+{
+ "dt_0.005": [
+  {
+   "step": 1000,
+   "eval": 2.431,
+   "tsladder": 0.981,
+   "clock": 1.938,
+   "gate": 0.005
+  },
+  {
+   "step": 2000,
+   "eval": 2.365,
+   "tsladder": 0.951,
+   "clock": 2.276,
+   "gate": 0.007
+  },
+  {
+   "step": 3000,
+   "eval": 2.302,
+   "tsladder": 0.902,
+   "clock": 2.427,
+   "gate": 0.01
+  },
+  {
+   "step": 4000,
+   "eval": 2.29,
+   "tsladder": 0.911,
+   "clock": 2.414,
+   "gate": 0.012
+  },
+  {
+   "step": 5000,
+   "eval": 2.265,
+   "tsladder": 0.96,
+   "clock": 2.307,
+   "gate": 0.018
+  },
+  {
+   "step": 6000,
+   "eval": 2.265,
+   "tsladder": 0.961,
+   "clock": 2.209,
+   "gate": 0.025
+  },
+  {
+   "step": 7000,
+   "eval": 2.238,
+   "tsladder": 0.965,
+   "clock": 2.066,
+   "gate": 0.034
+  },
+  {
+   "step": 8000,
+   "eval": 2.21,
+   "tsladder": 0.971,
+   "clock": 1.996,
+   "gate": 0.043
+  },
+  {
+   "step": 9000,
+   "eval": 2.206,
+   "tsladder": 0.948,
+   "clock": 1.988,
+   "gate": 0.054
+  },
+  {
+   "step": 10000,
+   "eval": 2.253,
+   "tsladder": 0.937,
+   "clock": 2.033,
+   "gate": 0.062
+  }
+ ],
+ "dt_0.05": [
+  {
+   "step": 1000,
+   "eval": 2.369,
+   "tsladder": 0.95,
+   "clock": 1.418,
+   "gate": 0.045
+  },
+  {
+   "step": 2000,
+   "eval": 2.315,
+   "tsladder": 0.907,
+   "clock": 1.53,
+   "gate": 0.112
+  },
+  {
+   "step": 3000,
+   "eval": 2.263,
+   "tsladder": 0.974,
+   "clock": 1.697,
+   "gate": 0.159
+  },
+  {
+   "step": 4000,
+   "eval": 2.248,
+   "tsladder": 0.924,
+   "clock": 1.734,
+   "gate": 0.183
+  },
+  {
+   "step": 5000,
+   "eval": 2.226,
+   "tsladder": 0.943,
+   "clock": 1.757,
+   "gate": 0.19
+  },
+  {
+   "step": 6000,
+   "eval": 2.237,
+   "tsladder": 0.964,
+   "clock": 1.792,
+   "gate": 0.188
+  },
+  {
+   "step": 7000,
+   "eval": 2.215,
+   "tsladder": 0.964,
+   "clock": 1.852,
+   "gate": 0.178
+  },
+  {
+   "step": 8000,
+   "eval": 2.184,
+   "tsladder": 0.972,
+   "clock": 1.877,
+   "gate": 0.17
+  },
+  {
+   "step": 9000,
+   "eval": 2.185,
+   "tsladder": 0.989,
+   "clock": 1.891,
+   "gate": 0.169
+  },
+  {
+   "step": 10000,
+   "eval": 2.223,
+   "tsladder": 0.984,
+   "clock": 1.911,
+   "gate": 0.172
+  }
+ ],
+ "dt_0.5": [
+  {
+   "step": 1000,
+   "eval": 2.392,
+   "tsladder": 0.888,
+   "clock": 0.999,
+   "gate": 0.291
+  },
+  {
+   "step": 2000,
+   "eval": 2.331,
+   "tsladder": 0.869,
+   "clock": 0.994,
+   "gate": 0.37
+  },
+  {
+   "step": 3000,
+   "eval": 2.27,
+   "tsladder": 0.792,
+   "clock": 0.996,
+   "gate": 0.414
+  },
+  {
+   "step": 4000,
+   "eval": 2.269,
+   "tsladder": 0.745,
+   "clock": 1.009,
+   "gate": 0.457
+  },
+  {
+   "step": 5000,
+   "eval": 2.248,
+   "tsladder": 0.725,
+   "clock": 1.008,
+   "gate": 0.545
+  },
+  {
+   "step": 6000,
+   "eval": 2.296,
+   "tsladder": 0.744,
+   "clock": 1.013,
+   "gate": 0.607
+  },
+  {
+   "step": 7000,
+   "eval": 2.23,
+   "tsladder": 0.792,
+   "clock": 1.015,
+   "gate": 0.641
+  },
+  {
+   "step": 8000,
+   "eval": 2.207,
+   "tsladder": 0.798,
+   "clock": 1.021,
+   "gate": 0.662
+  },
+  {
+   "step": 9000,
+   "eval": 2.218,
+   "tsladder": 0.783,
+   "clock": 1.023,
+   "gate": 0.678
+  },
+  {
+   "step": 10000,
+   "eval": 2.248,
+   "tsladder": 0.768,
+   "clock": 1.029,
+   "gate": 0.684
+  }
+ ],
+ "flatomega": [
+  {
+   "step": 1000,
+   "eval": 2.411,
+   "tsladder": 0.766,
+   "clock": 1.099,
+   "gate": 0.234
+  },
+  {
+   "step": 2000,
+   "eval": 2.346,
+   "tsladder": 0.948,
+   "clock": 1.174,
+   "gate": 0.271
+  },
+  {
+   "step": 3000,
+   "eval": 2.297,
+   "tsladder": 0.988,
+   "clock": 1.222,
+   "gate": 0.289
+  },
+  {
+   "step": 4000,
+   "eval": 2.292,
+   "tsladder": 0.936,
+   "clock": 1.239,
+   "gate": 0.297
+  },
+  {
+   "step": 5000,
+   "eval": 2.257,
+   "tsladder": 0.95,
+   "clock": 1.257,
+   "gate": 0.314
+  },
+  {
+   "step": 6000,
+   "eval": 2.278,
+   "tsladder": 0.987,
+   "clock": 1.267,
+   "gate": 0.317
+  },
+  {
+   "step": 7000,
+   "eval": 2.235,
+   "tsladder": 0.967,
+   "clock": 1.289,
+   "gate": 0.315
+  },
+  {
+   "step": 8000,
+   "eval": 2.201,
+   "tsladder": 0.946,
+   "clock": 1.289,
+   "gate": 0.322
+  },
+  {
+   "step": 9000,
+   "eval": 2.191,
+   "tsladder": 0.965,
+   "clock": 1.304,
+   "gate": 0.328
+  },
+  {
+   "step": 10000,
+   "eval": 2.223,
+   "tsladder": 0.951,
+   "clock": 1.324,
+   "gate": 0.336
+  }
+ ]
+}

@@ -496,7 +496,7 @@ open. The recall statement (§6) is behavioral and unaffected.
   an exact gauge (+1e-8). Retraining with the structure impossible
   (campaign protocol, paired deltas): feature tables −0.002 ±
   0.007 and ρ ladder −0.001 ± 0.017 — **indistinguishable from zero**;
-  single mode +0.033 ± 0.020 (5 seeds, 5/5 positive, p = 0.021); no
+  single mode +0.038 ± 0.019 (7 seeds, 7/7 positive, p = 0.002); no
   frequency +0.037 ± 0.007 (5 seeds, p = 3e-4); π-harmonic prior
   unnecessary (flat-ω init matches, −0.002 ± 0.009, and rebuilds the
   ladder from zero). Gradient descent finds this
@@ -529,18 +529,26 @@ specific to wskan11 is the **unit of decomposition**: per-edge functions
 neuron activations, plus the clock field Δ as a first-class object. The
 decomposition machinery is shared; the objects decomposed into are not.
 
-*On the value of interpretable-by-design (round-5):* this work does not
-directly help interpret production models, and we do not claim otherwise.
-What it offers is (a) a **ground truth** of learnable computation — every
-mechanism here is measured, not hypothesized; (b) a **benchmark** on which
-post-hoc interpretability methods are validated against exact answers —
-demonstrated, not just proposed (`W11_EXCESS_STRUCTURE_REPORT.md` §12:
-leave-one-out attribution agrees with the exact decomposition at only
-ρ ≈ 0.34–0.46; a linear probe's "no word identity" conclusion is a false
-negative the substrate catches); (c) **clean hypothesis tests** (clock,
-gate split, mode roles) of the kind that are ambiguous in larger models. How much that is worth is the
-community's call; what we stand behind is that the measurements are exact
-and the claims are scoped to them.
+*On the value of interpretable-by-design (round-5, sharpened round-10):*
+this work does not directly help interpret production models, and we do
+not claim otherwise. **Plainly: nobody should deploy this architecture —
+mamba2 beats it and the gap grows with scale; the organization it builds
+is not even task-required (§6). It is a research instrument, and the
+reason to build it is that some questions are only measurable on it** —
+what an edge function learns, whether a decision decomposes exactly, how
+far post-hoc attribution errs (excess report §12), what an init prior
+does and does not buy (§8 flat-ω). A thermometer is not a good engine;
+that is not the question it answers. Concretely it offers (a) a **ground
+truth** of learnable computation — every mechanism here is measured, not
+hypothesized; (b) a **benchmark** on which post-hoc interpretability
+methods are validated against exact answers — demonstrated, not just
+proposed (`W11_EXCESS_STRUCTURE_REPORT.md` §12: leave-one-out attribution
+agrees with the exact decomposition at only ρ ≈ 0.34–0.46; a linear
+probe's "no word identity" conclusion is a false negative the substrate
+catches); (c) **clean hypothesis tests** (clock, gate split, mode roles)
+of the kind that are ambiguous in larger models. How much that is worth
+is the community's call; what we stand behind is that the measurements
+are exact and the claims are scoped to them.
 
 ## 8. Reproduction
 

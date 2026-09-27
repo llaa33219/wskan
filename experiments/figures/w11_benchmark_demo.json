@@ -40,5 +40,12 @@
     "loo_spearman_std": 0.19,
     "saliency_top3_rate": 0.733,
     "loo_top3_rate": 0.533
+  },
+  "word_initial_20": {
+    "n": 20,
+    "saliency_spearman_mean": 0.79,
+    "saliency_spearman_std": 0.093,
+    "loo_spearman_mean": 0.257,
+    "loo_spearman_std": 0.159
   }
 }

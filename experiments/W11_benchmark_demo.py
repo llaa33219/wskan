@@ -154,6 +154,34 @@ def main():
     print(f"  20 pre-registered contexts: saliency rho {np.mean(sal_rhos):+.2f}±{np.std(sal_rhos):.2f} "
           f"(top-3 {sal_top}/{3*len(contexts)}) | LOO rho {np.mean(loo_rhos):+.2f}±{np.std(loo_rhos):.2f} "
           f"(top-3 {loo_top}/{3*len(contexts)})")
+
+    # ---- category 2: word-initial decisions (context ends at a space) ----
+    rng2 = np.random.default_rng(11)
+    cand2 = rng2.choice(len(ev_arr) - 40, size=4000, replace=False)
+    bctx = []
+    for s in cand2:
+        ctxb = ev_arr[s:s + 24]
+        if ctxb[-1] == 32 and all(chr(c).isalpha() for c in ctxb[-4:-1]):
+            bctx.append(ctxb)
+        if len(bctx) >= 20:
+            break
+    sal2, loo2 = [], []
+    for ctxb in bctx:
+        idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
+        exact, logits, t12 = exact_per_position(m, idx)
+        sal = saliency_per_position(m, idx)
+        loo = loo_per_position(m, idx, logits, t12)
+        sal2.append(spearman(np.abs(exact), sal))
+        loo2.append(spearman(np.abs(exact), np.abs(loo)))
+    out["word_initial_20"] = dict(
+        n=len(bctx),
+        saliency_spearman_mean=round(float(np.mean(sal2)), 3),
+        saliency_spearman_std=round(float(np.std(sal2)), 3),
+        loo_spearman_mean=round(float(np.mean(loo2)), 3),
+        loo_spearman_std=round(float(np.std(loo2)), 3),
+    )
+    print(f"  20 word-initial contexts: saliency rho {np.mean(sal2):+.2f}±{np.std(sal2):.2f} | "
+          f"LOO rho {np.mean(loo2):+.2f}±{np.std(loo2):.2f}")
     with open("experiments/figures/w11_benchmark_demo.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved experiments/figures/w11_benchmark_demo.json")

@@ -33,14 +33,16 @@ from models.V11_WSKAN import WaveletStateKANLMV11
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--variant", choices=["n1", "n1wide", "nofeat", "rhofrozen", "flatomega"], required=True)
+    p.add_argument("--variant", choices=["base", "n1", "n1wide", "nofeat", "rhofrozen", "flatomega"],
+                   required=True)
     p.add_argument("--seed", type=int, default=42)
+    p.add_argument("--dataset", choices=["ultrachat", "tinystories"], default="ultrachat")
     p.add_argument("--steps", type=int, default=108000)
     p.add_argument("--eval-every", type=int, default=2000)
     args = p.parse_args()
 
     from experiments.V1_train_tinystories_lm import load_data
-    train_ids, eval_ids = load_data(1400000, 500, args.seed, "ultrachat")
+    train_ids, eval_ids = load_data(1400000, 500, args.seed, args.dataset)
     eval_ids = eval_ids.long().cuda()
 
     torch.manual_seed(args.seed)
@@ -92,7 +94,8 @@ def main():
             print(f"step {step:6d} train {loss.item():.4f} eval {ev:.4f} ({time.time() - t0:.0f}s)",
                   flush=True)
 
-    out_dir = Path(f"checkpoints/wskan11abl-{args.variant}_ultrachat_100k_3ep_s{args.seed}")
+    tag = "3ep" if (args.dataset == "ultrachat" and args.steps == 108000) else f"{args.steps // 1000}k"
+    out_dir = Path(f"checkpoints/wskan11abl-{args.variant}_{args.dataset}_100k_{tag}_s{args.seed}")
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.save({"state_dict": m.state_dict(), "variant": args.variant, "seed": args.seed},
                out_dir / "latest.pt")

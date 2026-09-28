@@ -74,6 +74,7 @@ experiments/
   W11_dynamics_20k.py             # emergence trajectories extended to 20k steps
   W11_basin_origin.py             # why the organized basin is entered early (gradient anatomy, dt-init scale)
   W11_benchmark_demo.py           # post-hoc attribution methods scored against exact ground truth
+  W11_deep_all_sizes.py           # deep anatomy at every tier (exclusion, frien->d, truncation)
   W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/
   {model}_{dataset}_{size}_s{seed}/   # benchmark matrix tier (225 runs)

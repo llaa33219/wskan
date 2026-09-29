@@ -231,6 +231,26 @@ consistent since baseline and variants share the protocol):*
 The headline survives a second dataset: feature tables remain unrequired,
 the mode bank's small cost replicates.
 
+*The audit across tiers (UltraChat, seed 42, paired deltas vs campaign
+baselines on the fixed chunks):*
+
+| tier | baseline | nofeat Δ | n1wide Δ |
+|---|---|---|---|
+| 10k | 1.8863 | −0.013 | +0.031 |
+| 100k | 1.2907 | −0.002 (3-seed mean) | +0.038 (7-seed mean) |
+| 1m | 1.1110 | −0.003 | −0.009 |
+| 10m | 1.0183 | +0.028 | +0.011 |
+
+The verdict is tier-independent: the tables are never required; the mode
+bank's cost is small everywhere (and even flips slightly negative at 1m —
+the wider single-mode model compensates). And the surgical battery per
+tier (seed 42) tells the same scale story from the other side: feature
+shuffle +2.5 → +5.4 → +5.6 → +1.0 → +0.05 and ρ-flatten +0.35 → +1.20 →
++0.13 → +0.10 → +0.006 nats from 1k to 10m — the found solution leans on
+the tables at small scale and not at large; the gauge symmetry is exact
+(±1e-8) at every tier; the frequency-mode consistency stays load-bearing
+(+1.6 to +3.1) at every tier.
+
 *Eval-protocol bridge (round-10):* the fixed-16-chunk eval reads ~0.04
 higher than a 64×512 random-batch eval on the same checkpoints (baseline
 1.2907 fixed / 1.2494 ± 0.004 random; campaign's own log reads 1.2316 —
@@ -345,11 +365,12 @@ linearly inaccessible — a false negative the substrate adjudicates.
 Neither demo shows the methods are useless; they show their error is
 measurable here and not elsewhere.
 
-*Limits (whole report, round-10 current):* interventions 3 seeds × 3
-permutations (§1); retrains 3 seeds per variant (n1wide 7, wskan11real
-5), replicated on a second dataset at 2 seeds (§8); surgical CE evals 60
-chunks, retrain evals 16 fixed chunks bridged to random-batch (§8 bridge
+*Limits (whole report, current):* interventions 3 seeds × 3 permutations
+at 100k, single-seed at the other tiers (§1 scale story); retrains 3 seeds
+per variant (n1wide 7, wskan11real 5) at 100k, replicated on TinyStories
+at 2 seeds and across tiers 10k/1m/10m at 1 seed (§8); surgical CE evals
+60 chunks, retrain evals 16 fixed chunks bridged to random-batch (§8 bridge
 note); dynamics extended to 20,000 steps (§5); basin-origin: 20-batch
 gradient anatomy + 10k-step 1k Δ-scale runs (§10); the antipodal claim is
-retracted, not merely metric-sensitive (§6); benchmark demo: 3 decisions,
-2 post-hoc methods (§12); one tier (100k) throughout.
+retracted, not merely metric-sensitive (§6); benchmark demo: 2 decision
+categories × 20 contexts, 2 post-hoc methods (§12).

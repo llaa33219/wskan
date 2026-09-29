@@ -37,22 +37,34 @@ def main():
                    required=True)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--dataset", choices=["ultrachat", "tinystories"], default="ultrachat")
-    p.add_argument("--steps", type=int, default=108000)
+    p.add_argument("--tier", choices=["1k", "10k", "100k", "1m", "10m"], default="100k")
+    p.add_argument("--steps", type=int, default=None)
+    p.add_argument("--lr", type=float, default=None)
+    p.add_argument("--batch", type=int, default=64)
     p.add_argument("--eval-every", type=int, default=2000)
     args = p.parse_args()
+    TIER_D = {"1k": 4, "10k": 12, "100k": 40, "1m": 80, "10m": 512}
+    TIER_L = {"1k": 1, "10k": 1, "100k": 2, "1m": 6, "10m": 2}
+    TIER_STEPS = {"1k": 36000, "10k": 54000, "100k": 108000, "1m": 54000, "10m": 36000}
+    if args.steps is None:
+        args.steps = TIER_STEPS[args.tier]
+    if args.lr is None:
+        args.lr = 3e-3 if args.tier in ("1k", "10k", "100k") else 1e-3
 
     from experiments.V1_train_tinystories_lm import load_data
     train_ids, eval_ids = load_data(1400000, 500, args.seed, args.dataset)
     eval_ids = eval_ids.long().cuda()
 
     torch.manual_seed(args.seed)
-    kw = dict(vocab_size=256, d_model=40, n_layers=2, use_feature_bc=True,
-              wz_diag=False, g_rank=None, bc_rank=32, bf16_scan=True)
+    kw = dict(vocab_size=256, d_model=TIER_D[args.tier], n_layers=TIER_L[args.tier],
+              use_feature_bc=True, wz_diag=False, g_rank=None,
+              bc_rank=min(32, TIER_D[args.tier]), bf16_scan=True)
     if args.variant == "n1":
         kw["n_states"] = 1
     if args.variant == "n1wide":
         kw["n_states"] = 1
-        kw["d_model"] = 67   # param-matched to the 100k tier (~106k vs 114k)
+        kw["d_model"] = {"10k": 18, "100k": 67, "1m": 132, "10m": 779}[args.tier]
+        kw["bc_rank"] = min(32, kw["d_model"])
     if args.variant == "nofeat":
         kw["use_feature_bc"] = False
     m = WaveletStateKANLMV11(**kw).cuda()
@@ -65,10 +77,11 @@ def main():
     print(f"variant {args.variant} seed {args.seed} params {sum(q.numel() for q in m.parameters()):,}",
           flush=True)
 
-    opt = torch.optim.AdamW(m.parameters(), lr=3e-3, weight_decay=0.0)
+    opt = torch.optim.AdamW(m.parameters(), lr=args.lr, weight_decay=0.0)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=args.steps)
 
-    def get_batch(src, bs=64, blk=512):
+    def get_batch(src, bs=None, blk=512):
+        bs = bs or args.batch
         ix = torch.randint(len(src) - blk - 1, (bs,))
         return torch.stack([src[i:i + blk + 1] for i in ix]).long().cuda()
 
@@ -95,7 +108,7 @@ def main():
                   flush=True)
 
     tag = "3ep" if (args.dataset == "ultrachat" and args.steps == 108000) else f"{args.steps // 1000}k"
-    out_dir = Path(f"checkpoints/wskan11abl-{args.variant}_{args.dataset}_100k_{tag}_s{args.seed}")
+    out_dir = Path(f"checkpoints/wskan11abl-{args.variant}_{args.dataset}_{args.tier}_{tag}_s{args.seed}")
     out_dir.mkdir(parents=True, exist_ok=True)
     torch.save({"state_dict": m.state_dict(), "variant": args.variant, "seed": args.seed},
                out_dir / "latest.pt")

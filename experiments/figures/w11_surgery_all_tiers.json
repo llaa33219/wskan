@@ -1,0 +1,59 @@
+{
+  "surgery": {
+    "1k": {
+      "base": 2.4044,
+      "rho_flat": 0.3545,
+      "omega_shuffle": 1.9318,
+      "feature_shuffle": 2.5144,
+      "gauge": 1.82e-08
+    },
+    "10k": {
+      "base": 1.8439,
+      "rho_flat": 1.2042,
+      "omega_shuffle": 2.3294,
+      "feature_shuffle": 5.4497,
+      "gauge": -3e-09
+    },
+    "100k": {
+      "base": 1.2167,
+      "rho_flat": 0.1233,
+      "omega_shuffle": 3.1055,
+      "feature_shuffle": 6.1032,
+      "gauge": -9.6e-09
+    },
+    "1m": {
+      "base": 0.9794,
+      "rho_flat": 0.0963,
+      "omega_shuffle": 1.605,
+      "feature_shuffle": 1.0136,
+      "gauge": 2e-09
+    },
+    "10m": {
+      "base": 0.8669,
+      "rho_flat": 0.0064,
+      "omega_shuffle": 1.6052,
+      "feature_shuffle": 0.0497,
+      "gauge": 4.5e-09
+    }
+  },
+  "perlayer_causal": {
+    "100k": {
+      "baseline_wi": 2.7375,
+      "per_layer_delta": [
+        0.5552,
+        0.1276
+      ]
+    },
+    "1m": {
+      "baseline_wi": 2.4998,
+      "per_layer_delta": [
+        0.0692,
+        0.0768,
+        0.0615,
+        0.0454,
+        0.0388,
+        0.0535
+      ]
+    }
+  }
+}

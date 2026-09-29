@@ -1,0 +1,118 @@
+{
+ "1k": {
+  "byte_manifold": {
+   "within": 0.48,
+   "between": 0.349
+  },
+  "clock_per_layer": [
+   1.61
+  ],
+  "ladder_r2_per_layer": [
+   0.818
+  ],
+  "gate_named_share_per_layer": [
+   0.398
+  ],
+  "byte_manifold_multiclass": {
+   "within": NaN,
+   "between": 0.163
+  }
+ },
+ "10k": {
+  "byte_manifold": {
+   "within": 0.479,
+   "between": 0.313
+  },
+  "clock_per_layer": [
+   2.18
+  ],
+  "ladder_r2_per_layer": [
+   0.931
+  ],
+  "gate_named_share_per_layer": [
+   0.262
+  ],
+  "byte_manifold_multiclass": {
+   "within": NaN,
+   "between": 0.191
+  }
+ },
+ "100k": {
+  "byte_manifold": {
+   "within": 0.332,
+   "between": 0.181
+  },
+  "clock_per_layer": [
+   2.56,
+   1.95
+  ],
+  "ladder_r2_per_layer": [
+   0.638,
+   0.894
+  ],
+  "gate_named_share_per_layer": [
+   0.155,
+   0.195
+  ],
+  "byte_manifold_multiclass": {
+   "within": NaN,
+   "between": 0.062
+  }
+ },
+ "1m": {
+  "byte_manifold": {
+   "within": 0.352,
+   "between": 0.236
+  },
+  "clock_per_layer": [
+   2.18,
+   1.86,
+   1.52,
+   1.56,
+   1.61,
+   1.75
+  ],
+  "ladder_r2_per_layer": [
+   0.714,
+   0.726,
+   0.679,
+   0.602,
+   0.608,
+   0.598
+  ],
+  "gate_named_share_per_layer": [
+   0.136,
+   0.088,
+   0.081,
+   0.048,
+   0.052,
+   0.047
+  ],
+  "byte_manifold_multiclass": {
+   "within": NaN,
+   "between": 0.131
+  }
+ },
+ "10m": {
+  "byte_manifold": {
+   "within": 0.269,
+   "between": 0.175
+  },
+  "clock_per_layer": [
+   2.37,
+   2.43
+  ],
+  "ladder_r2_per_layer": [
+   0.93,
+   0.972
+  ],
+  "gate_named_share_per_layer": [
+   0.07,
+   0.007
+  ],
+  "byte_manifold_multiclass": {
+   "within": NaN,
+   "between": 0.085
+  }
+ }
+}

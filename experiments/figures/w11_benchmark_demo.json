@@ -32,20 +32,20 @@
     "saliency_top3_overlap": 1,
     "loo_top3_overlap": 1
   },
-  "preregistered_20": {
-    "n": 20,
-    "saliency_spearman_mean": 0.782,
-    "saliency_spearman_std": 0.092,
-    "loo_spearman_mean": 0.37,
-    "loo_spearman_std": 0.19,
-    "saliency_top3_rate": 0.733,
-    "loo_top3_rate": 0.533
+  "morphology_20": {
+    "sal_mean": 0.782,
+    "sal_std": 0.092,
+    "loo_mean": 0.37,
+    "loo_std": 0.19,
+    "ig_mean": 0.751,
+    "ig_std": 0.097
   },
   "word_initial_20": {
-    "n": 20,
-    "saliency_spearman_mean": 0.79,
-    "saliency_spearman_std": 0.093,
-    "loo_spearman_mean": 0.257,
-    "loo_spearman_std": 0.159
+    "sal_mean": 0.79,
+    "sal_std": 0.093,
+    "loo_mean": 0.257,
+    "loo_std": 0.159,
+    "ig_mean": 0.678,
+    "ig_std": 0.142
   }
 }

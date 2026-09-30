@@ -77,6 +77,23 @@ def loo_per_position(m, idx, logits_ref, t12):
     return drops
 
 
+def ig_per_position(m, idx, steps: int = 32):
+    """Integrated gradients of the top1-top2 margin w.r.t. each input
+    position's embedding, path-integrated from the zero baseline."""
+    emb = m.tok_emb(idx).detach()
+    grads = torch.zeros_like(emb)
+    for a in torch.linspace(0, 1, steps + 1, device=idx.device):
+        x = (emb * a).requires_grad_(True)
+        y = x
+        for norm, layer in zip(m.prenorms, m.layers):
+            y = y + layer(norm(y), idx)
+        logits = m.head(m.norm(y))[0, -1]
+        t1, t2 = torch.topk(logits, 2).indices
+        (logits[t1] - logits[t2]).backward()
+        grads += x.grad.detach()
+    return (emb * grads / steps)[0].norm(dim=-1).cpu().numpy()
+
+
 def spearman(a, b):
     ra = np.argsort(np.argsort(a))
     rb = np.argsort(np.argsort(b))
@@ -131,29 +148,22 @@ def main():
         contexts.append(ctxb)
         if len(contexts) >= 20:
             break
-    sal_rhos, loo_rhos, sal_top, loo_top = [], [], 0, 0
-    for ctxb in contexts:
-        idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
-        exact, logits, t12 = exact_per_position(m, idx)
-        sal = saliency_per_position(m, idx)
-        loo = loo_per_position(m, idx, logits, t12)
-        sal_rhos.append(spearman(np.abs(exact), sal))
-        loo_rhos.append(spearman(np.abs(exact), np.abs(loo)))
-        top3_exact = set(np.argsort(-np.abs(exact))[:3].tolist())
-        sal_top += len(top3_exact & set(np.argsort(-sal)[:3].tolist()))
-        loo_top += len(top3_exact & set(np.argsort(-np.abs(loo))[:3].tolist()))
-    out["preregistered_20"] = dict(
-        n=len(contexts),
-        saliency_spearman_mean=round(float(np.mean(sal_rhos)), 3),
-        saliency_spearman_std=round(float(np.std(sal_rhos)), 3),
-        loo_spearman_mean=round(float(np.mean(loo_rhos)), 3),
-        loo_spearman_std=round(float(np.std(loo_rhos)), 3),
-        saliency_top3_rate=round(sal_top / (3 * len(contexts)), 3),
-        loo_top3_rate=round(loo_top / (3 * len(contexts)), 3),
-    )
-    print(f"  20 pre-registered contexts: saliency rho {np.mean(sal_rhos):+.2f}±{np.std(sal_rhos):.2f} "
-          f"(top-3 {sal_top}/{3*len(contexts)}) | LOO rho {np.mean(loo_rhos):+.2f}±{np.std(loo_rhos):.2f} "
-          f"(top-3 {loo_top}/{3*len(contexts)})")
+    def score_contexts(ctx_list):
+        sal_rhos, loo_rhos, ig_rhos = [], [], []
+        for ctxb in ctx_list:
+            idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
+            exact, logits, t12 = exact_per_position(m, idx)
+            sal = saliency_per_position(m, idx)
+            loo = loo_per_position(m, idx, logits, t12)
+            ig = ig_per_position(m, idx)
+            sal_rhos.append(spearman(np.abs(exact), sal))
+            loo_rhos.append(spearman(np.abs(exact), np.abs(loo)))
+            ig_rhos.append(spearman(np.abs(exact), ig))
+        return dict(sal_mean=round(float(np.mean(sal_rhos)), 3), sal_std=round(float(np.std(sal_rhos)), 3),
+                    loo_mean=round(float(np.mean(loo_rhos)), 3), loo_std=round(float(np.std(loo_rhos)), 3),
+                    ig_mean=round(float(np.mean(ig_rhos)), 3), ig_std=round(float(np.std(ig_rhos)), 3))
+
+    out["morphology_20"] = score_contexts(contexts)
 
     # ---- category 2: word-initial decisions (context ends at a space) ----
     rng2 = np.random.default_rng(11)
@@ -165,23 +175,9 @@ def main():
             bctx.append(ctxb)
         if len(bctx) >= 20:
             break
-    sal2, loo2 = [], []
-    for ctxb in bctx:
-        idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
-        exact, logits, t12 = exact_per_position(m, idx)
-        sal = saliency_per_position(m, idx)
-        loo = loo_per_position(m, idx, logits, t12)
-        sal2.append(spearman(np.abs(exact), sal))
-        loo2.append(spearman(np.abs(exact), np.abs(loo)))
-    out["word_initial_20"] = dict(
-        n=len(bctx),
-        saliency_spearman_mean=round(float(np.mean(sal2)), 3),
-        saliency_spearman_std=round(float(np.std(sal2)), 3),
-        loo_spearman_mean=round(float(np.mean(loo2)), 3),
-        loo_spearman_std=round(float(np.std(loo2)), 3),
-    )
-    print(f"  20 word-initial contexts: saliency rho {np.mean(sal2):+.2f}±{np.std(sal2):.2f} | "
-          f"LOO rho {np.mean(loo2):+.2f}±{np.std(loo2):.2f}")
+    out["word_initial_20"] = score_contexts(bctx)
+    print("  morphology 20:", out["morphology_20"])
+    print("  word-initial 20:", out["word_initial_20"])
     with open("experiments/figures/w11_benchmark_demo.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved experiments/figures/w11_benchmark_demo.json")

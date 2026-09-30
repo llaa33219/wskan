@@ -178,6 +178,19 @@ def main():
     out["word_initial_50"] = score_contexts(bctx)
     print("  morphology 50:", out["morphology_50"])
     print("  word-initial 50:", out["word_initial_50"])
+
+    # ---- category 3: post-punctuation decisions (context ends '.') ----
+    rng3 = np.random.default_rng(17)
+    cand3 = rng3.choice(len(ev_arr) - 40, size=4000, replace=False)
+    pctx = []
+    for s in cand3:
+        ctxb = ev_arr[s:s + 24]
+        if ctxb[-1] == 46 and all(chr(c).isalpha() or c == 32 for c in ctxb[-6:-1]):
+            pctx.append(ctxb)
+        if len(pctx) >= 50:
+            break
+    out["post_punct_50"] = score_contexts(pctx)
+    print("  post-punct 50:", out["post_punct_50"])
     with open("experiments/figures/w11_benchmark_demo.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved experiments/figures/w11_benchmark_demo.json")

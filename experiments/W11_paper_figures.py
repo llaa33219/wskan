@@ -49,7 +49,10 @@ def fig_clock(m):
     for i, c in enumerate(text):
         ch = chr(c)
         if ch == " ":
-            ax.axvspan(i - 0.5, i + 0.5, color="#ffcc80", alpha=0.35, lw=0)
+            ax.axvspan(i - 0.5, i + 0.5, color="#ffcc80", alpha=0.45, lw=0,
+                       hatch="///", edgecolor="#b45309", linewidth=0.0)
+            ax.plot([i], [0.035], marker="v", color="#b45309", markersize=5,
+                    transform=trans, clip_on=False)
         ax.annotate(ch if ch != " " else "_", (i, -0.03), ha="center", fontsize=9,
                     color="gray", family="monospace", xycoords=trans, annotation_clip=False)
     ax.set_ylabel(r"$\Delta$ (warped-time step)")

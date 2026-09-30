@@ -1,4 +1,9 @@
-# Wavelet-State-KAN
+# Wavelet-like State-Space KAN (WSKAN)
+
+*Formerly "Wavelet-State-KAN". Renamed for honesty: the edge kernels are
+wavelet-like damped oscillators (SSM impulse responses), not strictly
+admissible wavelets — the acronym WSKAN and all artifact names
+(`wskan11_*` checkpoints, scripts, repo) are unchanged.*
 
 A Kolmogorov-Arnold Network where each edge wavelet is the impulse response of
 a stable state-space model (SSM). One parameterization, two modes: closed-form

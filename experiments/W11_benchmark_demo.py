@@ -146,7 +146,7 @@ def main():
         if cnt.max() / cnt.sum() < 0.75:
             continue
         contexts.append(ctxb)
-        if len(contexts) >= 20:
+        if len(contexts) >= 50:
             break
     def score_contexts(ctx_list):
         sal_rhos, loo_rhos, ig_rhos = [], [], []
@@ -163,7 +163,7 @@ def main():
                     loo_mean=round(float(np.mean(loo_rhos)), 3), loo_std=round(float(np.std(loo_rhos)), 3),
                     ig_mean=round(float(np.mean(ig_rhos)), 3), ig_std=round(float(np.std(ig_rhos)), 3))
 
-    out["morphology_20"] = score_contexts(contexts)
+    out["morphology_50"] = score_contexts(contexts)
 
     # ---- category 2: word-initial decisions (context ends at a space) ----
     rng2 = np.random.default_rng(11)
@@ -173,11 +173,11 @@ def main():
         ctxb = ev_arr[s:s + 24]
         if ctxb[-1] == 32 and all(chr(c).isalpha() for c in ctxb[-4:-1]):
             bctx.append(ctxb)
-        if len(bctx) >= 20:
+        if len(bctx) >= 50:
             break
-    out["word_initial_20"] = score_contexts(bctx)
-    print("  morphology 20:", out["morphology_20"])
-    print("  word-initial 20:", out["word_initial_20"])
+    out["word_initial_50"] = score_contexts(bctx)
+    print("  morphology 50:", out["morphology_50"])
+    print("  word-initial 50:", out["word_initial_50"])
     with open("experiments/figures/w11_benchmark_demo.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved experiments/figures/w11_benchmark_demo.json")

@@ -152,6 +152,39 @@ def fig_dynamics():
     fig.savefig("paper/figures/fig_dynamics.pdf")
 
 
+def fig_campaign():
+    d = json.load(open("experiments/figures/w11_anatomy_all_tiers.json"))
+    b = json.load(open("experiments/figures/w11_all_sizes.json"))
+    tiers = ["1k", "10k", "100k", "1m", "10m"]
+    seeds = [42, 123, 2024, 7, 31337]
+    clock_m, clock_s, hl_m, eff_m, ctl_m = [], [], [], [], []
+    for t in tiers:
+        cr = [b[f"{t}_s{s}"]["clock_ratio"][0] for s in seeds]
+        clock_m.append(float(np.mean(cr)))
+        clock_s.append(float(np.std(cr)))
+        hl_m.append(float(np.mean([b[f"{t}_s{s}"]["memory"][0]["hl_med"] for s in seeds])))
+        eff_m.append(float(np.mean([b[f"{t}_s{s}"]["causal"]["clamp_boundary"][0]
+                                    - b[f"{t}_s{s}"]["causal"]["baseline"][0] for s in seeds])))
+        ctl_m.append(float(np.mean([b[f"{t}_s{s}"]["causal"]["clamp_letter"][0]
+                                    - b[f"{t}_s{s}"]["causal"]["baseline"][0] for s in seeds])))
+    fig, axes = plt.subplots(1, 3, figsize=(7.2, 2.3))
+    x = np.arange(5)
+    axes[0].errorbar(x, clock_m, yerr=clock_s, marker="o", color="#1f77b4", capsize=3)
+    axes[0].set_title("boundary clock ratio", fontsize=9)
+    axes[1].plot(x, hl_m, marker="s", color="#2ca02c")
+    axes[1].set_title("memory half-life (median, tokens)", fontsize=9)
+    axes[2].plot(x, eff_m, marker="o", color="#d62728", label="boundary clamp")
+    axes[2].plot(x, ctl_m, marker="s", color="gray", label="letter control")
+    axes[2].set_title("word-initial CE damage (nats)", fontsize=9)
+    axes[2].legend(fontsize=7)
+    for ax in axes:
+        ax.set_xticks(x)
+        ax.set_xticklabels(tiers)
+    fig.suptitle("The anatomy across scale (5 seeds)", fontsize=9)
+    fig.tight_layout()
+    fig.savefig("paper/figures/fig_campaign.pdf")
+
+
 def main():
     import os
     os.makedirs("paper/figures", exist_ok=True)
@@ -160,6 +193,7 @@ def main():
     fig_kernels(m)
     fig_decision(m)
     fig_dynamics()
+    fig_campaign()
     print("saved paper/figures/fig_{clock,kernels,decision,dynamics}.pdf")
 
 

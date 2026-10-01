@@ -94,6 +94,20 @@ def ig_per_position(m, idx, steps: int = 32):
     return (emb * grads / steps)[0].norm(dim=-1).cpu().numpy()
 
 
+def loo_replace_per_position(m, idx, logits_ref, t12, rng):
+    """Replace byte at position p with a random corpus byte (not deletion):
+    the fairer perturbation-based attribution."""
+    t1, t2 = t12
+    drops = np.zeros(idx.shape[1])
+    for p in range(idx.shape[1]):
+        idx2 = idx.clone()
+        idx2[0, p] = int(rng.integers(0, 256))
+        with torch.no_grad():
+            lg = m(idx2)[0, -1].cpu().numpy()
+        drops[p] = (logits_ref[t1] - logits_ref[t2]) - (lg[t1] - lg[t2])
+    return drops
+
+
 def spearman(a, b):
     ra = np.argsort(np.argsort(a))
     rb = np.argsort(np.argsort(b))
@@ -149,19 +163,23 @@ def main():
         if len(contexts) >= 50:
             break
     def score_contexts(ctx_list):
-        sal_rhos, loo_rhos, ig_rhos = [], [], []
+        sal_rhos, loo_rhos, ig_rhos, rep_rhos = [], [], [], []
+        rng = np.random.default_rng(5)
         for ctxb in ctx_list:
             idx = torch.tensor([int(c) for c in ctxb], device=DEV).unsqueeze(0)
             exact, logits, t12 = exact_per_position(m, idx)
             sal = saliency_per_position(m, idx)
             loo = loo_per_position(m, idx, logits, t12)
+            rep = loo_replace_per_position(m, idx, logits, t12, rng)
             ig = ig_per_position(m, idx)
             sal_rhos.append(spearman(np.abs(exact), sal))
             loo_rhos.append(spearman(np.abs(exact), np.abs(loo)))
+            rep_rhos.append(spearman(np.abs(exact), np.abs(rep)))
             ig_rhos.append(spearman(np.abs(exact), ig))
         return dict(sal_mean=round(float(np.mean(sal_rhos)), 3), sal_std=round(float(np.std(sal_rhos)), 3),
                     loo_mean=round(float(np.mean(loo_rhos)), 3), loo_std=round(float(np.std(loo_rhos)), 3),
-                    ig_mean=round(float(np.mean(ig_rhos)), 3), ig_std=round(float(np.std(ig_rhos)), 3))
+                    ig_mean=round(float(np.mean(ig_rhos)), 3), ig_std=round(float(np.std(ig_rhos)), 3),
+                    rep_mean=round(float(np.mean(rep_rhos)), 3), rep_std=round(float(np.std(rep_rhos)), 3))
 
     out["morphology_50"] = score_contexts(contexts)
 

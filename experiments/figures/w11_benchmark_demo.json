@@ -38,7 +38,9 @@
     "loo_mean": 0.417,
     "loo_std": 0.175,
     "ig_mean": 0.771,
-    "ig_std": 0.102
+    "ig_std": 0.102,
+    "rep_mean": 0.539,
+    "rep_std": 0.19
   },
   "word_initial_50": {
     "sal_mean": 0.776,
@@ -46,7 +48,9 @@
     "loo_mean": 0.265,
     "loo_std": 0.164,
     "ig_mean": 0.688,
-    "ig_std": 0.139
+    "ig_std": 0.139,
+    "rep_mean": 0.499,
+    "rep_std": 0.18
   },
   "post_punct_50": {
     "sal_mean": 0.647,
@@ -54,6 +58,8 @@
     "loo_mean": 0.299,
     "loo_std": 0.159,
     "ig_mean": 0.507,
-    "ig_std": 0.124
+    "ig_std": 0.124,
+    "rep_mean": 0.361,
+    "rep_std": 0.182
   }
 }

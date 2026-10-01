@@ -152,7 +152,7 @@ def handcraft():
         b = torch.zeros(I, I, N, device=DEV)
         a[1, 1, 0] = -0.7      # recent-vowel evidence -> push next byte consonant-ward
         a[0, 0, 1] = 0.6       # letter recency -> letter-ness
-        a[0, 2, 4] = 18.0      # word-length memory (ch0, mode4) -> boundary pressure
+        a[0, 2, 4] = 14.0      # word-length memory (ch0, mode4) -> boundary pressure
         a[2, 2, 2] = 2.0       # just-had-boundary damper -> suppress boundary right after
         a[2, 3, 5] = 1.2       # sentence-terminal memory -> push uppercase
         a[2, 2, 5] = -1.5      # sentence-terminal memory -> suppress immediate re-punct

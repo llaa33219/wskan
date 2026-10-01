@@ -44,33 +44,51 @@ mechanism working, measured):
 
 | after k letters | 1 | 3 | 4 | 5 | 6 | 8 |
 |---|---|---|---|---|---|---|
-| logit(space) − logit('e') | −6.00 | −2.38 | −0.17 | +1.98 | +3.85 | +6.48 |
+| logit(space) − logit('e') | −6.00 | −3.75 | −2.15 | −0.44 | +1.25 | +4.16 |
 
 Sample (t = 0.8, seeded "One day"):
 
 ```
-One dayNn aOVLn.TvjKYc ayFCb ITBLhw THeajp eIaOiAkf Iaunf uOuooit Oaiail
-loaoeu aioeb?EULYWOXhS ieAsvs ztc?AeBTCfZL%?IJuRoLCPTMPPTfKHSHOJHHFXXbGCLPMLwS7
-IoSVrrM UshKy UIeiucun OiIOeyn bc Ciox uauihz qw Eeoan UiIecm ooean ahm eIbt
+One dayNn aOVLnl UIeiciay uAeaws hwg Heajp ecaiia% WIaunf uOuooitt Iiailn oaoeuaaioeb Ent
+AOqh dieueeax iaiieal.DzLMRDJJRz!CPTMPUTfKHSHOJHHFXXbGCLPMLwSNr!WSVrrMTKsSKCGQQFMPcuPVQJXCCCP
 ```
 
-Word boundaries with a plausible length distribution (mean 7.7 vs
-TinyStories ~4), vowel/consonant texture, mixed case with capitals
-clustered near sentence starts, punctuation rhythm — **structural fluency
-with zero training**.
+Word boundaries with a plausible length distribution, vowel/consonant
+texture, mixed case with capitals clustered near sentence starts,
+punctuation rhythm — **structural fluency with zero training**.
+
+## The honest three-way decomposition (reviewer-requested)
+
+Does the hand-written machinery help, and what does the lexicon cost?
+Measured on TinyStories eval:
+
+| configuration | CE |
+|---|---|
+| true unigram baseline (reference) | 3.06 |
+| **handcraft, static part only** (emb + base + frequency-tilted head, wave paths zeroed) | 7.53 |
+| **handcraft, full** (static + hand-written form machinery) | **5.45** |
+| trained 1k model | 2.23 |
+
+Three facts, all measured. (i) The hand-written form machinery is a net
+positive: **−2.08 nats** over its own static part. (ii) The static part
+is a *bad* prior (7.53 vs 3.06) — a coarse 4-dimensional output table
+cannot express a real unigram model, so the remaining gap to unigram is
+the output calibration, not the mechanism. (iii) The gap to the trained
+model (2.23) is what training adds on top of the mechanism — the
+lexicon and the fine margins.
 
 ## What this does and does not show
 
 - **Does**: the measured anatomy is *sufficient* — the mechanism a human
   can read off the trained model is enough to rebuild a working
-  language-form machine by hand. This is the strongest form of "we
-  understand what the model computes".
-- **Does not**: beat even a unigram baseline on CE (5.97 vs 3.06; the
-  trained 1k model reaches 2.23). The hand-written part is the *form
-  machinery*; the lexicon — which letters actually follow which — is the
-  trained content part, and it is exactly what the monograph's §5
-  measured as living in the model. Form by hand, content by data: the
-  split the paper claims, demonstrated constructively.
+  language-form machine by hand, and the machinery measurably improves
+  predictions over the static skeleton alone. This is the strongest form
+  of "we understand what the model computes".
+- **Does not**: beat even a unigram baseline (5.45 vs 3.06). The
+  hand-written part is the *form machinery*; the lexicon — which letters
+  actually follow which — is the trained content part, and it dominates
+  the loss. Form by hand, content by data: the split the paper claims,
+  demonstrated constructively and measured honestly.
 - **Failure modes of the build itself are informative**: oscillatory
   slow modes destroy accumulation (the ω=0 rule); sparse embeddings let
   the SiLU gate choke the wave path (the dense-bias fix); LayerNorm

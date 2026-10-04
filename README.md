@@ -118,6 +118,32 @@ Architecture files are versioned as `V<version>_<name>.py` with a matching
 .venv/bin/python experiments/V1_sanity_check.py
 ```
 
+## Pretrained models (Hugging Face)
+
+The 15 WSKAN-11 campaign checkpoints (5 sizes x 3 datasets, seed 42, 3-epoch
+protocol) are published as safetensors with per-model cards containing real
+generation outputs and qualitative evaluations:
+
+| | TinyStories | UltraChat | WikiText |
+|---|---|---|---|
+| **1k** (3,610) | [wskan-1k-tinystories](https://huggingface.co/llaa33219/wskan-1k-tinystories) | [wskan-1k-ultrachat](https://huggingface.co/llaa33219/wskan-1k-ultrachat) | [wskan-1k-wikitext](https://huggingface.co/llaa33219/wskan-1k-wikitext) |
+| **10k** (12,546) | [wskan-10k-tinystories](https://huggingface.co/llaa33219/wskan-10k-tinystories) | [wskan-10k-ultrachat](https://huggingface.co/llaa33219/wskan-10k-ultrachat) | [wskan-10k-wikitext](https://huggingface.co/llaa33219/wskan-10k-wikitext) |
+| **100k** (113,612) | [wskan-100k-tinystories](https://huggingface.co/llaa33219/wskan-100k-tinystories) | [wskan-100k-ultrachat](https://huggingface.co/llaa33219/wskan-100k-ultrachat) | [wskan-100k-wikitext](https://huggingface.co/llaa33219/wskan-100k-wikitext) |
+| **1m** (985,956) | [wskan-1m-tinystories](https://huggingface.co/llaa33219/wskan-1m-tinystories) | [wskan-1m-ultrachat](https://huggingface.co/llaa33219/wskan-1m-ultrachat) | [wskan-1m-wikitext](https://huggingface.co/llaa33219/wskan-1m-wikitext) |
+| **10m** (10,153,996) | [wskan-10m-tinystories](https://huggingface.co/llaa33219/wskan-10m-tinystories) | [wskan-10m-ultrachat](https://huggingface.co/llaa33219/wskan-10m-ultrachat) | [wskan-10m-wikitext](https://huggingface.co/llaa33219/wskan-10m-wikitext) |
+
+Run any of them (NVIDIA GPU + Triton required):
+
+```bash
+uv pip install --python .venv/bin/python safetensors pyyaml huggingface_hub
+.venv/bin/python experiments/RELEASE_infer.py \
+    --model llaa33219/wskan-100k-tinystories --prompt "Once upon a time"
+```
+
+Release tooling: `experiments/RELEASE_publish.py` (checkpoint -> safetensors +
+config.yaml + real generations), `experiments/RELEASE_modelcard.py` (model
+cards), `experiments/RELEASE_infer.py` (Hub/local inference).
+
 ## Key reports (start here)
 - **`experiments/W11_FINAL_INTERPRETATION_REPORT.md` — THE definitive report (3-epoch campaign, 5 seeds, full interpretation; performance as footnote)**
 - `experiments/W7BC_FINAL_REPORT.md` — wskan7bc consolidated report (matrix era)

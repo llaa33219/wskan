@@ -93,6 +93,12 @@ experiments/
   W11_benchmark_demo.py           # post-hoc attribution methods scored against exact ground truth
   W11_deep_all_sizes.py           # deep anatomy at every tier (exclusion, frien->d, truncation)
   W12_handcraft.py                # hand-written edge functions speak: no-training language-form machine
+  W12_probe_nulls.py              # null-calibrated probes (shuffled null, held-out ridge sweep) + readout alignment
+  W12_implicit_boundary_5seed.py  # implicit-boundary clock test on all 5 seeds
+  W12_learning_curve.py           # same-surface learning-curve analysis of the retrain battery
+  W12_benchmark_ap.py             # attribution-patching row for the post-hoc benchmark
+  W12_mamba2_causal_lossmatched.py # loss-matched Mamba-2 boundary battery (75k-step ckpt, CE-matched)
+  W12_depth6_analysis.py          # depth-confound control: 6-layer 100k-tier clock anatomy
   W12_HANDCRAFT_REPORT.md         # the constructive sufficiency test (recipe, margins, samples)
   W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/

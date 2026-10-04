@@ -1,0 +1,187 @@
+{
+  "A_insample_null": {
+    "1k": {
+      "byte32": {
+        "r2": 0.7961,
+        "shuffled_null": 0.0073
+      },
+      "bigram256": {
+        "r2": 0.8055,
+        "shuffled_null": 0.0478
+      },
+      "word500": {
+        "r2": 0.0996,
+        "shuffled_null": 0.0787
+      }
+    },
+    "10k": {
+      "byte32": {
+        "r2": 0.8342,
+        "shuffled_null": 0.0064
+      },
+      "bigram256": {
+        "r2": 0.7603,
+        "shuffled_null": 0.0473
+      },
+      "word500": {
+        "r2": 0.1314,
+        "shuffled_null": 0.0782
+      }
+    },
+    "100k": {
+      "byte32": {
+        "r2": 0.4372,
+        "shuffled_null": 0.0068
+      },
+      "bigram256": {
+        "r2": 0.638,
+        "shuffled_null": 0.0469
+      },
+      "word500": {
+        "r2": 0.1491,
+        "shuffled_null": 0.0786
+      }
+    },
+    "1m": {
+      "byte32": {
+        "r2": 0.3473,
+        "shuffled_null": 0.0065
+      },
+      "bigram256": {
+        "r2": 0.5302,
+        "shuffled_null": 0.0471
+      },
+      "word500": {
+        "r2": 0.1376,
+        "shuffled_null": 0.0773
+      }
+    },
+    "10m": {
+      "byte32": {
+        "r2": 0.4795,
+        "shuffled_null": 0.0067
+      },
+      "bigram256": {
+        "r2": 0.644,
+        "shuffled_null": 0.0476
+      },
+      "word500": {
+        "r2": 0.1374,
+        "shuffled_null": 0.0787
+      }
+    }
+  },
+  "B_ridge_heldout": {
+    "1k": {
+      "byte32": {
+        "alpha": 1000.0,
+        "r2": 0.1839,
+        "acc": 0.4675,
+        "null_acc": 0.1573
+      },
+      "bigram256": {
+        "alpha": 1.0,
+        "r2": 0.0274,
+        "acc": 0.1445,
+        "null_acc": 0.0232
+      },
+      "word500": {
+        "alpha": 1000.0,
+        "r2": -0.0009,
+        "acc": 0.0579,
+        "null_acc": 0.0367
+      }
+    },
+    "10k": {
+      "byte32": {
+        "alpha": 1000.0,
+        "r2": 0.5365,
+        "acc": 0.824,
+        "null_acc": 0.1573
+      },
+      "bigram256": {
+        "alpha": 1000.0,
+        "r2": 0.1004,
+        "acc": 0.2869,
+        "null_acc": 0.0183
+      },
+      "word500": {
+        "alpha": 1000.0,
+        "r2": 0.0046,
+        "acc": 0.08,
+        "null_acc": 0.0343
+      }
+    },
+    "100k": {
+      "byte32": {
+        "alpha": 1000.0,
+        "r2": 0.5983,
+        "acc": 0.9024,
+        "null_acc": 0.1402
+      },
+      "bigram256": {
+        "alpha": 1000.0,
+        "r2": 0.1991,
+        "acc": 0.51,
+        "null_acc": 0.0183
+      },
+      "word500": {
+        "alpha": 1000.0,
+        "r2": 0.0223,
+        "acc": 0.1546,
+        "null_acc": 0.0343
+      }
+    },
+    "1m": {
+      "byte32": {
+        "alpha": 1000.0,
+        "r2": 0.4055,
+        "acc": 0.7394,
+        "null_acc": 0.1512
+      },
+      "bigram256": {
+        "alpha": 1000.0,
+        "r2": 0.144,
+        "acc": 0.4339,
+        "null_acc": 0.0195
+      },
+      "word500": {
+        "alpha": 1000.0,
+        "r2": 0.0205,
+        "acc": 0.1404,
+        "null_acc": 0.033
+      }
+    },
+    "10m": {
+      "byte32": {
+        "alpha": 1000.0,
+        "r2": 0.4159,
+        "acc": 0.7675,
+        "null_acc": 0.1378
+      },
+      "bigram256": {
+        "alpha": 1000.0,
+        "r2": 0.1642,
+        "acc": 0.4819,
+        "null_acc": 0.0171
+      },
+      "word500": {
+        "alpha": 1000.0,
+        "r2": 0.0216,
+        "acc": 0.1428,
+        "null_acc": 0.0343
+      }
+    }
+  },
+  "C_readout_alignment": {
+    "100k": {
+      "cos_r_top1_singular": -0.141,
+      "null_1_over_sqrt_dim": 0.0645,
+      "overlap_r_top10_subspace": 0.0704,
+      "null_overlap_top10": 0.0417,
+      "random_control_mean_abscos": 0.0518,
+      "dim": 240,
+      "n_positions": 2048
+    }
+  }
+}

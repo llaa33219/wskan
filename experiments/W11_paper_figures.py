@@ -104,12 +104,12 @@ def fig_decision(m):
     names = ["emb", "L0-base", "L0-wave", "L1-base", "L1-wave", "norm-const"]
     vals = [float((m.head.weight.detach().cpu().numpy()[t1] - m.head.weight.detach().cpu().numpy()[t2])
                   @ parts[k]) for k in ("emb", "L0-base", "L0-wave", "L1-base", "L1-wave", "norm-const")]
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.6), gridspec_kw={"width_ratios": [1, 1.2]})
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.6), gridspec_kw={"width_ratios": [1.2, 1]})
     colors = ["#1f77b4" if v >= 0 else "#d62728" for v in vals]
-    axes[0].bar(names, vals, color=colors)
+    axes[0].barh(names[::-1], vals[::-1], color=colors[::-1])
     axes[0].set_title("frien$\\to$d: margin decomposition (sum exact)", fontsize=9)
-    axes[0].set_ylabel("margin contribution")
-    axes[0].tick_params(axis="x", rotation=45)
+    axes[0].set_xlabel("margin contribution")
+    axes[0].axvline(0, color="black", linewidth=0.5)
     lo = hf["layers"][1]
     terms = lo["terms"].detach().cpu().numpy()
     a, b = lo["read_gain"]
@@ -124,11 +124,15 @@ def fig_decision(m):
                - terms.imag[:, :, k].sum(0)[:, None] * Cn[:, k][:, None] * bn[:, :, k])
         v = ((y_o.sum(0) * gate) / std) * gn
         per_mode.append(float(W[t1] @ v - W[t2] @ v))
-    axes[1].bar([f"mode {k}" for k in range(6)], per_mode,
-                color=["#1f77b4" if v >= 0 else "#d62728" for v in per_mode])
+    axes[1].barh([f"mode {k}" for k in range(6)][::-1], per_mode[::-1],
+                 color=["#1f77b4" if v >= 0 else "#d62728" for v in per_mode][::-1])
     axes[1].set_title("L1-wave per mode (0-indexed)", fontsize=9)
-    axes[1].tick_params(axis="x", rotation=45)
-    fig.tight_layout()
+    axes[1].axvline(0, color="black", linewidth=0.5)
+    from matplotlib.patches import Patch
+    fig.legend(handles=[Patch(color="#1f77b4", label="supports `d'"),
+                        Patch(color="#d62728", label="supports `t'")],
+               loc="lower right", fontsize=8, frameon=False)
+    fig.tight_layout(rect=[0, 0.08, 1, 1])
     fig.savefig("paper/figures/fig_decision.pdf")
 
 

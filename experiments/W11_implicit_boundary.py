@@ -32,11 +32,12 @@ LOWER = torch.arange(97, 123, device=DEV)
 def five_seed_clamp(ids):
     def wi_ce(m, clamp=False):
         orig = None
+        cur = {}
         if clamp:
             orig = m.layers[0]._compute_dt
             def patched(x):
                 dt = orig(x)
-                idx_flat = ids[: x.shape[1]]
+                idx_flat = cur["ids"]
                 mask = torch.isin(idx_flat, BOUNDARY)[None, :, None].float()
                 letters = torch.isin(idx_flat, LOWER)[None, :, None].float()
                 lm = (dt * letters).sum(1, keepdim=True) / letters.sum(1, keepdim=True).clamp(min=1)
@@ -46,6 +47,7 @@ def five_seed_clamp(ids):
         with torch.no_grad():
             for s in range(0, len(ids) - 512, 512):
                 ch = ids[s:s + 513]
+                cur["ids"] = ch[:-1]
                 lg = m(ch[:-1].unsqueeze(0))[0]
                 ce = F.cross_entropy(lg, ch[1:], reduction="none")
                 ces.append(ce)
@@ -95,18 +97,24 @@ def implicit_test(tr_arr):
     def wi_ce(clamp_positions=None, li=1):
         ces, wis = [], []
         orig = m.layers[li]._compute_dt
+        cur = {}
         if clamp_positions is not None:
             def patched(x):
                 dt = orig(x)
-                L = x.shape[1]
-                mask = torch.zeros(1, L, 1, device=DEV)
-                mask[0, clamp_positions[clamp_positions < L], 0] = 1.0
+                mask = cur["mask"]
                 lm = dt.mean(1, keepdim=True)
                 return dt * (1 - mask) + lm * mask
             m.layers[li]._compute_dt = patched
         with torch.no_grad():
             for s in range(0, 20000, 512):
                 ch = torch.tensor(list(sf[s:s + 513]), device=DEV).unsqueeze(0)
+                if clamp_positions is not None:
+                    Lx = ch.shape[1] - 1
+                    loc = clamp_positions[(clamp_positions >= s) & (clamp_positions < s + Lx)] - s
+                    mk = torch.zeros(1, Lx, 1, device=DEV)
+                    if len(loc):
+                        mk[0, loc, 0] = 1.0
+                    cur["mask"] = mk
                 lg = m(ch[:, :-1])[0]
                 ce = F.cross_entropy(lg, ch[0, 1:], reduction="none")
                 ces.append(ce)

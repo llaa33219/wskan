@@ -39,11 +39,15 @@ def eval_ce(m, eval_ids, n=60000, blk=512):
     return float(np.mean(losses))
 
 
+CURRENT: dict = {}
+
+
 def wi_ce(m, ids, n=60000):
     ces, wis = [], []
     with torch.no_grad():
         for s in range(0, n, 512):
             ch = ids[s:s + 513]
+            CURRENT["ids"] = ch[:-1]
             lg = m(ch[:-1].unsqueeze(0))[0]
             ce = F.cross_entropy(lg, ch[1:], reduction="none")
             ces.append(ce)
@@ -58,7 +62,7 @@ def clamp_layer_boundary(m, li, ids):
 
     def patched(x):
         dt = orig(x)
-        idx_flat = ids[: x.shape[1]]
+        idx_flat = CURRENT["ids"]
         mask = torch.isin(idx_flat, BOUNDARY)[None, :, None].float()
         letters = torch.isin(idx_flat, LOWER)[None, :, None].float()
         letter_mean = (dt * letters).sum(1, keepdim=True) / letters.sum(1, keepdim=True).clamp(min=1)

@@ -1,0 +1,14 @@
+{
+  "morphology_50": {
+    "ap_mean": 0.3,
+    "ap_std": 0.282
+  },
+  "word_initial_50": {
+    "ap_mean": 0.426,
+    "ap_std": 0.181
+  },
+  "post_punct_50": {
+    "ap_mean": 0.155,
+    "ap_std": 0.208
+  }
+}

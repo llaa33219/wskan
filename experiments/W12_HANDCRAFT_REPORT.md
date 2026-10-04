@@ -33,7 +33,7 @@ gradient descent touched it.
 
 The structural choices (which mode does what, sign of each gain, the
 clock ratios) come from the measured anatomy. Three magnitude constants
-(the length→boundary gain 18.0, the boundary baseline −0.25, the
+(the length→boundary gain 14.0, the boundary baseline −0.25, the
 lowercase prior −0.55) were hand-tuned on a space-vs-letter margin probe
 — documented, not hidden.
 
@@ -44,7 +44,7 @@ mechanism working, measured):
 
 | after k letters | 1 | 3 | 4 | 5 | 6 | 8 |
 |---|---|---|---|---|---|---|
-| logit(space) − logit('e') | −6.00 | −3.75 | −2.15 | −0.44 | +1.25 | +4.16 |
+| logit(space) − logit('e') | −11.44 | −8.26 | −6.15 | −3.81 | −1.41 | +2.91 |
 
 Sample (t = 0.8, seeded "One day"):
 

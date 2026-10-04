@@ -185,6 +185,29 @@ def eval_ce(m, ids, n=60000, blk=512):
     return float(np.mean(losses))
 
 
+@torch.no_grad()
+def eval_ce_static(m, ids, n=60000, blk=512):
+    """Static skeleton only: wave path zeroed (a = b = 0), so the forward is
+    embedding + base skip + head - no clock, no scan, no gates."""
+    a_backup = m.layers[0].a.data.clone()
+    b_backup = m.layers[0].b.data.clone()
+    m.layers[0].a.data.zero_()
+    m.layers[0].b.data.zero_()
+    ce = eval_ce(m, ids, n, blk)
+    m.layers[0].a.data.copy_(a_backup)
+    m.layers[0].b.data.copy_(b_backup)
+    return ce
+
+
+def unigram_ce(train_ids, eval_ids, n=60000):
+    """Unigram baseline: byte frequencies from the training stream."""
+    counts = np.bincount(train_ids.numpy(), minlength=256).astype(np.float64)
+    probs = (counts + 0.5) / (counts.sum() + 0.5 * 256)
+    logp = torch.tensor(np.log(probs), dtype=torch.float32, device=DEV)
+    tgt = eval_ids[1:n + 1].long().to(DEV)
+    return float(-logp[tgt].mean())
+
+
 def main():
     from experiments.V1_train_tinystories_lm import load_data
     tr_ts, ev_ts = load_data(1400000, 500, 42, "tinystories")
@@ -200,6 +223,8 @@ def main():
             sp, lt = lg[32].item(), lg[ord('e')].item()
             print(f"  after {'a' * k!r:>10}: logit(space) {sp:+.2f} vs logit(e) {lt:+.2f}")
     print(f"TinyStories eval CE: {eval_ce(m, ev_ts.long().cuda()):.4f}")
+    print(f"static skeleton only (wave path zeroed): {eval_ce_static(m, ev_ts.long().cuda()):.4f}")
+    print(f"unigram baseline: {unigram_ce(tr_ts, ev_ts):.4f}")
     # texture metrics on a sampled continuation
     torch.manual_seed(0)
     idx = torch.tensor(list(b"the cat"), device=DEV).unsqueeze(0)

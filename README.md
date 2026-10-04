@@ -1,5 +1,9 @@
 # Wavelet-like State-Space KAN (WSKAN)
 
+<p align="center">
+  <img src="logo.svg" alt="WSKAN logo" width="600">
+</p>
+
 *Formerly "Wavelet-State-KAN". Renamed for honesty: the edge kernels are
 wavelet-like damped oscillators (SSM impulse responses), not strictly
 admissible wavelets — the acronym WSKAN and all artifact names
@@ -35,6 +39,14 @@ models/
   V6_README.md       # V6 design: V4 capability on V3's analyzable skeleton
   V7_WSKAN.py        # V7: interpretable-by-construction variants (feature-B/C adopted)
   V7_README.md       # V7 design and neutrality-test protocol
+  V8_WSKAN.py        # V8: wskan7bc math, GPU-native log-depth parallel scan
+  V8_README.md       # V8 speed rewrite (Hillis-Steele scan + torch.compile)
+  V9_WSKAN.py        # V9: wavelet-generated FIR conv approximation (not adopted)
+  V9_README.md       # V9 design and why it was not adopted
+  V10_WSKAN.py       # V10: segmented word-level wavelet-SSM prototype (not adopted)
+  V10_README.md      # V10 design notes
+  V11_WSKAN.py       # V11: fused Triton scan kernel; the wskan11 campaign model
+  V11_README.md      # V11 kernel verification (fwd 7e-7, grads <= 4e-6)
 experiments/
   V6_FINAL_LANGUAGE_ACCOUNT.md   # CAPSTONE: complete mathematical account of how V6 learned language
   V1_sanity_check.py          # 1D fitting sanity check (static mode)

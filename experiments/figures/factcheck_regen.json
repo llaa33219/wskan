@@ -1,0 +1,166 @@
+{
+ "friend": {
+  "1k": {
+   "pred": " ",
+   "runner_up": "s",
+   "margin": 0.42,
+   "parts_sum": 0.42,
+   "parts": {
+    "emb": -3.232,
+    "L0-base": 2.148,
+    "L0-wave": 2.447,
+    "norm-const": -0.943
+   },
+   "per_mode_last_wave": [
+    0.709,
+    0.14,
+    0.62,
+    1.048,
+    0.119,
+    -0.189
+   ]
+  },
+  "10k": {
+   "pred": "d",
+   "runner_up": "c",
+   "margin": 0.0767,
+   "parts_sum": 0.0767,
+   "parts": {
+    "emb": -4.831,
+    "L0-base": -16.323,
+    "L0-wave": 19.961,
+    "norm-const": 1.27
+   },
+   "per_mode_last_wave": [
+    3.073,
+    -0.204,
+    1.636,
+    2.647,
+    8.166,
+    4.643
+   ]
+  },
+  "100k": {
+   "pred": "d",
+   "runner_up": "t",
+   "margin": 8.4392,
+   "parts_sum": 8.4392,
+   "parts": {
+    "emb": 0.829,
+    "L0-base": 5.321,
+    "L0-wave": -5.306,
+    "L1-base": 0.879,
+    "L1-wave": 7.504,
+    "norm-const": -0.789
+   },
+   "per_mode_last_wave": [
+    -2.846,
+    5.638,
+    -0.806,
+    1.25,
+    7.361,
+    -3.094
+   ]
+  },
+  "1m": {
+   "pred": "d",
+   "margin": 12.8564,
+   "parts_sum": 12.8564,
+   "parts": {
+    "emb": 0.288,
+    "L0-base": 0.861,
+    "L0-wave": -0.724,
+    "L1-base": -0.582,
+    "L1-wave": 1.348,
+    "L2-base": 1.876,
+    "L2-wave": 0.69,
+    "L3-base": -1.519,
+    "L3-wave": 1.152,
+    "L4-base": -1.102,
+    "L4-wave": 4.662,
+    "L5-base": 1.738,
+    "L5-wave": 4.548,
+    "norm-const": -0.379
+   },
+   "per_mode_last_wave": [
+    0.512,
+    1.63,
+    1.368,
+    0.987,
+    1.179,
+    -1.129
+   ]
+  },
+  "10m": {
+   "pred": "d",
+   "margin": 13.7975,
+   "parts_sum": 13.7975,
+   "parts": {
+    "emb": -0.014,
+    "L0-base": 0.842,
+    "L0-wave": 0.046,
+    "L1-base": -0.532,
+    "L1-wave": 14.635,
+    "norm-const": -1.178
+   },
+   "per_mode_last_wave": [
+    2.788,
+    1.172,
+    4.002,
+    2.485,
+    1.26,
+    2.928
+   ]
+  }
+ },
+ "trunc50": {
+  "1k": {
+   "mean_top12_margin": 0.943,
+   "boundary_share_top25": 0.426,
+   "boundary_base_rate": 0.242
+  },
+  "10k": {
+   "mean_top12_margin": 1.149,
+   "boundary_share_top25": 0.471,
+   "boundary_base_rate": 0.242
+  },
+  "100k": {
+   "mean_top12_margin": 2.369,
+   "boundary_share_top25": 0.28,
+   "boundary_base_rate": 0.199
+  },
+  "1m": {
+   "mean_top12_margin": 3.571,
+   "boundary_share_top25": 0.289,
+   "boundary_base_rate": 0.199
+  },
+  "10m": {
+   "mean_top12_margin": 3.759,
+   "boundary_share_top25": 0.21,
+   "boundary_base_rate": 0.199
+  }
+ },
+ "canonical_100k": {
+  "dc_rms_median_T2000": 0.0071,
+  "dc_rms_frac_below_01_T2000": 1.0,
+  "dc_rms_median_T5": 0.1416,
+  "dc_rms_frac_below_01_T5": 0.339,
+  "eff_rank_per_mode": [
+   35.6,
+   36.7,
+   36.4,
+   36.4,
+   36.6,
+   36.4,
+   34.6,
+   35.3,
+   35.8,
+   35.8,
+   35.9,
+   35.7
+  ],
+  "d_model": 40,
+  "n_modes": 6
+ },
+ "note": "friend margins are fp32 (bf16 model-forward gives 8.30 at 100k, 0.037 at 10k); DC/RMS window-sensitive: T=5 matches the paper's order, T=2000 is ~zero-mean"
+}

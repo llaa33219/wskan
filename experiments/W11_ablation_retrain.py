@@ -8,6 +8,13 @@ start. Variants (100k tier, UltraChat, campaign 3ep protocol):
   n1        n_states=1        - no mode ladder is possible at all
   nofeat    use_feature_bc=False - no named structure/content tables
   rhofrozen log_rho frozen at 0  - modes share one timescale multiplier
+  flatomega omega zeroed at init (pi-harmonic prior removed; trainable)
+  shuffeat  feature tables present but mislabeled at init (the 7 real byte
+            features permuted among themselves, bias row fixed), trainable -
+            mismatched-prior control separating "structure not required"
+            from "any prior is equally easy to route around"
+  depth6    100k-tier params at 6 layers (d=19, ~109k) - depth-confound
+            control for the cross-tier anatomy comparison
   (reference: wskan11real freezes omega=0 - frequency structure removed)
 
 Protocol matches CAMPAIGN_orchestrate.py for (ultrachat, 100k):
@@ -33,7 +40,7 @@ from models.V11_WSKAN import WaveletStateKANLMV11
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--variant", choices=["base", "n1", "n1wide", "nofeat", "rhofrozen", "flatomega"],
+    p.add_argument("--variant", choices=["base", "n1", "n1wide", "nofeat", "rhofrozen", "flatomega", "shuffeat", "depth6"],
                    required=True)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--dataset", choices=["ultrachat", "tinystories"], default="ultrachat")
@@ -67,6 +74,10 @@ def main():
         kw["bc_rank"] = min(32, kw["d_model"])
     if args.variant == "nofeat":
         kw["use_feature_bc"] = False
+    if args.variant == "depth6":
+        kw["d_model"] = 19
+        kw["n_layers"] = 6
+        kw["bc_rank"] = 19
     m = WaveletStateKANLMV11(**kw).cuda()
     if args.variant == "rhofrozen":
         for layer in m.layers:
@@ -74,6 +85,12 @@ def main():
     if args.variant == "flatomega":
         for layer in m.layers:
             layer.omega.data.zero_()   # pi-harmonic prior removed; omega stays trainable
+    if args.variant == "shuffeat":
+        g = torch.Generator().manual_seed(args.seed + 9999)
+        for layer in m.layers:
+            perm = torch.randperm(layer.M_B.shape[0] - 1, generator=g)
+            layer.M_B.data[:-1] = layer.M_B.data[:-1][perm]
+            layer.M_C.data[:-1] = layer.M_C.data[:-1][perm]
     print(f"variant {args.variant} seed {args.seed} params {sum(q.numel() for q in m.parameters()):,}",
           flush=True)
 

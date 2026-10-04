@@ -262,8 +262,8 @@ inspectable: the generation results below are real, unedited outputs of these ex
 
 {collection_table(name)}
 
-Each model is trained on {COLLECTION_NOTE[dataset]} for this row; see the collection for the other
-two domains. All rows use the identical WSKAN-11 architecture, differing only in depth/width.
+This model is trained on {COLLECTION_NOTE[dataset]}; the other rows cover the remaining two domains
+and sizes. All rows use the identical WSKAN-11 architecture, differing only in depth/width.
 
 ## Generation results (real outputs)
 

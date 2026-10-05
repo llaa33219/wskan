@@ -1,0 +1,26 @@
+{
+  "100k": {
+    "n_positions": 16384,
+    "n_classes": 500,
+    "insample_r2": 0.158,
+    "shuffled_null": 0.0411,
+    "ridge": {
+      "alpha": 1000.0,
+      "r2": 0.0293,
+      "acc": 0.1194,
+      "null_acc": 0.0401
+    }
+  },
+  "10m": {
+    "n_positions": 16384,
+    "n_classes": 500,
+    "insample_r2": 0.147,
+    "shuffled_null": 0.0409,
+    "ridge": {
+      "alpha": 1000.0,
+      "r2": 0.0322,
+      "acc": 0.1414,
+      "null_acc": 0.038
+    }
+  }
+}

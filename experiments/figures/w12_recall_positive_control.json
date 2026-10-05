@@ -1,0 +1,10 @@
+{
+  "wskan11_100k": {
+    "induction_acc": 0.04,
+    "memorize_recall_byte_acc": 0.032
+  },
+  "mamba2_100k": {
+    "induction_acc": 0.05,
+    "memorize_recall_byte_acc": 0.038
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "scramfeat_s42": {
+    "dt_ratio_per_layer": [
+      2.67,
+      2.133
+    ],
+    "base_wi": 2.7348,
+    "boundary_clamp_damage_per_layer": [
+      1.1312,
+      0.6099
+    ]
+  },
+  "scramfeat_s7": {
+    "dt_ratio_per_layer": [
+      2.237,
+      1.632
+    ],
+    "base_wi": 2.7192,
+    "boundary_clamp_damage_per_layer": [
+      2.443,
+      0.44
+    ]
+  },
+  "wide2_s42": {
+    "dt_ratio_per_layer": [
+      2.552,
+      2.101
+    ],
+    "base_wi": 2.8379,
+    "boundary_clamp_damage_per_layer": [
+      0.7529,
+      0.4971
+    ]
+  },
+  "wide2_s7": {
+    "dt_ratio_per_layer": [
+      2.541,
+      1.971
+    ],
+    "base_wi": 2.8256,
+    "boundary_clamp_damage_per_layer": [
+      0.7946,
+      0.5131
+    ]
+  }
+}

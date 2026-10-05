@@ -15,6 +15,12 @@ start. Variants (100k tier, UltraChat, campaign 3ep protocol):
             from "any prior is equally easy to route around"
   depth6    100k-tier params at 6 layers (d=19, ~109k) - depth-confound
             control for the cross-tier anatomy comparison
+  scramfeat byte-feature basis scrambled at the architecture level: the 7
+            named predicates replaced by a seeded random partition of the
+            byte range (bias kept), fixed and untrainable. Decisive test
+            of whether the named basis carries linguistic value at all.
+  wide2     1m-tier params at 2 layers (d=145, ~960k) - the 10m skeleton
+            at 1m capacity; second depth/capacity cross-control
   (reference: wskan11real freezes omega=0 - frequency structure removed)
 
 Protocol matches CAMPAIGN_orchestrate.py for (ultrachat, 100k):
@@ -40,7 +46,7 @@ from models.V11_WSKAN import WaveletStateKANLMV11
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--variant", choices=["base", "n1", "n1wide", "nofeat", "rhofrozen", "flatomega", "shuffeat", "depth6"],
+    p.add_argument("--variant", choices=["base", "n1", "n1wide", "nofeat", "rhofrozen", "flatomega", "shuffeat", "depth6", "scramfeat", "wide2"],
                    required=True)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--dataset", choices=["ultrachat", "tinystories"], default="ultrachat")
@@ -78,6 +84,19 @@ def main():
         kw["d_model"] = 19
         kw["n_layers"] = 6
         kw["bc_rank"] = 19
+    if args.variant == "wide2":
+        kw["d_model"] = 145
+        kw["n_layers"] = 2
+        kw["bc_rank"] = 32
+    if args.variant == "scramfeat":
+        import numpy as _np
+        import models.V7_WSKAN as _v7
+        _g = _np.random.default_rng(args.seed + 5555)
+        _assign = torch.tensor(_g.integers(0, 7, 256), dtype=torch.long)
+        def _scrambled(idx):
+            oh = F.one_hot(_assign.to(idx.device)[idx], 7).float()
+            return torch.cat([oh, torch.ones_like(oh[..., :1])], dim=-1)
+        _v7.byte_features = _scrambled
     m = WaveletStateKANLMV11(**kw).cuda()
     if args.variant == "rhofrozen":
         for layer in m.layers:

@@ -99,6 +99,9 @@ experiments/
   W12_benchmark_ap.py             # attribution-patching row for the post-hoc benchmark
   W12_mamba2_causal_lossmatched.py # loss-matched Mamba-2 boundary battery (75k-step ckpt, CE-matched)
   W12_depth6_analysis.py          # depth-confound control: 6-layer 100k-tier clock anatomy
+  W12_variant_clocks.py           # clock battery for scramfeat/wide2 control variants
+  W12_recall_positive_control.py  # induction-task positive control for the recall probe
+  W12_probe_word16k.py            # word-identity probe robustness at 16k positions
   W12_HANDCRAFT_REPORT.md         # the constructive sufficiency test (recipe, margins, samples)
   W11_EXCESS_STRUCTURE_REPORT.md  # structure is solution-load-bearing, not task-required; origin decomposed
 checkpoints/
